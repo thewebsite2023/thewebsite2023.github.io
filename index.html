@@ -82,15 +82,27 @@
 </head>
 <script src="https://messenger.svc.chative.io/static/v1.0/channels/s250d4a65-7493-45bb-9a2b-8ea5c029f213/messenger.js?mode=livechat" defer="defer"></script>
 <body>
-<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" role="dialog">
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" role="dialog">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
         <center>
-        	<h3>Thông báo!</h3>
-          <h6>Bạn không có quyền truy cập trang!</h6>
-          <h6>Vui lòng nhấp vào nút "Mở khoá" để tiếp tục truy cập trang</h6>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Mở khoá</button>
+          <h3>Vui lòng xác minh bạn không phải là robot</h3>
+        	<form action="https://thewebsite2023.github.io">
+    <input type="checkbox" id="myCheckbox">  
+    <label for="myCheckbox">Tôi không phải là robot</label>  
+    <br>  
+    <button type="button" class="btn btn-primary" id="myButton" data-bs-dismiss="modal" disabled>Tiếp tục</button>  
+    
+    <script>  
+      const checkbox = document.getElementById('myCheckbox');  
+      const button = document.getElementById('myButton');  
+    
+      checkbox.addEventListener('change', () => {  
+        button.disabled = !checkbox.checked;  
+      });  
+    </script>
+  </form>
 	</center>
     </div>
   </div>
@@ -99,7 +111,7 @@
     $(window).load(function(){        
    $('#staticBackdrop').modal('show');
     }); 
-</script> -->
+</script>
                 <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
                   <a class="navbar-brand" href>
