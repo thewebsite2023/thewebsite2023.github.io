@@ -1,28 +1,49 @@
 <html>
   <head>
-    <title>reCAPTCHA demo: Simple page</title>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  </head>
-  <body>
-    <form action="?" method="POST">
-      <div class="g-recaptcha" data-sitekey="6LdtnpApAAAAANozI1TBzaatbNLF0EK23VY8xkwz"></div>
-      <br/>
-      <input type="submit" value="Submit">
-    </form>
-  </body>
-</html>
-<html>
-  <head>
     <title>hCaptcha Demo</title>
     <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
   </head>
   <body>
     <form action="" method="POST">
-      <input type="text" name="email" placeholder="Email" />
-      <input type="password" name="password" placeholder="Password" />
       <div class="h-captcha" data-sitekey="273cc450-ac44-4578-92b4-9de2b9bca726"></div>
-      <br />
-      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
+<html>
+  <head>
+    <script>
+      function onSubmit(token) {
+        alert('thanks ' + document.getElementById('field').value);
+      }
+
+      function validate(event) {
+        event.preventDefault();
+
+        if (!document.getElementById('field').value) {
+          alert('You must add text to the required field');
+        } else {
+          hcaptcha.execute();
+        }
+      }
+
+      function onLoad() {
+        var element = document.getElementById('submit');
+
+        element.onclick = validate;
+      }
+    </script>
+    <script src="https://js.hcaptcha.com/1/api.js?onload=onLoad" async defer></script>
+  </head>
+  <body>
+    <form>
+      Name: (required) <input id="field" name="field" />
+      <div
+        id="hcaptcha"
+        class="h-captcha"
+        data-sitekey="273cc450-ac44-4578-92b4-9de2b9bca726"
+        data-callback="onSubmit"
+        data-size="invisible"
+      ></div>
     </form>
   </body>
 </html>
