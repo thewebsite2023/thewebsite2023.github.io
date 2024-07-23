@@ -12,7 +12,7 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Website|Chuyên về phim hoạt hình</title>
+    <title>Cartoon Website|Chuyên về phim hoạt hình</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
@@ -1331,32 +1331,23 @@
       <h6>
           &copy; 2023 Copyrighted by Nguyen Nhat Tien - All rights reserved
 	      <br>
-	      This site is managed by <a href="https://analytics.google.com/">Google Analytics</a>
+	      This site is managed by <a href="https://analytics.google.com/" target="_blank">Google Analytics</a>
       </h6>
     </span>
   </center>
 </div>
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" role="dialog">
-  <div class="modal-dialog modal-dialog-centered">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
     <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Vui lòng đọc điều khoản của Cartoon Website</h1>
+      </div>
       <div class="modal-body">
-        <center>
-          <h3>Vui lòng xác minh bạn không phải là robot</h3>
-    <input type="checkbox" id="myCheckbox">  
-    <label for="myCheckbox">Tôi không phải là robot</label>  
-    <br>
-    <br>
-    <button type="button" class="btn btn-primary" id="myButton" data-bs-dismiss="modal" disabled>Tiếp tục</button>  
-    
-    <script>  
-      const checkbox = document.getElementById('myCheckbox');  
-      const button = document.getElementById('myButton');  
-    
-      checkbox.addEventListener('change', () => {  
-        button.disabled = !checkbox.checked;  
-      });  
-    </script>
-  </center>
+        <input type="checkbox" id="myCheckbox" onchange="toggleButton()"> Tôi đồng ý với các điều khoản trên của Cartoon Website
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" id="myButton" disabled>Tiếp tục</button>
+      </div>
     </div>
   </div>
 </div>
