@@ -23,13 +23,14 @@
             <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0&appId=498196206101417" nonce="fitJtHZY"></script>
             <div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="true" data-use-continue-as="false"></div>
+
 <script>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '{498196206101417}',
       cookie     : true,
       xfbml      : true,
-      version    : '{v19.0}'
+      version    : '{v20.0}'
     });
       
     FB.AppEvents.logPageView();   
@@ -43,6 +44,19 @@
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+    FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+    
+{
+    status: 'connected',
+    authResponse: {
+        accessToken: '...',
+        expiresIn:'...',
+        signedRequest:'...',
+        userID:'...'
+    }
+}
 </script>
     <style>
         body{
