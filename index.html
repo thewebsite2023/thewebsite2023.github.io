@@ -2,13 +2,13 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Cartoon Website | Chuyên về phim hoạt hình</title>
+<title>Học Web Chuẩn</title>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 var loader = function() {
     setTimeout(function() {
         $('#loader').css({ 'opacity': 0, 'visibility':'hidden' });
-    }, 1000);
+    }, 3000);
 };
 $(function(){
     loader();
@@ -30,13 +30,12 @@ $(function(){
     transition: all 0.3s ease-in-out;
 }
 .circle {
-    height: 40px;
+    height: 10px;
     margin: 50px auto;
+    margin-top: 250px;
+    margin-left: 10px;
     position: relative;
     text-align: center;
-    width: 40px;
-    -webkit-animation: circle_dot 2.0s infinite linear;
-            animation: circle_dot 2.0s infinite linear;
 }
 
 .circle1, .circle2 {
@@ -80,8 +79,9 @@ $(function(){
 <body>
 <div id="loader">
     <div class="circle">
-        <div class="circle1"></div>
-        <div class="circle2"></div>
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
     </div>
     <div style="text-align: center;">Vui lòng chờ trong khi chúng tôi chuẩn bị cho bạn</div>
 </div>
@@ -1424,7 +1424,7 @@ $(function(){
     </span>
   </center>
 </div>
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -1449,20 +1449,20 @@ function toggleButton() {
     var button = document.getElementById("myButton");  
     button.disabled = !checkBox.checked;  
 }  
-</script>  
-<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+</script>   -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
 	<h1>:(</h1>
-	<h6>We're fixing something! Please try again later</h6>
+	<h6>Prepairing Automatic Repair...</h6>
   <div class="spinner-border text-primary" role="status">
     <span class="visually-hidden">Loading...</span>
 </div> <h6>0% complete</h6>
       </div>
     </div>
   </div>
-</div> -->
+</div>
 <script>
     $(window).load(function(){        
    $('#staticBackdrop').modal('show');
