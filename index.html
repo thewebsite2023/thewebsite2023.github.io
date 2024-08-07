@@ -1450,25 +1450,31 @@ function toggleButton() {
     button.disabled = !checkBox.checked;  
 }  
 </script>   -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body">
-	<h1>:(</h1>
-	<h6>Prepairing Automatic Repair...</h6>
-  <div class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
-</div> <div>0% complete</div>
-	<a href="https://github.com/thewebsite2023/thewebsite2023.github.io/wiki" target="_blank">Click here for more information</a>
-      </div>
-    </div>
+ <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-xxl-down">
+      <div class="modal-content">
+        <div class="modal-body" style="background-color: rgb(0, 153, 255);">
+          <div class="e">
+          <h1 style="color: white;">:(</h1>
+	<h6 style="color: white;">Your device ran into a problem and need to repair.</h6>
+    <h6 style="color: white;">We're just collecting some error info, and then we'll repair for you</h6>
+   <div style="color: white;">0% complete</div>
+	<a href="https://github.com/thewebsite2023/thewebsite2023.github.io/wiki" target="_blank" style="color: white;">Click here for more information</a>
   </div>
-</div>
-<script>
-    $(window).load(function(){        
-   $('#staticBackdrop').modal('show');
-    }); 
-</script>
+        </div>
+          </div>
+          </div>
+  <style>
+    .e{
+      margin-left: 100px;
+      margin-top: 150px;
+    }
+  </style>
+  <script>
+      $(window).load(function(){        
+     $('#staticBackdrop').modal('show');
+      }); 
+  </script>
 </body>
 </html>
 </body>
