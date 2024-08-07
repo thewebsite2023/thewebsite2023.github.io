@@ -1424,7 +1424,7 @@ $(function(){
     </span>
   </center>
 </div>
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -1435,20 +1435,9 @@ $(function(){
 	      <h4>Sau đây là một số điều khoản của chúng tôi</h4>
 	      <h6>1.Nghiêm cấm các hành vi vi phạm bản quyền</h6>
 	      <h6>Nếu xảy ra trường hợp vi phạm bản quyền, chúng tôi</h6>
-         <div class="col-12">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-        <label class="form-check-label" for="invalidCheck">
-          Tôi đồng ý với các điều khoản của Cartoon Website
-        </label>
-        <div class="invalid-feedback">
-          Bạn cần đồng ý trước khi tiếp tục
-        </div>
-      </div>
-    </div>
-      </div>
+         <input type="checkbox" id="myCheckbox" onchange="toggleButton(this)"> Tôi đồng ý với các điều khoản của Cartoon Website
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Tiếp tục</button>
+        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" id="submitButton" disabled>Tiếp tục</button>
       </div>
     </div>
   </div>
@@ -1459,8 +1448,8 @@ function toggleButton() {
     var button = document.getElementById("myButton");  
     button.disabled = !checkBox.checked;  
 }  
-</script>  
-<!--  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+</script>   -->
+ <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-body" style="background-color: rgb(0, 153, 255);">
@@ -1479,7 +1468,7 @@ function toggleButton() {
       margin-left: 100px;
       margin-top: 150px;
     }
-  </style> -->
+  </style>
   <script>
       $(window).load(function(){        
      $('#staticBackdrop').modal('show');
