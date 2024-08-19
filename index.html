@@ -1420,36 +1420,35 @@ $(function(){
     </span>
   </center>
 </div>
+<!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Vui lòng đọc điều khoản của Cartoon Website</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Vui lòng đọc các điều khoản của Cartoon Website</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-	      <h3>Cảm ơn bạn đã truy cập trang web!</h3>
-	      <h4>Sau đây là một số điều khoản của chúng tôi</h4>
-	      <h6>1.Nghiêm cấm các hành vi vi phạm bản quyền</h6>
-	      <h6>Nếu xảy ra trường hợp vi phạm bản quyền, chúng tôi</h6>
-         <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="myCheckbox">
-    <label class="form-check-label" for="myCheckbox">
-      Tôi đồng ý với các điều khoản của Cartoon Website
-    </label>
-  </div>
+	<h4>Cảm ơn bạn đã truy cập vào trang web của chúng tôi</h4>
+	<h5>Sau đây là một số điều khoản của Cartoon Website</h5>
+	<h6></h6>
+        <div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="myCheckbox">
+  <label class="form-check-label" for="myCheckbox">Checked switch checkbox input</label>
+	</div>
+      </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" id="myButton" data-bs-dismiss="modal" disabled>Tiếp tục</button>
+        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" id="myButton" disabled>Tiếp tục</button>
       </div>
     </div>
   </div>
 </div>
 <script>  
-    const checkbox = document.getElementById('myCheckbox');  
-    const button = document.getElementById('myButton');  
-
-    checkbox.addEventListener('change', function() {  
-        button.disabled = !this.checked;  
-    });  
+function toggleButton() {  
+    var checkbox = document.getElementById('myCheckbox');  
+    var button = document.getElementById('myButton');  
+    button.disabled = !checkbox.checked;  
+}  
 </script>  
 <!--       <div class="e">
         <h1 style="color: white; font-size:120px ;">:(</h1>
