@@ -1426,15 +1426,14 @@ $(function(){
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="staticBackdropLabel">Vui lòng đọc các điều khoản của Cartoon Website</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 	<h4>Cảm ơn bạn đã truy cập vào trang web của chúng tôi</h4>
 	<h5>Sau đây là một số điều khoản của Cartoon Website</h5>
 	<h6></h6>
         <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="myCheckbox">
-  <label class="form-check-label" for="myCheckbox">Checked switch checkbox input</label>
+  <input class="form-check-input" type="checkbox" role="switch" id="myCheckbox" onchange="toggleButton()">
+  <label class="form-check-label" for="myCheckbox">Tôi đồng ý với các điều khoản của Cartoon Website</label>
 	</div>
       </div>
       <div class="modal-footer">
