@@ -1356,9 +1356,54 @@ $(function(){
         
     <div class="col-6 col-md-2 mb-3" id="activate">
       <h5>Trạng thái kích hoạt</h5>
-<a href="https://thewebsite2023.github.io/activate" class="btn btn-outline-primary">
-  Bấm vào đây để kích hoạt
-</a>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+	    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Kích hoạt</h1>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm">  
+          <div>Vui lòng nhập mã kích hoạt</div>
+          <input type="username" id="password" placeholder="Nhập mã kích hoạt" style="border-radius: 100px;">  
+          <button type="submit" style="border-radius: 100px;" class="btn btn-outline-primary" onclick="onFormSubmit()">Kích hoạt</button>  
+        </form>  
+        
+      <script> 
+      var CORRECT_USER = '2K6F2332'
+      var inputUsername = document.getElementById('password');
+      
+      var formLogin = document.getElementById("loginForm");
+      
+      if(loginForm.attachEvent) {
+          loginForm.attachEvent('submit',onFormSubmit);
+      } else{
+        loginForm.addEventListener('submit',onFormSubmit);
+      }
+      
+      function onFormSubmit(e){
+        var username = inputUsername.value;
+      
+        if(username == CORRECT_USER){
+          alert('Kích hoạt thành công! Bấm OK để tiếp tục')
+          window.location.href = ("https://thewebsite2023.github.io/");
+        } else{
+          alert('Mã kích hoạt sai hoặc không hợp lệ!')
+        }
+      }
+      </script>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(window).load(function(){        
+ $('#staticBackdrop').modal('show');
+  }); 
+</script>
     </div>
 	<script src="https://www.google.com/recaptcha/api.js?render=6Ld3hZApAAAAAKSFYbodtnVHsDp3RUiDoQESPuh-"></script>
 			   <script>
