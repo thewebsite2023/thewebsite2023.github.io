@@ -1357,9 +1357,9 @@ $(function(){
     <div class="col-6 col-md-2 mb-3" id="activate">
       <h5>Trạng thái kích hoạt</h5>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Launch static backdrop modal
+  Bấm vào đây để kích hoạt
 </button>
-	    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -1397,7 +1397,7 @@ $(function(){
       </script>
       </div>
 	<div class="modal-footer">
-	<button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" style="border-radius:100px;">Đóng</button>
+	<button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" style="border-radius:100px;">Tôi không muốn kích hoạt ngay bây giờ</button>
 	</div>
     </div>
   </div>
@@ -1458,5 +1458,10 @@ $(function(){
       background: rgb(0, 153, 255);
     }
   </style> -->
+ <script>
+      $(window).load(function(){        
+     $('#staticBackdrop').modal('show');
+      }); 
+  </script>
 </body>
 </html>
