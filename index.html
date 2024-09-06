@@ -234,11 +234,36 @@ $(function(){
       Admin
     </a>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item disabled" aria-disabled="true">Cài đặt tài khoản (do bạn đang dùng tài khoản được cung cấp <br> nên bạn không thể thay đổi <br> cài đặt tài khoản</a></li>
+      <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal">Cài đặt tài khoản</a></li>
       <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="https://thewebsite2023.github.io/login">Đăng xuất</a></li>
     </ul>
   </li>
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Cài đặt tài khoản</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <label for="">Thay đổi cài đặt tài khoản</label>
+          <br>
+          <label for="">Tên đăng nhập</label>
+          <br>
+          <input type="text" disabled aria-disabled="true">
+          <br>
+          <label for="">Mật khẩu</label>
+          <br>
+          <input type="text" disabled aria-disabled="true"> <button type="submit" disabled class="btn btn-outline-primary">Thay đổi</button>
+          <div style="color: red;">Bạn đang dùng tài khoản của hệ thống nên bạn không thể thay đổi cài đặt tài khoản</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </div>
                   </a>
         
                     </ul>
@@ -1453,7 +1478,7 @@ $(function(){
     </span>
   </center>
 </div>
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -1481,8 +1506,8 @@ function toggleButton() {
     var button = document.getElementById('myButton');  
     button.disabled = !checkbox.checked;  
 }  
-</script>  
-<!--  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+</script>   -->
+ <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
@@ -1490,7 +1515,7 @@ function toggleButton() {
       </div>
     </div>
   </div>
-</div> -->
+</div>
 <!--       <div class="e">
         <h1 style="color: white; font-size:120px ;">:(</h1>
 <h6 style="color: white;">This page ran into a problem and need to repair.</h6>
