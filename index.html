@@ -1,1554 +1,281 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="vi">
 <head>
-<title>Cartoon Website | Chuyên về phim hoạt hình</title>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DV5FGDGSEG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DV5FGDGSEG');
-</script>
     <meta charset="UTF-8">
-    
-	<meta name="zalo-platform-site-verification" content="FCIx4iVl8JuaolLcvDryMHcZwKFrrJaTDJWv"/>
-	<style>
-      body {
-          -webkit-touch-callout: none;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          -o-user-select: none;
-          user-select: none;
-      }
-  </style>
-  <script type=”text/JavaScript”>
-      function killCopy(e){ 
-          return false } 
-      function reEnable(){ 
-          return true } 
-      document.onselectstart = new Function (“return false”) 
-      
-      if (window.sidebar){  
-          document.onmousedown=killCopy 
-          document.onclick=reEnable 
-      }
-  </script>
-	<script language="JavaScript">
-    window.onload = function() {
-        document.addEventListener("contextmenu", function(e) {
-            e.preventDefault();
-        }, false);
-        document.addEventListener("keydown", function(e) {
-            //document.onkeydown = function(e) {
-            // "I" key
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
-                disabledEvent(e);
-            }
-            // "J" key
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
-                disabledEvent(e);
-            }
-            // "S" key + macOS
-            if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
-                disabledEvent(e);
-            }
-            // "U" key
-            if (e.ctrlKey && e.keyCode == 85) {
-                disabledEvent(e);
-            }
-            // "F12" key
-            if (event.keyCode == 123) {
-                disabledEvent(e);
-            }
-        }, false);
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Tra Cứu Thông Tin Học Sinh</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-        function disabledEvent(e) {
-            if (e.stopPropagation) {
-                e.stopPropagation();
-            } else if (window.event) {
-                window.event.cancelBubble = true;
-            }
-            e.preventDefault();
-            return false;
-        }
-    };
-</script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="utf-8">
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-	<link rel="shortcut icon" type="image/png" href="https://cdn.files-text.com/api/ow/img/integrations/openai/orb.gif">
-<script src="https://code.jquery.com/jquery-latest.js"></script>
-<script>
-var loader = function() {
-    setTimeout(function() {
-        $('#loader').css({ 'opacity': 0, 'visibility':'hidden' });
-    }, 5000);
-};
-$(function(){
-    loader();
-});
-</script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">FLIO</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+            <form class="d-flex" role="search">
+              <a href="https://thewebsite2023.github.io/login" class="btn btn-primary">Đăng nhập</a>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <div class="container">
+        <h1>Tra cứu thông tin học sinh</h1>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Nhập tên hoặc ID học sinh...">
+            <button id="searchButton">Tra cứu</button>
+        </div>
+
+        <div id="studentInfo" class="student-info">
+            <!-- Thông tin học sinh sẽ hiển thị tại đây -->
+        </div>
 <style>
-* { /* reset lại margin và padding cho các tag */
+    /* Reset CSS */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
-#loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99999;
-    width: 100%;
-    height: 100%;
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 50px auto;
     background-color: #fff;
-    transition: all 0.3s ease-in-out;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
-.circle {
-    height: 10px;
-    margin: 220px auto;
-    margin-top: 250px;
-    margin-left: 10px;
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-box input[type="text"] {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-box button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#searchButton {
+    background-color: #007bff;
+    color: #fff;
+}
+
+#searchButton:hover {
+    background-color: #0056b3;
+}
+
+.student-info {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+}
+
+.student-info p {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.student-info .actions {
+    margin-top: 15px;
+}
+
+.student-info .actions button {
+    padding: 8px 12px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.edit-button:hover {
+    background-color: #e0a800;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
     position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
     text-align: center;
 }
 
-.circle1, .circle2 {
-    height: 60%;
-    display: inline-block;
-    background-color: rgb(0, 140, 255);
-    border-radius: 100%;
-    position: absolute;
-    top: 0;
-    width: 60%;
-    -webkit-animation: circle_bounce 2.0s infinite ease-in-out;
-            animation: circle_bounce 2.0s infinite ease-in-out;
+.modal-content form {
+    display: flex;
+    flex-direction: column;
 }
 
-.circle2 {
-    bottom: 0;
-    top: auto;
-    -webkit-animation-delay: -1.0s;
-            animation-delay: -1.0s;
+.modal-content label {
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
-@-webkit-keyframes circle_dot { 100% { -webkit-transform: rotate(360deg) }}
-@keyframes circle_dot { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
-
-@-webkit-keyframes circle_bounce {
-    0%, 100% { -webkit-transform: scale(0.0) }
-    50%      { -webkit-transform: scale(1.0) }
+.modal-content input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-@keyframes circle_bounce {
-    0%, 100% { 
-        -webkit-transform: scale(0.0);
-                transform: scale(0.0);
-    } 50% { 
-        -webkit-transform: scale(1.0);
-                transform: scale(1.0);
-    }
+#submitButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
+
+#submitButton:hover {
+    background-color: #0056b3;
+}
+
 </style>
-	<!-- Smartsupp Live Chat script -->
-<script type="text/javascript">
-var _smartsupp = _smartsupp || {};
-_smartsupp.key = 'f2dba605be1318dff4e57fe2000cdb57e8c030a8';
-window.smartsupp||(function(d) {
-  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-  c.type='text/javascript';c.charset='utf-8';c.async=true;
-  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-})(document);
-</script>
-<noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Cartoon AI</a></noscript>
-</head>
-	<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+    <script>
+                // Dữ liệu học sinh mẫu (có thể được thay thế bằng dữ liệu thực tế từ server)
+let students = [
+    { name: "Nguyễn Nhật Nam", dob:"15/11/2015", school:"Tiểu học Nguyễn Văn Tố", grade: "4", id: "940211", password:"15112015",},
+    {  name: "Phạm Tuấn Kiệt", dob:"14/09/2013", school:"THCS Trần Phú", grade: "6", id: "940211", password:"14092013",},
+];
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyAn0MSs2MVUNwZeDkaAqtLo6iB7vXycumk",
-    authDomain: "cartoon-website.firebaseapp.com",
-    projectId: "cartoon-website",
-    storageBucket: "cartoon-website.appspot.com",
-    messagingSenderId: "636173042796",
-    appId: "1:636173042796:web:5beabfcd8e585d74070449",
-    measurementId: "G-92BMW25QXT"
-  };
+// Biến lưu trữ trạng thái chỉnh sửa
+let isEdit = false;
+let editStudentId = null;
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
-<body>
-<div id="loader">
-    <div class="circle">
-      <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT64afwfFMUZ0z6_YOlTSHLOQg8Ep4fkXJXrTWWIisr_yzH3Wux381jykFac3QTW3k_EFw&usqp=CAU" alt="" width="60" height="60"></div>
-      <br>
-        <div class="spinner-border text-primary" role="status" style="margin: 100px;">
-            <span class="visually-hidden">Loading...</span>
-          </div>
-    </div>
-    <div style="text-align: center;">Vui lòng chờ trong khi chúng tôi chuẩn bị cho bạn</div>
-</div>
-               <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
-                <div class="container-fluid">
-                  <a class="navbar-brand" href>
-                      <a class="navbar-brand" href>
-        	<img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                  </a>
-                  </a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                      <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#comic">Phim Doraemon</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#pokemon">Phim Pokemon</a>
-                      </li>
-                    </a>
-        
-                    <li class="nav-item">
-                      <a class="nav-link" href="#peppa pig">Phim Heo Peppa</a>
-                    </li>
+// Các phần tử DOM
+const searchButton = document.getElementById('searchButton');
+const addButton = document.getElementById('addButton');
+const studentInfoDiv = document.getElementById('studentInfo');
+const modal = document.getElementById('modal');
+const closeButton = document.querySelector('.close-button');
+const studentForm = document.getElementById('studentForm');
+const modalTitle = document.getElementById('modalTitle');
 
-			<li class="nav-item">
-                      <a class="nav-link" href="#larva">Phim Larva</a>
-                    </li>
-
-			    <li class="nav-item">
-                      <a class="nav-link" href="#spookiz">Phim Spookiz</a>
-                </li>
-        
-			    <li class="nav-item">
-                      <a class="nav-link" href="#zig-and-sharko">Phim Zig & Sharko</a>
-                    </li>
-
-		<li class="nav-item">
-                      <a class="nav-link" href="#Contact_Info">Thông tin liên hệ</a>
-                    </li>
-			    
-		  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Admin
-    </a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal">Cài đặt tài khoản</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="https://thewebsite2023.github.io/login">Đăng xuất</a></li>
-    </ul>
-  </li>
-<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Cài đặt tài khoản</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <label for="">Thay đổi cài đặt tài khoản</label>
-          <br>
-          <label for="">Tên đăng nhập</label>
-          <br>
-          <input type="text" disabled aria-disabled="true">
-          <br>
-          <label for="">Mật khẩu</label>
-          <br>
-          <input type="text" disabled aria-disabled="true"> <button type="submit" disabled class="btn btn-outline-primary">Thay đổi</button>
-          <div style="color: red;">Bạn đang dùng tài khoản của hệ thống nên bạn không thể thay đổi cài đặt tài khoản</div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        </div>
-      </div>
-    </div>
-  </div>
-                  </a>
-        
-                    </ul>
-			  <form class="d-flex" role="search" action="https://www.google.com.vn/search" target="_blank">
-        <input class="form-control me-2" name="q" type="search" placeholder="Tìm kiếm trên Google" style="border-radius:100px; width: 200px;" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit" style="border-radius: 100px; width: 50px;">
-	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
- <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-</svg></button>
-      </form>
-                  </div>
-                </div>
-              </nav>
-        
-		<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active" data-bs-interval="3000">
-                    <img src="https://vnw-img-cdn.popsww.com/api/v2/containers/file2/cms_topic/doraemons9_02_sbsmarttv-e73982260c40-1609395345843-63UWkTZR.png?v=0&maxW=1200&format=webp" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item" data-bs-interval="3000">
-                    <img src="https://cdn.popsww.com/blog/sites/2/2021/03/doraemon-wiki-1920x1080.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="https://images.fbox.fpt.vn/wordpress-blog/2023/10/doraemon-1979-den-2005-1400x788.jpg" class="d-block w-100" alt="...">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-		<br>
-		<div class="container">
-		<div class="alert alert-success" role="alert">
- 		 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-  <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-</svg>
-		Trang này đã được kích hoạt với mã bản quyền kĩ thuật số. <a href="https://github.com/thewebsite2023/thewebsite2023.github.io/wiki/%C4%90i%E1%BB%81u-n%C3%A0y-c%C3%B3-%C3%BD-ngh%C4%A9a-g%C3%AC%3F">Tìm hiểu thêm</a>
-		</div>
-		</div>
-              <h1>Phim hoạt hình Doraemon</h1>
-              <div class="row" id="comic">
-              <div class="card" style="width: 18rem;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaHQ2qkcnT0v5WNLSu4921pvjHH_IYG28oUCGGXkawFHbagc9xuegq7_YN5PRXCtdvxTQ&usqp=CAU" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Truyện Doraemon</h5>
-                  <p class="card-text">Mời bạn xem tập 1.</p>
-              
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc">
-   Xem ngay
- </button>
- 
- <div class="modal fade" id="abc" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-      
-         <iframe width="480" height="270" src="https://www.youtube.com/embed/dKmQHIl70Bc?si=6YBlrtn3WjXNLAtk" allowfullscreen></iframe>
-       </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-       </div>
-     </div>
-   </div>
- </div>
-                </div>
-              </div>
-        
-              <div class="card" style="width: 18rem;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuuaWtP_jxDAP5GwAByW2iwEgHghGSYku1ug&usqp=CAU" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Truyện Doraemon</h5>
-                  <p class="card-text">Mời bạn xem tập 2.</p>
-              
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc1">
-   Xem ngay
- </button>
- 
- <div class="modal fade" id="abc1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-         <iframe width="480" height="270" src="https://www.youtube.com/embed/HGB3aKpmH7c?si=OUFwD7Ve1dGHcnqL" allowfullscreen></iframe>
-       </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-       </div>
-     </div>
-   </div>
- </div>
-                </div>
-              </div>
-        
-              <div class="card" style="width: 18rem;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjA8H_cM9sGWaqJ9sV5qmQLDtYTEUXWJPHoA&usqp=CAU" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Truyện Doraemon</h5>
-                  <p class="card-text">Mời bạn xem tập 3.</p>
-              
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc2">
-   Xem ngay
- </button>
- 
- <div class="modal fade" id="abc2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-         <iframe width="480" height="270" src="https://www.youtube.com/embed/zS9YPMoLLwA?si=4b3j32ym0B0_OHVb" allowfullscreen></iframe>
-       </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-       </div>
-     </div>
-   </div>
- </div>
-                </div>
-              </div>
-        
-              <div class="row">
-              <div class="card" style="width: 18rem;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2iHzHZuzPxXgdIfMhHGgN4WMWPP0NfiDPDQ&usqp=CAU" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Truyện Doraemon</h5>
-                  <p class="card-text">Mời bạn xem tập 4.</p>
-              
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc3">
-   Xem ngay
- </button>
- 
- <div class="modal fade" id="abc3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-         <iframe width="480" height="270" src="https://www.youtube.com/embed/ZsIuOMY6G3o?si=_jBdh8VniQ0tbxwE" allowfullscreen></iframe>
-       </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-       </div>
-     </div>
-   </div>
- </div>
-                </div>
-              </div>
-        
-              <div class="card" style="width: 18rem;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqBQhhPMQwBzqEQBPiEHi1tzESB6v225OoAg&usqp=CAU" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Truyện Doraemon</h5>
-                  <p class="card-text">Mời bạn xem tập 5.</p>
-              
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc4">
-   Xem ngay
- </button>
- 
- <div class="modal fade" id="abc4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-         <iframe width="480" height="270" src="https://www.youtube.com/embed/PfGq-TIzRAc?si=YRHHJO-elqifUzuA" allowfullscreen></iframe>
-       </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-       </div>
-     </div>
-   </div>
- </div>
-                </div>
-              </div>
-        
-              <div class="card" style="width: 18rem;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdfcxKlg5BaSks7UJWjkeB4vXqqfPtCiZuKA&usqp=CAU" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Truyện Doraemon</h5>
-                  <p class="card-text">Mời bạn xem tập 6.</p>
-              
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc5">
-   Xem ngay
- </button>
- 
- <div class="modal fade" id="abc5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-         <iframe width="480" height="270" src="https://www.youtube.com/embed/hUPuvSPRpjc?si=uwuarUEi4yN2QAhI" allowfullscreen></iframe>
-       </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-       </div>
-     </div>
-   </div>
- </div>
-                </div>
-            </div>
-        
-                    <div id="pokemon">
-                      <h1>Phim hoạt hình Pokemon</h1>
-                    </div>
-        
-              <div class="row">
-              <div class="card" style="width: 18rem;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmPDcqJpgYs_4im4RSAxgOpuibyJaMwyS6buo886BNw-l6bNrZYPh3r5he-kNOpSRYFyM&usqp=CAU" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Phim hoạt hình Pokemon</h5>
-                  <p class="card-text">Mời bạn xem tập 1</p>
-                  
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc6">
-   Xem ngay
- </button>
- 
- 
- <div class="modal fade" id="abc6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-         <iframe width="480" height="270" src="https://www.youtube.com/embed/Y183Bawp2yI?si=HprC0u56-MCq52_r" allowfullscreen></iframe>
-       </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-       </div>
-     </div>
-   </div>
- </div>
-                </div>
-              </div>
-        
-              <div class="card" style="width: 18rem;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8B76KHq6WZujrB0oExxp5mVX-7SAt6Rg1UDBYPIZ8kSaX5X4BN-bMUOhfveymgZVanCM&usqp=CAU" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Phim hoạt hình Pokemon</h5>
-                  <p class="card-text">Mời bạn xem tập 2</p>
-                  
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc7">
-   Xem ngay
- </button>
- 
- 
- <div class="modal fade" id="abc7" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-         <iframe width="480" height="270" src="https://www.youtube.com/embed/y5qgKSuTd6c?si=qwQtCUsbnnh_ANYQ" allowfullscreen></iframe>
-       </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-       </div>
-     </div>
-   </div>
- </div>
-                </div>
-              </div>
-        
-              <div class="card" style="width: 18rem;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR38r02qVEUKmgWKttBJiUthp3cOvPMylMIEg&usqp=CAU" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Phim hoạt hình Pokemon</h5>
-                  <p class="card-text">Mời bạn xem tập 3</p>
-                 
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc8">
-   Xem ngay
- </button>
- 
- 
- <div class="modal fade" id="abc8" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-         <iframe width="480" height="270" src="https://www.youtube.com/embed/nbgGWeY76Co?si=kH-ujl6N6Ew75jSB" allowfullscreen></iframe>
-       </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-       </div>
-     </div>
-   </div>
- </div>
-                </div>
-              </div>
-        
-              <div class="row">
-              <div class="card" style="width: 18rem;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUHHRD9zDeaxkmLcfWWHwMVLTvCcZEPgkINg&usqp=CAU" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Phim hoạt hình Pokemon</h5>
-                  <p class="card-text">Mời bạn xem tập 4</p>
-                  
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc9">
-   Xem ngay
- </button>
- 
- 
- <div class="modal fade" id="abc9" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-         <iframe width="480" height="270" src="https://www.youtube.com/embed/A1eolnFp89A?si=A17Z7hC2ZF3AbcDb" allowfullscreen></iframe>
-       </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-       </div>
-     </div>
-   </div>
- </div>
-                </div>
-              </div>
-        
-              <div class="card" style="width: 18rem;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0RHLrJvgG-mEF6JrPwKNQzLy63XZdC-mM4w&usqp=CAU" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Phim hoạt hình Pokemon</h5>
-                  <p class="card-text">Mời bạn xem tập 5</p>
-                  
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc10">
-   Xem ngay
- </button>
- 
- 
- <div class="modal fade" id="abc10" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-         <iframe width="480" height="270" src="https://www.youtube.com/embed/1rQ3OkDI0Ds?si=rB2cLgbqRi-ZNVMz" allowfullscreen></iframe>
-       </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-       </div>
-     </div>
-   </div>
- </div>
-                </div>
-              </div>
-        
-              <div class="card" style="width: 18rem;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdwHcMvezPqgTCByzsv6lAiPC_V48WhqKd2w&usqp=CAU" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Phim hoạt hình Pokemon</h5>
-                  <p class="card-text">Mời bạn xem tập 6</p>
-                  
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc11">
-   Xem ngay
- </button>
- 
- 
- <div class="modal fade" id="abc11" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-         <iframe width="480" height="270" src="https://www.youtube.com/embed/E5aSIwfNwds?si=QXdBm30ZX-Dzc39X" allowfullscreen></iframe>
-       </div>
-       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-       </div>
-     </div>
-   </div>
- </div>
-                </div>
-              </div>
-                    <div id="peppa pig">
-                      <h1>Phim Heo Peppa</h1>
-                    </div>
-                  
-            <div class="row">
-            <div class="card" style="width: 18rem;">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGsLIMfx9ZdaUPtiO6DfqLzzRQNFiX9x3HMw&usqp=CAU" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Phim Heo Peppa</h5>
-                <p class="card-text">Mời bạn xem tập 1</p>
-                
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc12">
-   Xem ngay
- </button>
- 
- 
- <div class="modal fade" id="abc12" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-        <iframe width="480" height="270" src="https://www.youtube.com/embed/Tf6b6V7hnT4?si=3f-krUg3y_RNDckQ" allowfullscreen></iframe>
-       </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-       </div>
-     </div>
-   </div>
- </div>
-              </div>
-            </div>
-        
-            <div class="card" style="width: 18rem;">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGsLIMfx9ZdaUPtiO6DfqLzzRQNFiX9x3HMw&usqp=CAU" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Phim Heo Peppa</h5>
-                <p class="card-text">Mời bạn xem tập 2</p>
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc13">
-  Xem ngay
-</button>
-
-
-<div class="modal fade" id="abc13" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <iframe width="480" height="270" src="https://www.youtube.com/embed/2JtcP_aNULs?si=Okp_JzazkzT37nJp" allowfullscreen></iframe>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-              </div>
-            </div>
-        
-            <div class="card" style="width: 18rem;">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGsLIMfx9ZdaUPtiO6DfqLzzRQNFiX9x3HMw&usqp=CAU" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Phim Heo Peppa</h5>
-                <p class="card-text">Mời bạn xem tập 3</p>
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc14">
-  Xem ngay
-</button>
-
-
-<div class="modal fade" id="abc14" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <iframe width="480" height="270" src="https://www.youtube.com/embed/TFUDNb3eAro?si=qUxF-lZq_CeaKyeR" allowfullscreen></iframe>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-              </div>
-            </div>
-        
-            <div class="row">
-            <div class="card" style="width: 18rem;">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGsLIMfx9ZdaUPtiO6DfqLzzRQNFiX9x3HMw&usqp=CAU" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Phim Heo Peppa</h5>
-                <p class="card-text">Mời bạn xem tập 4</p>
-                
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc15">
-  Xem ngay
-</button>
-
-
-<div class="modal fade" id="abc15" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <iframe width="480" height="270" src="https://www.youtube.com/embed/a9aEqisCumk?si=py_go3gfO8rbkBNy" allowfullscreen></iframe>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-              </div>
-            </div>
-        
-            <div class="card" style="width: 18rem;">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGsLIMfx9ZdaUPtiO6DfqLzzRQNFiX9x3HMw&usqp=CAU" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Phim Heo Peppa</h5>
-                <p class="card-text">Mời bạn xem tập 5</p>
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc16">
-  Xem ngay
-</button>
-
-<div class="modal fade" id="abc16" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <iframe width="480" height="270" src="https://www.youtube.com/embed/lUn6W1vj4Hc?si=rj9xdO6l73LY3xhD" allowfullscreen></iframe>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-              </div>
-            </div>
-        
-            <div class="card" style="width: 18rem;">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGsLIMfx9ZdaUPtiO6DfqLzzRQNFiX9x3HMw&usqp=CAU" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Phim Heo Peppa</h5>
-                <p class="card-text">Mời bạn xem tập 6</p>
-
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc17">
-  Xem ngay
-</button>
-
-<div class="modal fade" id="abc17" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <iframe width="480" height="270" src="https://www.youtube.com/embed/S_fFoGVWpls?si=HzlhDRV4JFTtj6E7" allowfullscreen></iframe>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-              </div>
-            </div>
-
-		<div id="larva">
-                <h1>Xem phim Larva</h1>
-              </div>
-<div class="row">
-  <div class="card" style="width: 18rem;">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0KfnqUkbDQMRo417IBEQm85_cFizFedDjvw&usqp=CAU" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Xem phim Larva</h5>
-      <p class="card-text">Mời bạn xem phim Larva tập 1</p>
-
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc18">
-  Xem ngay
-</button>
-
-<div class="modal fade" id="abc18" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <iframe width="480" height="270" src="https://www.youtube.com/embed/GY_sujqyYn8?si=vhgrKQcE7nvwmdLl" allowfullscreen></iframe>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-  </div><div class="card" style="width: 18rem;">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOzDwD1vGkHH9L9EXWVpyNqf_Py027_zWgmA&usqp=CAU" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Xem phim Larva</h5>
-      <p class="card-text">Mời bạn xem phim Larva tập 2</p>
-      
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc19">
-  Xem ngay
-</button>
-
-<div class="modal fade" id="abc19" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <iframe width="480" height="270" src="https://www.youtube.com/embed/gj990dBJUWc?si=BzZaiSUQ5LcIa0Jb" allowfullscreen></iframe>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-  </div><div class="card" style="width: 18rem;">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpA4vi6id2sFoUNo7dX5zDDgaNceWsevmXHg&usqp=CAU" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Xem phim Larva</h5>
-      <p class="card-text">Mời bạn xem phim Larva tập 3</p>
-      
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc20">
-  Xem ngay
-</button>
-
-<div class="modal fade" id="abc20" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <iframe width="480" height="270" src="https://www.youtube.com/embed/O8RJQeisaAY?si=CNzeawUqQz1k16zy" allowfullscreen></iframe>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="card" style="width: 18rem;">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaDnjXgarySyipcI-YsExKKHSHaYzdlTM0gw&usqp=CAU" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Xem phim Larva</h5>
-      <p class="card-text">Mời bạn xem phim Larva tập 4</p>
-      
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc21">
-  Xem ngay
-</button>
-
-<div class="modal fade" id="abc21" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <iframe width="480" height="270" src="https://www.youtube.com/embed/4jymJ54UcVk?si=QiRl51SFYd9Tj01p" allowfullscreen></iframe>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-  </div><div class="card" style="width: 18rem;">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjlw8wjHGdxc3PmszFuzOnAwycjsKi7GiohA&usqp=CAU" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Xem phim Larva</h5>
-      <p class="card-text">Mời bạn xem phim Larva tập 5</p>
-      
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc22">
-  Xem ngay
-</button>
-
-<div class="modal fade" id="abc22" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <iframe width="480" height="270" src="https://www.youtube.com/embed/MAcl6MzN_Tw?si=PiVEq3ov_x1Igem-" allowfullscreen></iframe>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-  </div><div class="card" style="width: 18rem;">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHC9SzMafzjD219--DzXyK_CZbmB-Aw32zZw&usqp=CAU" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Xem phim Larva</h5>
-      <p class="card-text">Mời bạn xem phim Larva tập 6</p>
-      
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc23">
-  Xem ngay
-</button>
-
-<div class="modal fade" id="abc23" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <iframe width="480" height="270" src="https://www.youtube.com/embed/WyEAglJbjOU?si=Y9YoomjDoE2JUWe7" allowfullscreen></iframe>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
-</div>
-		    <div id="spookiz">
-          <h1>
-            Xem phim Spookiz
-          </h1>
-        </div>
-  <div class="row">
-    <div class="card" style="width: 18rem;">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0psflr6b_r1M2FyqNdUVvH1Q6we7InL-vvw&usqp=CAU" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Xem phim Spookiz</h5>
-        <p class="card-text">Mời bạn xem phim Spookiz tập 1</p>
-
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc24">
-  Xem ngay
-</button>
-
-<div class="modal fade" id="abc24" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <iframe width="480" height="270" src="https://www.youtube.com/embed/irFYmpVRgu8?si=kX-VSaKoLw_IbnTm" allowfullscreen></iframe>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMHY4mgKxjad2XsgjLrECBLn3MJtf3MzXSGg&usqp=CAU" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Xem phim Spookiz</h5>
-        <p class="card-text">Mời bạn xem phim Spookiz tập 2</p>
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc25">
-          Xem ngay
-        </button>
-        
-        <div class="modal fade" id="abc25" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <iframe width="480" height="270" src="https://www.youtube.com/embed/LcHa061qDdw?si=HzmC0bv-2X7hjbG8" allowfullscreen></iframe>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnOc6tU_VV_q-aHoMfA4BXz1Lp5INZ4j3__w&usqp=CAU" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Xem phim Spookiz</h5>
-        <p class="card-text">Mời bạn xem phim Spookiz tập 3</p>
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc26">
-          Xem ngay
-        </button>
-        
-        <div class="modal fade" id="abc26" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <iframe width="480" height="270" src="https://www.youtube.com/embed/7zVz_DTAz2U?si=GaZSfmEhP7s2yLoL" allowfullscreen></iframe>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="card" style="width: 18rem;">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9XiLr_EWOWKRd6kh-ifq9I8TQ3fgXdaDzDA&usqp=CAU" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Xem phim Spookiz</h5>
-        <p class="card-text">Mời bạn xem phim Spookiz tập 4</p>
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc27">
-          Xem ngay
-        </button>
-        
-        <div class="modal fade" id="abc27" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <iframe width="480" height="270" src="https://www.youtube.com/embed/2V0jjfTb0Xc?si=tL4qUeORSboxKZOP" allowfullscreen></iframe>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqMvVD3j9rCs6Q0xlyahkRNoTZRxU5KcLo-A&usqp=CAU" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Xem phim Spookiz</h5>
-        <p class="card-text">Mời bạn xem phim Spookiz tập 5</p>
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc28">
-          Xem ngay
-        </button>
-        
-        <div class="modal fade" id="abc28" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <iframe width="480" height="270" src="https://www.youtube.com/embed/vlG9p8QeEdQ?si=DXySXSRJaAaxHP-6" allowfullscreen></iframe>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgitIDxl_t5Mh1blzPdeWYmsQS5PI40AZyDA&usqp=CAU" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Xem phim Spookiz</h5>
-        <p class="card-text">Mời bạn xem phim Spookiz tập 6</p>
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc29">
-          Xem ngay
-        </button>
-        
-        <div class="modal fade" id="abc29" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <iframe width="480" height="270" src="https://www.youtube.com/embed/ifw3SJwbOS4?si=MSAINm3H3q538_Ng" allowfullscreen></iframe>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-		    <div id="zig-and-sharko">
-      <h1>
-        Xem phim Zig & Sharko
-      </h1>
-    </div>
-    <div class="row">
-      <div class="card" style="width: 18rem;">
-        <img src="https://channel.mediacdn.vn/428462621602512896/2022/9/10/image003-1662779580189643982941.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Xem phim Zig & Sharko</h5>
-          <p class="card-text">Mời bạn xem phim Zig & Sharko tập 1</p>
-
-<button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc30">
-  Xem ngay
-</button>
-
-<div class="modal fade" id="abc30" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <iframe width="480" height="270" src="https://www.youtube.com/embed/rONDeaEpr-I?si=vdKzxUQfeLgss-b7" allowfullscreen></iframe>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <img src="https://i.ytimg.com/vi/DjA-SnAfz8k/maxresdefault.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Xem phim Zig & Sharko</h5>
-          <p class="card-text">Mời bạn xem phim Zig & Sharko tập 2</p>
-          <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc31">
-            Xem ngay
-          </button>
-          
-          <div class="modal fade" id="abc31" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <iframe width="480" height="270" src="https://www.youtube.com/embed/vb97v0Sdmy8?si=uJuI-lP299nIpsy-" allowfullscreen></iframe>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <img src="https://i.ytimg.com/vi/pUGpR_K65x8/sddefault.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Xem phim Zig & Sharko</h5>
-          <p class="card-text">Mời bạn xem phim Zig & Sharko tập 3</p>
-          <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc32">
-            Xem ngay
-          </button>
-          
-          <div class="modal fade" id="abc32" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <iframe width="480" height="270" src="https://www.youtube.com/embed/DjA-SnAfz8k?si=uZLzFpArL1g8jlMr" allowfullscreen></iframe>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <div class="row">
-      <div class="card" style="width: 18rem;">
-        <img src="https://cdn.sonicgang.com/wp-content/uploads/2020/12/Picture1-compressed.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Xem phim Zig & Sharko</h5>
-          <p class="card-text">Mời bạn xem phim Zig & Sharko tập 4</p>
-          <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc33">
-            Xem ngay
-          </button>
-          
-          <div class="modal fade" id="abc33" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <iframe width="480" height="270" src="https://www.youtube.com/embed/186fsmF-kjY?si=OeCqjjGv3BV0duH5" allowfullscreen></iframe>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQub5lTVdntDfNJW0xQTqMirAepMre8fmeZYg&usqp=CAU" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Xem phim Zig & Sharko</h5>
-          <p class="card-text">Mời bạn xem phim Zig & Sharko tập 5</p>
-          <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc34">
-            Xem ngay
-          </button>
-          
-          <div class="modal fade" id="abc34" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <iframe width="480" height="270" src="https://www.youtube.com/embed/nMrAvxOYqmY?si=X5DW9QPkGy1bOvzN" allowfullscreen></iframe>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQsDJGv2Fy79mr792NGryc9xjBhaytZ49syA&usqp=CAU" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Xem phim Zig & Sharko</h5>
-          <p class="card-text">Mời bạn xem phim Zig & Sharko tập 6</p>
-          <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc35">
-            Xem ngay
-          </button>
-          
-          <div class="modal fade" id="abc35" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <iframe width="480" height="270" src="https://www.youtube.com/embed/1sc3qSr8MLs?si=fbiuJuFbYA2IS_mH" allowfullscreen></iframe>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-              
-        
-            <div class="row" id="Contact_Info">
-                <div class="col-6 col-md-2 mb-3">
-                    <h5>Mục lục</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2">
-				<a href="" class="nav-link p-0 text-body-secondary">Trang chủ</a></li>
-                        <li class="nav-item mb-2">
-				<a href="#comic" class="nav-link p-0 text-body-secondary">Phim hoạt hình Doraemon</a>
-                        </li>
-                        <li class="nav-item mb-2">
-			<a href="#peppa pig" class="nav-link p-0 text-body-secondary">Phim Heo peppa</a>
-                      </li>
-                      <li class="nav-item mb-2"><a href="#pokemon" class="nav-link p-0 text-body-secondary">
-                        Phim Pokemon</a>
-                      </li>
-			<li class="nav-item mb-2">
-			<a href="#larva" class="nav-link p-0 text-body-secondary">Phim Larva</a>
-                      </li>
-			<li class="nav-item mb-2">
-			<a href="#spookiz" class="nav-link p-0 text-body-secondary">Phim Spookiz</a>
-                      </li>
-			<li class="nav-item mb-2">
-			<a href="#zig-and-sharko" class="nav-link p-0 text-body-secondary">Phim Zig & Sharko</a>
-                      </li>
-                    </ul>
-                </div>
-        
-                <div class="col-6 col-md-2 mb-3">
-                    <h5>Thông tin tác giả</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">
-                                Họ và tên: Nguyễn Nhật tiến
-                            </a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">
-                                Hiện tại đang là học sinh
-                            </a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">
-                                Địa chỉ: Hải Phòng
-                            </a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">
-                                Số điện thoại: 0988065911
-                            </a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">
-                                Chào tất cả các bạn
-                            </a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md-2 mb-3">
-            <h5>Thông tin phiên bản</h5>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">
-                        Phiên bản: 7.1
-                    </a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">
-                        Bạn đang sử dụng phiên bản mới nhất
-                    </a></li>
-            </ul>
-        </div>
-        <div class="col-6 col-md-2 mb-3">
-	<h5>Hãy thích, lưu và chia sẻ trang của chúng tôi</h5>
-         <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0" nonce="fDswNjxe"></script>
-	<div class="fb-like" data-href="https://thewebsite2023.github.io" data-width="" data-layout="" data-action="" data-size="" data-share="true"></div>
-	<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0" nonce="t9UMci2F"></script>
-	<div class="fb-save" data-uri="https://thewebsite2023.github.io" data-size=""></div>
-	</div>
-	</div>
-	<div class="col-8">
-		<h5>Bình luận</h5>
- 		<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0" nonce="MyPe0Nbo"></script>
-		<div class="fb-comments" data-href="https://thewebsite2023.github.io" data-width="" data-numposts="5"></div>
-	</div>
-	<script src="https://www.google.com/recaptcha/api.js?render=6Ld3hZApAAAAAKSFYbodtnVHsDp3RUiDoQESPuh-"></script>
-			   <script>
-      function onClick(e) {
-        e.preventDefault();
-        grecaptcha.ready(function() {
-          grecaptcha.execute('6Ld3hZApAAAAAKSFYbodtnVHsDp3RUiDoQESPuh-', {action: 'submit'}).then(function(token) {
-              // Add your logic to submit to your backend server here.
-          });
-        });
-      }
-  </script>
-		
-	
-            <br>
-            <br>
-            <br>
-	
-<div>
-  <center>
-    <span class="footer">
-      <h6>
-          &copy; 2023 Copyrighted by Nguyen Nhat Tien - All rights reserved
-	      <br>
-	      This site is managed by <a href="https://analytics.google.com/" target="_blank">Google Analytics</a>
-      </h6>
-    </span>
-  </center>
-</div>
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Thông báo</h1>
-      </div>
-      <div class="modal-body">
-	<h4>Cảm ơn bạn đã truy cập vào trang web của chúng tôi</h4>
-	<h5>Trang web này sẽ nghỉ hưu vào ngày 31/12/2024 để thay thế cho chương trình thi của VinaGroup</h5>
-	<h5>Chúng tôi rất cảm ơn bạn vì thời gian qua đã cống hiến cho trang web của chúng tôi rất nhiều!</h5>
-      <h5>Xin trân trọng cảm ơn!</h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" id="myButton">Tôi hiểu rồi</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--script>  
-function toggleButton() {  
-    var checkbox = document.getElementById('myCheckbox');  
-    var button = document.getElementById('myButton');  
-    button.disabled = !checkbox.checked;  
-}  
-</script>   -->
-<!--  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <center>Hệ thống đã quá tải, vui lòng thử lại sau...</center>
-      </div>
-    </div>
-  </div>
-</div> -->
-<!--       <div class="e">
-        <h1 style="color: white; font-size:120px ;">:(</h1>
-<h6 style="color: white;">This page ran into a problem and need to repair.</h6>
-  <h6 style="color: white;">We're just collecting some error info, and then we'll repair for you</h6>
- <div style="color: white;">0% complete</div>
-  <div class="row row-cols-auto">
-  <div><img src="https://thewebsite2023.github.io/qrcode_github.com.png" alt="" style="width: 120px; height: 120px;"></div>
-    <div style="color: white;" class="col">For more information about this issue and possible fixes, visit: <br><a href="https://github.com/thewebsite2023/thewebsite2023.github.io/wiki/C%C3%A1ch-s%E1%BB%ADa-l%E1%BB%97i-m%C3%A0n-h%C3%ACnh-xanh-ch%E1%BA%BFt-ch%C3%B3c-(BSoD)-tr%C3%AAn-web" style="color: white;" target="_blank">https://thewebsite2023.github.io/stop_code</a>
-      <br>
-      <br>
-      <div style="color: white;">If you call a support person, give them this info:</div>
-      <div style="color: white;">Stop code: OVERLOADED_EQUIPMENT</div>  
-    </div>
-  <style>
-    .e{
-      margin-left: 100px;
-      margin-top: 100px;
+// Hiển thị thông tin học sinh
+function displayStudent(student) {
+    if (!student) {
+        studentInfoDiv.innerHTML = "<p>Không tìm thấy học sinh.</p>";
+        return;
     }
-    body{
-      background: rgb(0, 153, 255);
+
+    studentInfoDiv.innerHTML = `
+        <p><strong>Tên:</strong> ${student.name}</p>
+        <p><strong>Ngày sinh</strong> ${student.dob}</p>
+        <p><strong>Lớp:</strong> ${student.grade}</p>
+        <p><strong>SBD(Tên đăng nhập):</strong> ${student.id}</p>
+        <p><strong>Mật khẩu:</strong> ${student.password}</p>
+    `;
+}
+
+// Hàm tìm kiếm học sinh
+function searchStudent() {
+    const input = document.getElementById('searchInput').value.trim().toLowerCase();
+    if (input === "") {
+        studentInfoDiv.innerHTML = "<p>Vui lòng nhập tên hoặc ID học sinh để tra cứu.</p>";
+        return;
     }
-  </style> -->
-<script>  
-  $(document).ready(function(){  
-    $("#staticBackdrop").modal('show');  
-  });  
-</script>
+
+    const student = students.find(st => 
+        st.name.toLowerCase().includes(input) || st.id.toLowerCase() === input
+    );
+
+    displayStudent(student);
+}
+
+
+// Sự kiện lắng nghe
+searchButton.addEventListener('click', searchStudent);
+addButton.addEventListener('click', openAddModal);
+closeButton.addEventListener('click', closeModal);
+window.addEventListener('click', (event) => {
+    if (event.target == modal) {
+        closeModal();
+    }
+});
+studentForm.addEventListener('submit', handleFormSubmit);
+    </script>
 </body>
 </html>
