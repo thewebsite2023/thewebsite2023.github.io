@@ -153,8 +153,42 @@ $(function(){
     }
 }
 </style>
-	<script src="https://messenger.svc.chative.io/static/v1.0/channels/s250d4a65-7493-45bb-9a2b-8ea5c029f213/messenger.js?mode=livechat" defer="defer"></script>
+	<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = 'f2dba605be1318dff4e57fe2000cdb57e8c030a8';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Cartoon AI</a></noscript>
 </head>
+	<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAn0MSs2MVUNwZeDkaAqtLo6iB7vXycumk",
+    authDomain: "cartoon-website.firebaseapp.com",
+    projectId: "cartoon-website",
+    storageBucket: "cartoon-website.appspot.com",
+    messagingSenderId: "636173042796",
+    appId: "1:636173042796:web:5beabfcd8e585d74070449",
+    measurementId: "G-92BMW25QXT"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 <body>
 <div id="loader">
     <div class="circle">
@@ -164,9 +198,9 @@ $(function(){
             <span class="visually-hidden">Loading...</span>
           </div>
     </div>
-    <div style="text-align: center;">Please wait while we prepare for you...</div>
+    <div style="text-align: center;">Vui lòng chờ trong khi chúng tôi chuẩn bị cho bạn</div>
 </div>
-               <nav class="navbar navbar-expand-lg bg-body-tertiary">
+               <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
                 <div class="container-fluid">
                   <a class="navbar-brand" href>
                       <a class="navbar-brand" href>
@@ -179,42 +213,68 @@ $(function(){
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                       <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#comic">Doraemon Movie</a>
+                        <a class="nav-link" aria-current="page" href="#comic">Phim Doraemon</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#pokemon">Pokemon Movie</a>
+                        <a class="nav-link" href="#pokemon">Phim Pokemon</a>
                       </li>
                     </a>
         
                     <li class="nav-item">
-                      <a class="nav-link" href="#peppa pig">Peppa Pig Movie</a>
+                      <a class="nav-link" href="#peppa pig">Phim Heo Peppa</a>
                     </li>
 
 			<li class="nav-item">
-                      <a class="nav-link" href="#larva">Larva Movie</a>
+                      <a class="nav-link" href="#larva">Phim Larva</a>
                     </li>
 
 			    <li class="nav-item">
-                      <a class="nav-link" href="#spookiz">Spookiz Movie</a>
+                      <a class="nav-link" href="#spookiz">Phim Spookiz</a>
                 </li>
         
 			    <li class="nav-item">
-                      <a class="nav-link" href="#zig-and-sharko">Zig & Sharko Movie</a>
+                      <a class="nav-link" href="#zig-and-sharko">Phim Zig & Sharko</a>
                     </li>
 
 		<li class="nav-item">
-                      <a class="nav-link" href="#Contact_Info">Contact Info</a>
+                      <a class="nav-link" href="#Contact_Info">Thông tin liên hệ</a>
                     </li>
 			    
 		  <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Language
+      Admin
     </a>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="https://thewebsite2023.github.io/">Vietnamese</a></li>
-      <li><a class="dropdown-item" href="https://thewebsite2023.github.io/en.html">English</a></li>
+      <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal">Cài đặt tài khoản</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="https://thewebsite2023.github.io/login">Đăng xuất</a></li>
     </ul>
   </li>
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Cài đặt tài khoản</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <label for="">Thay đổi cài đặt tài khoản</label>
+          <br>
+          <label for="">Tên đăng nhập</label>
+          <br>
+          <input type="text" disabled aria-disabled="true">
+          <br>
+          <label for="">Mật khẩu</label>
+          <br>
+          <input type="text" disabled aria-disabled="true"> <button type="submit" disabled class="btn btn-outline-primary">Thay đổi</button>
+          <div style="color: red;">Bạn đang dùng tài khoản của hệ thống nên bạn không thể thay đổi cài đặt tài khoản</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </div>
                   </a>
         
                     </ul>
@@ -257,26 +317,26 @@ $(function(){
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
   <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
 </svg>
-		This page has been authenticated for security.
+		Trang này đã được kích hoạt với mã bản quyền kĩ thuật số. <a href="https://github.com/thewebsite2023/thewebsite2023.github.io/wiki/%C4%90i%E1%BB%81u-n%C3%A0y-c%C3%B3-%C3%BD-ngh%C4%A9a-g%C3%AC%3F">Tìm hiểu thêm</a>
 		</div>
 		</div>
-              <h1>Doraemon Movie</h1>
+              <h1>Phim hoạt hình Doraemon</h1>
               <div class="row" id="comic">
               <div class="card" style="width: 18rem;">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaHQ2qkcnT0v5WNLSu4921pvjHH_IYG28oUCGGXkawFHbagc9xuegq7_YN5PRXCtdvxTQ&usqp=CAU" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Doraemon Movie</h5>
-                  <p class="card-text">Please watch episode 1.</p>
+                  <h5 class="card-title">Truyện Doraemon</h5>
+                  <p class="card-text">Mời bạn xem tập 1.</p>
               
 <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc">
-   See now
+   Xem ngay
  </button>
  
  <div class="modal fade" id="abc" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
    <div class="modal-dialog modal-dialog-centered">
      <div class="modal-content">
        <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">See now</h1>
+         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
        </div>
        <div class="modal-body">
@@ -284,7 +344,7 @@ $(function(){
          <iframe width="480" height="270" src="https://www.youtube.com/embed/dKmQHIl70Bc?si=6YBlrtn3WjXNLAtk" allowfullscreen></iframe>
        </div>
        <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Close</button>
+         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
        </div>
      </div>
    </div>
@@ -295,25 +355,25 @@ $(function(){
               <div class="card" style="width: 18rem;">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuuaWtP_jxDAP5GwAByW2iwEgHghGSYku1ug&usqp=CAU" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Doraemon Movie</h5>
-                  <p class="card-text">Please watch episode 2</p>
+                  <h5 class="card-title">Truyện Doraemon</h5>
+                  <p class="card-text">Mời bạn xem tập 2.</p>
               
 <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc1">
-See now
+   Xem ngay
  </button>
  
  <div class="modal fade" id="abc1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
    <div class="modal-dialog modal-dialog-centered">
      <div class="modal-content">
        <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">See now</h1>
+         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
        </div>
        <div class="modal-body">
          <iframe width="480" height="270" src="https://www.youtube.com/embed/HGB3aKpmH7c?si=OUFwD7Ve1dGHcnqL" allowfullscreen></iframe>
        </div>
        <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Close</button>
+         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
        </div>
      </div>
    </div>
@@ -324,25 +384,25 @@ See now
               <div class="card" style="width: 18rem;">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjA8H_cM9sGWaqJ9sV5qmQLDtYTEUXWJPHoA&usqp=CAU" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Doraemon Movie</h5>
-                  <p class="card-text">Please watch episode 3</p>
+                  <h5 class="card-title">Truyện Doraemon</h5>
+                  <p class="card-text">Mời bạn xem tập 3.</p>
               
 <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc2">
-   See now
+   Xem ngay
  </button>
  
  <div class="modal fade" id="abc2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
    <div class="modal-dialog modal-dialog-centered">
      <div class="modal-content">
        <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">See now</h1>
+         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
        </div>
        <div class="modal-body">
          <iframe width="480" height="270" src="https://www.youtube.com/embed/zS9YPMoLLwA?si=4b3j32ym0B0_OHVb" allowfullscreen></iframe>
        </div>
        <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Close</button>
+         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
        </div>
      </div>
    </div>
@@ -354,25 +414,25 @@ See now
               <div class="card" style="width: 18rem;">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2iHzHZuzPxXgdIfMhHGgN4WMWPP0NfiDPDQ&usqp=CAU" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Doraemon Movie</h5>
-                  <p class="card-text">Please watch episode 4</p>
+                  <h5 class="card-title">Truyện Doraemon</h5>
+                  <p class="card-text">Mời bạn xem tập 4.</p>
               
 <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc3">
-   See now
+   Xem ngay
  </button>
  
  <div class="modal fade" id="abc3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
    <div class="modal-dialog modal-dialog-centered">
      <div class="modal-content">
        <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">See now</h1>
+         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
        </div>
        <div class="modal-body">
          <iframe width="480" height="270" src="https://www.youtube.com/embed/ZsIuOMY6G3o?si=_jBdh8VniQ0tbxwE" allowfullscreen></iframe>
        </div>
        <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Close</button>
+         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
        </div>
      </div>
    </div>
@@ -383,25 +443,25 @@ See now
               <div class="card" style="width: 18rem;">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqBQhhPMQwBzqEQBPiEHi1tzESB6v225OoAg&usqp=CAU" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Doraemon Movie</h5>
-                  <p class="card-text">Please watch episode 5.</p>
+                  <h5 class="card-title">Truyện Doraemon</h5>
+                  <p class="card-text">Mời bạn xem tập 5.</p>
               
 <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc4">
-   See now
+   Xem ngay
  </button>
  
  <div class="modal fade" id="abc4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
    <div class="modal-dialog modal-dialog-centered">
      <div class="modal-content">
        <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">See now</h1>
+         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
        </div>
        <div class="modal-body">
          <iframe width="480" height="270" src="https://www.youtube.com/embed/PfGq-TIzRAc?si=YRHHJO-elqifUzuA" allowfullscreen></iframe>
        </div>
        <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Close</button>
+         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
        </div>
      </div>
    </div>
@@ -412,25 +472,25 @@ See now
               <div class="card" style="width: 18rem;">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdfcxKlg5BaSks7UJWjkeB4vXqqfPtCiZuKA&usqp=CAU" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Doraemon Movie</h5>
-                  <p class="card-text">Please watch episode 6</p>
+                  <h5 class="card-title">Truyện Doraemon</h5>
+                  <p class="card-text">Mời bạn xem tập 6.</p>
               
 <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-toggle="modal" data-bs-target="#abc5">
-   See now
+   Xem ngay
  </button>
  
  <div class="modal fade" id="abc5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
    <div class="modal-dialog modal-dialog-centered">
      <div class="modal-content">
        <div class="modal-header">
-         <h1 class="modal-title fs-5" id="staticBackdropLabel">See now</h1>
+         <h1 class="modal-title fs-5" id="staticBackdropLabel">Xem ngay</h1>
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
        </div>
        <div class="modal-body">
          <iframe width="480" height="270" src="https://www.youtube.com/embed/hUPuvSPRpjc?si=uwuarUEi4yN2QAhI" allowfullscreen></iframe>
        </div>
        <div class="modal-footer">
-         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Close</button>
+         <button type="button" class="btn btn-outline-primary" style="border-radius:100px;" data-bs-dismiss="modal">Đóng</button>
        </div>
      </div>
    </div>
@@ -439,7 +499,7 @@ See now
             </div>
         
                     <div id="pokemon">
-                      <h1>Pokemon Movie</h1>
+                      <h1>Phim hoạt hình Pokemon</h1>
                     </div>
         
               <div class="row">
@@ -1355,10 +1415,10 @@ See now
                 </div>
         
                 <div class="col-6 col-md-2 mb-3">
-                    <h5>Author information</h5>
+                    <h5>Thông tin tác giả</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">
-                                Full name: Nguyen Nhat Tien
+                                Họ và tên: Nguyễn Nhật tiến
                             </a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">
                                 Hiện tại đang là học sinh
@@ -1375,31 +1435,31 @@ See now
                     </ul>
                 </div>
                 <div class="col-6 col-md-2 mb-3">
-            <h5>Version information</h5>
+            <h5>Thông tin phiên bản</h5>
             <ul class="nav flex-column">
                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">
-                        Version: 7.1
+                        Phiên bản: 7.1
                     </a></li>
                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">
-                        You are using the latest version
+                        Bạn đang sử dụng phiên bản mới nhất
                     </a></li>
             </ul>
         </div>
         <div class="col-6 col-md-2 mb-3">
-	<h5>Please like, save and share our page</h5>
+	<h5>Hãy thích, lưu và chia sẻ trang của chúng tôi</h5>
          <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0" nonce="fDswNjxe"></script>
-	<div class="fb-like" data-href="https://thewebsite2023.github.io/admin/" data-width="" data-layout="" data-action="" data-size="" data-share="true"></div>
+	<div class="fb-like" data-href="https://thewebsite2023.github.io" data-width="" data-layout="" data-action="" data-size="" data-share="true"></div>
 	<div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0" nonce="t9UMci2F"></script>
-	<div class="fb-save" data-uri="https://thewebsite2023.github.io/admin/" data-size=""></div>
+	<div class="fb-save" data-uri="https://thewebsite2023.github.io" data-size=""></div>
 	</div>
 	</div>
 	<div class="col-8">
 		<h5>Bình luận</h5>
  		<div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0" nonce="MyPe0Nbo"></script>
-		<div class="fb-comments" data-href="https://thewebsite2023.github.io/admin/" data-width="" data-numposts="5"></div>
+		<div class="fb-comments" data-href="https://thewebsite2023.github.io" data-width="" data-numposts="5"></div>
 	</div>
 	<script src="https://www.google.com/recaptcha/api.js?render=6Ld3hZApAAAAAKSFYbodtnVHsDp3RUiDoQESPuh-"></script>
 			   <script>
@@ -1429,35 +1489,40 @@ See now
     </span>
   </center>
 </div>
-<!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Please read Cartoon Website terms</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Thông báo</h1>
       </div>
       <div class="modal-body">
-	<h4>Thank you for visiting our website.</h4>
-	<h5>Here are some terms of Cartoon Website</h5>
-	<h6>1. Comments with swearing and profanity are strictly prohibited</h6>
-        <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="myCheckbox" onchange="toggleButton()">
-  <label class="form-check-label" for="myCheckbox">I accept the license terms</label>
-	</div>
+	<h4>Cảm ơn bạn đã truy cập vào trang web của chúng tôi</h4>
+	<h5>Trang web này sẽ nghỉ hưu vào ngày 31/12/2024 để thay thế cho chương trình thi của VinaGroup</h5>
+	<h5>Chúng tôi rất cảm ơn bạn vì thời gian qua đã cống hiến cho trang web của chúng tôi rất nhiều!</h5>
+      <h5>Xin trân trọng cảm ơn!</h5>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" id="myButton" disabled>Continue</button>
+        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" id="myButton">Tôi hiểu rồi</button>
       </div>
     </div>
   </div>
 </div>
-<script>  
+<!--script>  
 function toggleButton() {  
     var checkbox = document.getElementById('myCheckbox');  
     var button = document.getElementById('myButton');  
     button.disabled = !checkbox.checked;  
 }  
-</script>  
+</script>   -->
+<!--  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <center>Hệ thống đã quá tải, vui lòng thử lại sau...</center>
+      </div>
+    </div>
+  </div>
+</div> -->
 <!--       <div class="e">
         <h1 style="color: white; font-size:120px ;">:(</h1>
 <h6 style="color: white;">This page ran into a problem and need to repair.</h6>
@@ -1480,10 +1545,10 @@ function toggleButton() {
       background: rgb(0, 153, 255);
     }
   </style> -->
-  <script>
-      $(window).load(function(){        
-     $('#staticBackdrop').modal('show');
-      }); 
-  </script>
+<script>  
+  $(document).ready(function(){  
+    $("#staticBackdrop").modal('show');  
+  });  
+</script>
 </body>
 </html>
