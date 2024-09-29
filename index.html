@@ -28,7 +28,7 @@
         <h1>Tra cứu thông tin học sinh</h1>
 
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Nhập tên hoặc ID học sinh...">
+            <input type="text" id="searchInput" placeholder="Nhập tên hoặc ID thí sinh...">
             <button id="searchButton">Tra cứu</button>
         </div>
 
@@ -230,7 +230,7 @@ const modalTitle = document.getElementById('modalTitle');
 // Hiển thị thông tin học sinh
 function displayStudent(student) {
     if (!student) {
-        studentInfoDiv.innerHTML = "<p>Không tìm thấy học sinh.</p>";
+        studentInfoDiv.innerHTML = "<p>Không tìm thấy thí sinh.</p>";
         return;
     }
 
@@ -247,7 +247,7 @@ function displayStudent(student) {
 function searchStudent() {
     const input = document.getElementById('searchInput').value.trim().toLowerCase();
     if (input === "") {
-        studentInfoDiv.innerHTML = "<p>Vui lòng nhập tên hoặc ID học sinh để tra cứu.</p>";
+        studentInfoDiv.innerHTML = "<p>Vui lòng nhập tên hoặc ID thí sinh sinh để tra cứu.</p>";
         return;
     }
 
