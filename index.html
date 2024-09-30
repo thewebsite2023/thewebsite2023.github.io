@@ -28,7 +28,7 @@
         <h1>Tra cứu thông tin học sinh</h1>
 
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Nhập tên hoặc ID thí sinh...">
+            <input type="text" id="searchInput" placeholder="Nhập tên thí sinh...">
             <button id="searchButton">Tra cứu</button>
         </div>
 
@@ -258,7 +258,7 @@ function searchStudent() {
     }
 
     const student = students.find(st => 
-        st.name.toLowerCase().includes(input) || st.id.toLowerCase() === input
+        st.name.toLowerCase() === input
     );
 
     displayStudent(student);
