@@ -259,7 +259,7 @@ function searchStudent() {
         return;
     }
     const student = students.find(st => 
-        st.name.toLowerCase() === input || st.id.toLowerCase() === input
+        st.name.toLowerCase() === input
     );
     displayStudent(student);
 }
