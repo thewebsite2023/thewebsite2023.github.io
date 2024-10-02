@@ -3,277 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ Thống Tra Cứu Thông Tin Học Sinh</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Tra cứu thí sinh</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* CSS cho form tra cứu */
+        .search-container {
+            width: 600px;
+            margin: 70px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .search-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #007bff;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">FLIO</a>
-      <form class="d-flex" role="search">
-        <a href="https://thewebsite2023.github.io/login" class="btn btn-primary">Đăng nhập</a>
-      </form>
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">FLIO</a>
+            <form class="d-flex" role="search">
+              <a href="https://thewebsite2023.github.io/login" class="btn btn-primary">Đăng nhập</a>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <div class="search-container">
+        <h2>Tra cứu thí sinh</h2>
+        <input type="text" id="name" placeholder="Nhập tên thí sinh" required>
+        <input type="date" id="dob" required>
+        <button onclick="search()">Tra cứu</button>
+        <div id="result" class="result"></div>
+        <h1 id="error" class="error"></h1>
     </div>
-  </div>
-</nav>
-    <div class="container">
-        <h1>Tra cứu thông tin thí sinh</h1>
 
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Nhập tên thí sinh...">
-            <button id="searchButton">Tra cứu</button>
-        </div>
-
-        <div id="studentInfo" class="student-info">
-            <!-- Thông tin học sinh sẽ hiển thị tại đây -->
-        </div>
-<style>
-    /* Reset CSS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f2f5;
-    min-height: 100vh;
-}
-
-.container {
-    width: 90%;
-    max-width: 800px;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #333;
-}
-
-.search-box {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.search-box input[type="text"] {
-    width: 60%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.search-box button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-#searchButton {
-    background-color: #007bff;
-    color: #fff;
-}
-
-#searchButton:hover {
-    background-color: #0056b3;
-}
-
-#addButton {
-    background-color: #28a745;
-    color: #fff;
-}
-
-#addButton:hover {
-    background-color: #218838;
-}
-
-.student-info p {
-    margin-bottom: 10px;
-    font-size: 18px;
-}
-
-.student-info .actions {
-    margin-top: 15px;
-}
-
-.student-info .actions button {
-    padding: 8px 12px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.edit-button {
-    background-color: #ffc107;
-    color: #fff;
-}
-
-.edit-button:hover {
-    background-color: #e0a800;
-}
-
-.delete-button {
-    background-color: #dc3545;
-    color: #fff;
-}
-
-.delete-button:hover {
-    background-color: #c82333;
-}
-
-/* Modal Styles */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; 
-    z-index: 1; 
-    padding-top: 100px; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.4); 
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 30px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 10px;
-    position: relative;
-}
-
-.close-button {
-    color: #aaa;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: black;
-}
-
-.modal-content h2 {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.modal-content form {
-    display: flex;
-    flex-direction: column;
-}
-
-.modal-content label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.modal-content input {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#submitButton {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#submitButton:hover {
-    background-color: #0056b3;
-}
-
-</style>
-    <script src="script.js"></script>
-</body>
-</html>
     <script>
-                // Dữ liệu học sinh mẫu (có thể được thay thế bằng dữ liệu thực tế từ server)
-let students = [
-    { name: "Nguyễn Nhật Nam", dob:"15/11/2015", school:"Tiểu học Nguyễn Văn Tố", grade: "4", id: "940211", password:"15112015",},
+        // Danh sách thí sinh mẫu với định dạng ngày dd/mm/yyyy
+        const candidates = [
+        { name: "Nguyễn Nhật Nam", dob:"15/11/2015", school:"Tiểu học Nguyễn Văn Tố", grade: "4", id: "940211", password:"15112015",},
     {  name: "Phạm Tuấn Kiệt", dob:"14/09/2013", school:"THCS Trần Phú", grade: "6", id: "216390", password:"14092013",},
     {  name: "Phạm Tùng Dương", dob:"29/05/2013", school:"THCS Trần Phú", grade: "6", id: "143252", password:"29052013",},
     { name: "Lê Tùng Lâm", dob:"20/09/2016", school:"Tiểu học Nguyễn Văn Tố", grade: "3", id: "626162", password:"20092016",},
-     { name: "Lê Tùng Lâm", dob:"20/11/2016", school:"Tiểu học Nguyễn Văn Tố", grade: "3", id: "626162", password:"20092016",},
-];
+     { name: "Lê Tùng Lâm", dob:"20/11/2016", school:"Tiểu học Nguyễn Văn Tố", grade: "3", id: "626162", password:"20092016",}
+        ];
 
-// Biến lưu trữ trạng thái chỉnh sửa
-let isEdit = false;
-let editStudentId = null;
-// Các phần tử DOM
-const searchButton = document.getElementById('searchButton');
-const addButton = document.getElementById('addButton');
-const studentInfoDiv = document.getElementById('studentInfo');
-const modal = document.getElementById('modal');
-const closeButton = document.querySelector('.close-button');
-const studentForm = document.getElementById('studentForm');
-const modalTitle = document.getElementById('modalTitle');
+        // Hàm chuyển đổi định dạng ngày từ yyyy-mm-dd sang dd/mm/yyyy
+        function formatDate(dateString) {
+            const dateParts = dateString.split("-");
+            return `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
+        }
 
-// Hiển thị thông tin học sinh
-function displayStudent(student) {
-    if (!student) {
-        studentInfoDiv.innerHTML = "<p>Không tìm thấy thí sinh.</p>";
-        return;
-    }
+        // Hàm tra cứu thí sinh
+        function search() {
+            const nameInput = document.getElementById('name').value.trim().toLowerCase();
+            const dobInput = document.getElementById('dob').value;
+            const resultDiv = document.getElementById('result');
+            const errorDiv = document.getElementById('error');
 
-    studentInfoDiv.innerHTML = `
-        <p><strong>Tên:</strong> ${student.name}</p>
-        <p><strong>Ngày sinh: </strong> ${student.dob}</p>
-        <p><strong>Trường:</strong> ${student.school}</p>
-        <p><strong>Lớp:</strong> ${student.grade}</p>
-        <p><strong>SBD(Tên đăng nhập):</strong> ${student.id}</p>
-        <p><strong>Mật khẩu:</strong> ${student.password}</p>
-    `;
-}
+            // Reset lại thông báo lỗi và kết quả
+            resultDiv.textContent = '';
+            errorDiv.textContent = '';
 
-// Hàm tìm kiếm học sinh
-function searchStudent() {
-    const input = document.getElementById('searchInput').value.trim().toLowerCase();
-    if (input === "") {
-        studentInfoDiv.innerHTML = "<p>Vui lòng nhập tên thí sinh sinh để tra cứu.</p>";
-        return;
-    }
-    const student = students.find(st => 
-        st.name.toLowerCase() === input
-    );
-    displayStudent(student);
-}
-// Sự kiện lắng nghe
-searchButton.addEventListener('click', searchStudent);
-addButton.addEventListener('click', openAddModal);
-closeButton.addEventListener('click', closeModal);
-window.addEventListener('click', (event) => {
-    if (event.target == modal) {
-        closeModal();
-    }
-});
-studentForm.addEventListener('submit', handleFormSubmit);
+            // Kiểm tra nếu người dùng chưa nhập đầy đủ thông tin
+            if (!nameInput || !dobInput) {
+                errorDiv.textContent = 'Vui lòng nhập đầy đủ tên và ngày sinh!';
+                return;
+            }
+
+            // Chuyển định dạng ngày từ yyyy-mm-dd sang dd/mm/yyyy
+            const formattedDob = formatDate(dobInput);
+
+            // Tìm kiếm thí sinh dựa vào tên và ngày sinh
+            const candidate = candidates.find(candidate =>
+                candidate.name.toLowerCase() === nameInput && candidate.dob === formattedDob
+            );
+
+            // Hiển thị kết quả nếu tìm thấy thí sinh
+            if (candidate) {
+                resultDiv.innerHTML = `
+                <strong>Tên:</strong> ${candidate.name}<br>
+        <strong>Ngày sinh: </strong> ${candidate.dob}<br>
+        <strong>Trường:</strong> ${candidate.school}<br>
+        <strong>Lớp:</strong> ${candidate.grade}<br>
+        <strong>SBD(Tên đăng nhập):</strong> ${candidate.id}<br>
+        <strong>Mật khẩu:</strong> ${candidate.password}
+                `;
+            } else {
+                errorDiv.textContent = 'Không tìm thấy thí sinh hoặc sai thông tin!';
+            }
+        }
     </script>
 </body>
 </html>
