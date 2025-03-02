@@ -55,6 +55,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="#" onclick="showPage('news')">Tin tức & Sự kiện</a>
               </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" onclick="showPage('video')">Video</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="#" onclick="showPage('contact')">Thông tin</a>
               </li>
@@ -68,6 +71,7 @@
     <div id="home" class="page">
     <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a></h3></div>
       <hr>
+              <div class="row">
         <div class="col-md-6">
           <div class="card">
               <div class="card-header">TIN TỨC & SỰ KIỆN</div>
@@ -82,6 +86,21 @@
               </div>
           </div>
       </div>
+      <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">VIDEO</div>
+            <div class="card-body d-flex">
+                <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="150px" class="me-3">
+              <div>
+                    <h5 class="card-title">Xem ngay: Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</h5>
+                    <p class="card-text">Bấm vào xem chi tiết để biết thêm thông tin</p>
+                    <br>
+                      <a href="#" class="btn btn-primary" onclick="showPage('video1')">Xem chi tiết</a>
+              </div>
+            </div>
+        </div>
+    </div>
+       </div>
     </div>
       <div id="news" class="page d-none">
         <h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('news')">Tin tức & Sự kiện</a></h3>
@@ -105,7 +124,28 @@
         <br>
         Số điện thoại hỗ trợ: <a href="tel:+84988065911">0988065911</a>
         <br>
-        Nếu bạn muốn đăng bài lên trang, vui lòng liên hệ với email trên
+        Nếu bạn muốn đăng bài lên trang, vui lòng liên hệ với email trên (Vui lòng ghi đầy đủ tiêu đề, nội dung bài đăng, tên tác giả,...)
+    </div>
+    <div id="video" class="page d-none">
+      <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('video')">Video</a></h3></div>
+      <hr>
+      <div class="news-item">
+        <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="150px" class="me-3">
+        <div class="news-content">
+            <a href="#" class="news-title" onclick="showPage('video1')">Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</a>
+            <div class="news-time">Nguồn: YouTube</div>
+        </div>
+      </div>
+    </div>
+    <div id="video1" class="page d-none">
+      <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('video')">Video</a> > <a href="#" onclick="showPage('video1')">Vụ TikToker ...</a></h3></div>
+    <hr>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/vwVRGmfP6hg?si=Hb4xEudAHy_9nLTQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <br>
+    <br>
+    <h5>Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</h5>
+    <hr>
+    <a href="#" onclick="showPage('home')" class="btn btn-primary">< Quay lại trang chủ</a>
     </div>
       <div id="De_thi_thu" class="page d-none">
         <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('news')">Tin tức & Sự kiện</a> > <a href="#" onclick="showPage('De_thi_thu')">Đề thi thử ....</a></h3></div>
