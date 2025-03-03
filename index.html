@@ -212,10 +212,14 @@ function showPage(pageId) {
 </script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    function isMobileDevice() {
+        return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 1024;
+    }
+
+    if (isMobileDevice()) {
         document.body.innerHTML = `
             <div style="display: flex; justify-content: center; align-items: center; height: 100vh; text-align: center; background-color: #f8d7da; color: #721c24; font-family: Arial, sans-serif;">
-                <h2>Trang web này không hỗ trợ trên điện thoại. Vui lòng truy cập bằng máy tính!</h2>
+                <h2>Trang web này chỉ hỗ trợ trên máy tính. Vui lòng sử dụng thiết bị có màn hình lớn hơn!</h2>
             </div>
         `;
     }
