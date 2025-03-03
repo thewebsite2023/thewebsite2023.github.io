@@ -207,6 +207,13 @@ function showPage(pageId) {
     document.getElementById(pageId).classList.remove('d-none');
 }
 </script>
-
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        document.body.style.display = "none";
+        alert("Vui lòng truy cập trang web này bằng máy tính!");
+    }
+});
+</script>
 </body>
 </html>
