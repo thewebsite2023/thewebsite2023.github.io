@@ -68,6 +68,7 @@
 
 <!-- Nội dung các trang -->
  <div class="container mt-4">
+     
     <div id="home" class="page">
     <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a></h3></div>
       <hr>
@@ -85,6 +86,7 @@
               </div>
           </div>
       </div>
+                  
       <div class="col-md-6">
         <div class="card">
             <div class="card-header">VIDEO</div>
@@ -153,6 +155,7 @@
             <div class="news-time">Nguồn: YouTube</div>
         </div>
       </div>
+        
     <div class="news-item">
         <img src="https://i.ytimg.com/vi/ERrf7IFvRBY/hqdefault.jpg?sqp=-oaymwFBCPYBEIoBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AG-BIACgAqKAgwIABABGDkgUSh_MA8=&rs=AOn4CLC7IxFC-1z18ejxG16c_x5IAeBkXw" alt="" width="150px" class="me-3">
         <div class="news-content">
@@ -210,8 +213,11 @@ function showPage(pageId) {
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        document.body.style.display = "none";
-        alert("Vui lòng truy cập trang web này bằng máy tính!");
+        document.body.innerHTML = `
+            <div style="display: flex; justify-content: center; align-items: center; height: 100vh; text-align: center; background-color: #f8d7da; color: #721c24; font-family: Arial, sans-serif;">
+                <h2>Trang web này không hỗ trợ trên điện thoại. Vui lòng truy cập bằng máy tính!</h2>
+            </div>
+        `;
     }
 });
 </script>
