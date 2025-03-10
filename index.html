@@ -252,7 +252,7 @@ function showPage(pageId) {
     document.getElementById(pageId).classList.remove('d-none');
 }
 </script>
-<!--script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
     function isMobileDevice() {
         return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 1024;
@@ -260,40 +260,161 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (isMobileDevice()) {
         document.body.innerHTML = `
-        <h4>Trang web này chỉ có thể sử dụng trên máy tính. Vui lòng sử dụng máy tính để truy cập trang. Xin lỗi vì sự bất tiện trên!</h4>
-        `;
-    }
-});
-    </script-->
-            <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007aff"></rect></svg>
-        <strong class="me-auto">Hệ thống</strong>
-          <small>6/2/2025</small>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="toast-body">
-        <a href="https://thewebsite2023.github.io/login/privacy_policy" target="_blank">Chính sách quyền riêng tư</a> và <a href="https://thewebsite2023.github.io/login/terms_of_use" target="_blank">Điều khoản sử dụng</a> của MiniQuiz đã được cập nhật
-        <div class="mt-2 pt-2 border-top">
-            <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="toast">Được rồi</button>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" onclick="showPage('home')">WebPage News</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#" onclick="showPage('home')">Trang chủ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="showPage('news')">Tin tức & Sự kiện</a>
+              </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" onclick="showPage('video')">Video</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="showPage('contact')">Thông tin</a>
+              </li>
+            </ul>
           </div>
+        </div>
+      </nav>
+
+<!-- Nội dung các trang -->
+ <div class="container mt-4">
+     
+    <div id="home" class="page">
+    <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a></h3></div>
+      <hr>
+      <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">VIDEO</div>
+            <div class="card-body d-flex">
+                <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="170px" height="160px" class="me-3">
+              <div>
+                    <h5 class="card-title">Xem ngay: Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</h5>
+                    <p class="card-text">Bấm vào xem chi tiết để biết thêm thông tin</p>
+                      <a href="#" class="btn btn-primary" onclick="showPage('video1')">Xem chi tiết</a>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+          <div class="card-header">VIDEO</div>
+          <div class="card-body d-flex">
+              <img src="https://i.ytimg.com/vi/ERrf7IFvRBY/hqdefault.jpg?sqp=-oaymwFBCPYBEIoBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AG-BIACgAqKAgwIABABGDkgUSh_MA8=&rs=AOn4CLC7IxFC-1z18ejxG16c_x5IAeBkXw" alt="" width="190px" height="150px" class="me-3">
+            <div>
+                  <h5 class="card-title">Xem ngay: live phạm thoại và mẹ bé bắp full</h5>
+                  <p class="card-text">Bấm vào xem chi tiết để biết thêm thông tin</p>
+                    <a href="#" class="btn btn-primary" onclick="showPage('video2')">Xem chi tiết</a>
+            </div>
+          </div>
+      </div>
+  </div>
+  </div>
+  </div>
+
+      <div id="news" class="page d-none">
+        <h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('news')">Tin tức & Sự kiện</a></h3>
+          <hr>
+        <h4>Tin tức & Sự kiện mới nhất</h4>
+        <center>
+          <svg xmlns="http://www.w3.org/2000/svg" style="color: red;" width="150" height="150" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+          </svg>
+          <br>
+          <br>
+          <h3>Chưa có bài viết nào</h3>
+          <button class="btn btn-success" onclick="location.reload()">Tải lại trang</button>
+        </center>
+      </div>
+     
+    <div id="contact" class="page d-none">
+      <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('contact')">Thông tin</a></h3></div>
+      <hr>
+        <h2>Thông tin</h2>
+        Dữ liệu được thu thập từ các nguồn khác nhau
+        <br>
+        Email: <a href="mailto:nhattiento2704@gmail.com">nhattiento2704@gmail.com</a>
+        <br>
+        Số điện thoại hỗ trợ: <a href="tel:+84988065911">0988065911</a>
+        <br>
+        Nếu bạn muốn đăng bài lên trang, vui lòng liên hệ với email trên (Vui lòng ghi đầy đủ tiêu đề, nội dung bài đăng, tên tác giả,...)
+        <br>
+        <div style="color: red;"> Lưu ý: Khi bạn sử dụng WebPage News, đồng nghĩa với việc bạn đã đồng ý với <a href="https://thewebsite2023.github.io/terms_of_use" target="_blank">Điều khoản sử dụng</a> và <a href="https://thewebsite2023.github.io/privacy_policy" target="_blank">Chính sách bảo mật</a> của WebPage News</div>
+    </div>
+     
+    <div id="video" class="page d-none">
+      <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('video')">Video</a></h3></div>
+      <hr>
+      <div class="news-item">
+        <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="150px" class="me-3">
+        <div class="news-content">
+            <a href="#" class="news-title" onclick="showPage('video1')">Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</a>
+            <div class="news-time">Nguồn: YouTube</div>
+        </div>
+      </div>
+        
+    <div class="news-item">
+        <img src="https://i.ytimg.com/vi/ERrf7IFvRBY/hqdefault.jpg?sqp=-oaymwFBCPYBEIoBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AG-BIACgAqKAgwIABABGDkgUSh_MA8=&rs=AOn4CLC7IxFC-1z18ejxG16c_x5IAeBkXw" alt="" width="150px" class="me-3">
+        <div class="news-content">
+            <a href="#" class="news-title" onclick="showPage('video2')">live phạm thoại và mẹ bé bắp full</a>
+            <div class="news-time">Nguồn: YouTube</div>
+        </div>
+      </div>
+    </div>
+     
+    <div id="video1" class="page d-none">
+      <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('video')">Video</a> > <a href="#" onclick="showPage('video1')">Vụ TikToker ...</a></h3></div>
+    <hr>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/vwVRGmfP6hg?si=Hb4xEudAHy_9nLTQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <br>
+    <br>
+    <h5>Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</h5>
+<br>
+Drive sao kê của Phạm Thoại: <a href="https://drive.google.com/drive/mobile/folders/10Y0YuB7REoI00EaEgIH68wRE2iY9TyPu?usp=sharing&fbclid=IwY2xjawIxTxtleHRuA2FlbQIxMQABHXzeEYG2BwNr6tAJaKa6_0hhiTB0bmRBAlWAlKXyPWQNwzpFPRsHQFSU4w_aem_1fPbRhlzasTfZbi1lOJ9kg" target="_blank">https://drive.google.com/drive/mobile/folders/10Y0YuB7REoI00EaEgIH68wRE2iY9TyPu?usp=sharing&fbclid=IwY2xjawIxTxtleHRuA2FlbQIxMQABHXzeEYG2BwNr6tAJaKa6_0hhiTB0bmRBAlWAlKXyPWQNwzpFPRsHQFSU4w_aem_1fPbRhlzasTfZbi1lOJ9kg</a>
+    <hr>
+    <a href="#" onclick="showPage('home')" class="btn btn-primary">< Quay lại trang chủ</a>
+    </div>
+
+    <div id="video2" class="page d-none">
+      <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('video')">Video</a> > <a href="#" onclick="showPage('video1')">live phạm thoại ...</a></h3></div>
+    <hr>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ERrf7IFvRBY?si=WH55GAgJVRw7X2Fn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <br>
+    <br>
+    <h5>live phạm thoại và mẹ bé bắp full</h5>
+    <hr>
+    <a href="#" onclick="showPage('home')" class="btn btn-primary">< Quay lại trang chủ</a>
+    </div>
+    
+</div>
+<div class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" id="modalChoice">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content rounded-3 shadow">
+      <div class="modal-body p-4 text-center">
+        <h5 class="mb-0">Xin lỗi, bạn không thể truy cập được WebPage News ngay bây giờ</h5>
+        <p class="mb-0">Hiện tại, do WebPage News cập nhật chính sách bảo mật do đó bạn không thể truy cập WebPage News bằng điện thoại</p>
+        <p class="mb-0">Chúng tôi hoàn toàn xin lỗi về sự bất tiện trên</p>
+        <p class="mb-0">Mã lỗi: 404_ERROR</p>
       </div>
     </div>
   </div>
-  
-  <script>  
-        const toastTrigger = document.getElementById('liveToastBtn')
-const toastLiveExample = document.getElementById('liveToast')
-
-if (toastTrigger) {
-  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-  toastTrigger.addEventListener('click', () => {
-    toastBootstrap.show()
-  })
-}
-  </script>
-<!--div class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" id="modalChoice">
+</div>
+        `;
+    }
+});
+    </script>
+<!-- <div class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" id="modalChoice">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content rounded-3 shadow">
       <div class="modal-body p-4 text-center">
@@ -304,11 +425,11 @@ if (toastTrigger) {
       </div>
     </div>
   </div>
-</div>
+    </div> -->
         <script>  
         $(document).ready(function(){  
             $("#modalChoice").modal('show'); 
         });  
-        </script-->
+        </script>
 </body>
 </html>
