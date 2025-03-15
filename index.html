@@ -332,14 +332,10 @@ function showPage(pageId) {
 }
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    function isMobileDevice() {
-        return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 1024;
-    }
-
-    if (isMobileDevice()) {
+    document.addEventListener("DOMContentLoaded", function () {
+    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
         document.body.innerHTML = `
-        <div class="container mt-4">
+            <div class="container mt-4">
         <center>
             <img src="https://raw.githubusercontent.com/thewebsite2023/thewebsite2023.github.io/refs/heads/main/favicon.ico" alt="" class="logo">
         </center>
