@@ -140,10 +140,71 @@ document.onclick=reEnable
                 <a class="nav-link" href="#" onclick="showPage('contact')">Thông tin</a>
               </li>
             </ul>
+            <form class="d-flex" role="search">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#searchModal">
+                Tìm kiếm
+              </button>
+            </form>
           </div>
         </div>
       </nav>
 
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Tìm kiếm bài báo</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Thêm ô tìm kiếm -->
+  <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm tin tức...">
+
+<!-- Danh sách tin tức -->
+<div class="news-item">
+  <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="150px" class="me-3">
+  <div class="news-content">
+      <a href="#" class="news-title" onclick="showPage('video1')">Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</a>
+      <div class="news-time">Nguồn: YouTube</div>
+  </div>
+</div>
+<div class="news-item">
+  <img src="https://i.ytimg.com/vi/ERrf7IFvRBY/hqdefault.jpg?sqp=-oaymwFBCPYBEIoBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AG-BIACgAqKAgwIABABGDkgUSh_MA8=&rs=AOn4CLC7IxFC-1z18ejxG16c_x5IAeBkXw" alt="" width="150px" class="me-3">
+  <div class="news-content">
+      <a href="#" class="news-title" onclick="showPage('video2')">live phạm thoại và mẹ bé bắp full</a>
+      <div class="news-time">Nguồn: YouTube</div>
+  </div>
+</div>
+<div class="news-item">
+  <img src="https://i1-vnexpress.vnecdn.net/2025/03/14/233a0379-1741945566-1741945710-9467-1741945723.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=u8nPU1p0AmyPzEede89Q7Q" alt="" width="150px" class="me-3">
+  <div class="news-content">
+      <a href="#" class="news-title" onclick="showPage('news1')">Bộ Giáo dục: Đột ngột dừng dạy thêm ảnh hưởng tâm lý học sinh</a>
+      <div class="news-time">Nguồn: VnExpress</div>
+  </div>
+</div>
+<script>
+document.getElementById("searchInput").addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  let items = document.querySelectorAll(".news-item");
+  
+  items.forEach(item => {
+      let title = item.querySelector(".news-title").textContent.toLowerCase();
+      if (title.includes(filter)) {
+          item.style.display = "flex";
+      } else {
+          item.style.display = "none";
+      }
+  });
+});
+</script>
+            </div>
+            <div class="modal-footer">
+              Tìm kiếm bởi WebPage Search
+            </div>
+          </div>
+        </div>
+      </div>
+    
  <div class="container mt-4">
     <div id="home" class="page">
     <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a></h3></div>
