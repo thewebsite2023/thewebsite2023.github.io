@@ -182,20 +182,26 @@ document.onclick=reEnable
   </div>
 </div>
 <script>
-document.getElementById("searchInput").addEventListener("keyup", function() {
-  let filter = this.value.toLowerCase();
-  let items = document.querySelectorAll(".news-item");
-  
-  items.forEach(item => {
-      let title = item.querySelector(".news-title").textContent.toLowerCase();
-      if (title.includes(filter)) {
-          item.style.display = "flex";
-      } else {
-          item.style.display = "none";
-      }
-  });
-});
-</script>
+    document.getElementById("searchInput").addEventListener("keyup", function() {
+      let filter = this.value.toLowerCase();
+      let items = document.querySelectorAll(".news-item");
+      let noResults = document.getElementById("noResults");
+      let found = false;
+    
+      items.forEach(item => {
+          let title = item.querySelector(".news-title").textContent.toLowerCase();
+          if (title.includes(filter)) {
+              item.style.display = "flex";
+              found = true;
+          } else {
+              item.style.display = "none";
+          }
+      });
+    
+      // Hiển thị hoặc ẩn thông báo không tìm thấy kết quả
+      noResults.style.display = found ? "none" : "block";
+    });
+    </script>
             </div>
             <div class="modal-footer">
               Tìm kiếm bởi WebPage Search
