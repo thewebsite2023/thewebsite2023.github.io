@@ -101,6 +101,36 @@ document.onclick=reEnable
             font-size: 12px;
             color: gray;
         }
+            .video-item {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+        }
+        .video-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+        .video-content {
+            flex: 1;
+        }
+        .video-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-decoration: none;
+        }
+        .video-title:hover {
+          color: green; /* Đổi màu chữ thành đỏ khi di chuột vào */
+        }
+        .video-time {
+            font-size: 12px;
+            color: gray;
+        }
     .logo {
             border-radius: 100px;
             width: 50px;
@@ -164,76 +194,10 @@ strong {
                 <a class="nav-link" href="#" onclick="showPage('contact')">Thông tin</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#searchModal">
-                Tìm kiếm
-              </button>
-            </form>
           </div>
         </div>
       </nav>
 
-    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Tìm kiếm bài báo</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-  <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm tin tức...">
-<center><div id="noResults" style="display: none; color: red; font-weight: bold; margin-top: 10px;">Không có bài báo nào phù hợp với từ khoá của bạn</div></center>
-
-<div class="news-item">
-  <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="150px" class="me-3">
-  <div class="news-content">
-      <a href="#" class="news-title" onclick="showPage('video1')">Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</a>
-      <div class="news-time">Nguồn: YouTube</div>
-  </div>
-</div>
-<div class="news-item">
-  <img src="https://i.ytimg.com/vi/ERrf7IFvRBY/hqdefault.jpg?sqp=-oaymwFBCPYBEIoBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AG-BIACgAqKAgwIABABGDkgUSh_MA8=&rs=AOn4CLC7IxFC-1z18ejxG16c_x5IAeBkXw" alt="" width="150px" class="me-3">
-  <div class="news-content">
-      <a href="#" class="news-title" onclick="showPage('video2')">live phạm thoại và mẹ bé bắp full</a>
-      <div class="news-time">Nguồn: YouTube</div>
-  </div>
-</div>
-<div class="news-item">
-  <img src="https://i1-vnexpress.vnecdn.net/2025/03/14/233a0379-1741945566-1741945710-9467-1741945723.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=u8nPU1p0AmyPzEede89Q7Q" alt="" width="150px" class="me-3">
-  <div class="news-content">
-      <a href="#" class="news-title" onclick="showPage('news1')">Bộ Giáo dục: Đột ngột dừng dạy thêm ảnh hưởng tâm lý học sinh</a>
-      <div class="news-time">Nguồn: VnExpress</div>
-  </div>
-</div>
-<script>
-    document.getElementById("searchInput").addEventListener("keyup", function() {
-      let filter = this.value.toLowerCase();
-      let items = document.querySelectorAll(".news-item");
-      let noResults = document.getElementById("noResults");
-      let found = false;
-    
-      items.forEach(item => {
-          let title = item.querySelector(".news-title").textContent.toLowerCase();
-          if (title.includes(filter)) {
-              item.style.display = "flex";
-              found = true;
-          } else {
-              item.style.display = "none";
-          }
-      });
-    
-      // Hiển thị hoặc ẩn thông báo không tìm thấy kết quả
-      noResults.style.display = found ? "none" : "block";
-    });
-    </script>
-            </div>
-            <div class="modal-footer">
-              Tìm kiếm bởi WebPage Search
-            </div>
-          </div>
-        </div>
-      </div>
-    
  <div class="container mt-4">
     <div id="home" class="page">
     <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a></h3></div>
@@ -290,7 +254,10 @@ strong {
       <div id="news" class="page d-none">
         <h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('news')">Tin tức & Sự kiện</a></h3>
           <hr>
-        <h4>Tin tức & Sự kiện mới nhất</h4>
+          <div class="container mt-3">
+            <input type="text" id="searchInputNews" class="form-control" placeholder="Tìm kiếm tin tức...">
+            <center><div id="noResults" style="display: none; color: red; font-weight: bold; margin-top: 10px;">Không có bài báo nào phù hợp với từ khoá của bạn</div></center>
+          </div>
         <div class="news-item">
           <img src="https://i1-vnexpress.vnecdn.net/2025/03/14/233a0379-1741945566-1741945710-9467-1741945723.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=u8nPU1p0AmyPzEede89Q7Q" alt="" width="150px" class="me-3">
           <div class="news-content">
@@ -300,6 +267,27 @@ strong {
         </div>
           <hr>
           <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
+          <script>
+            document.getElementById("searchInputNews").addEventListener("keyup", function() {
+              let filter = this.value.toLowerCase();
+              let items = document.querySelectorAll(".news-item");
+              let noResults = document.getElementById("noResults");
+              let found = false;
+            
+              items.forEach(item => {
+                  let title = item.querySelector(".news-title").textContent.toLowerCase();
+                  if (title.includes(filter)) {
+                      item.style.display = "flex";
+                      found = true;
+                  } else {
+                      item.style.display = "none";
+                  }
+              });
+            
+              // Hiển thị hoặc ẩn thông báo không tìm thấy kết quả
+              noResults.style.display = found ? "none" : "block";
+            });
+            </script>
       </div>
      
     <div id="contact" class="page d-none">
@@ -322,23 +310,48 @@ strong {
     <div id="video" class="page d-none">
       <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('video')">Video</a></h3></div>
       <hr>
-      <div class="news-item">
+        <div class="container mt-3">
+        <input type="text" id="searchInputVideo" class="form-control" placeholder="Tìm kiếm tin tức...">
+        <center><div id="noResultsVideo" style="display: none; color: red; font-weight: bold; margin-top: 10px;">Không có bài báo nào phù hợp với từ khoá của bạn</div></center>
+      </div>
+     <div class="video-item">
         <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="150px" class="me-3">
-        <div class="news-content">
-            <a href="#" class="news-title" onclick="showPage('video1')">Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</a>
-            <div class="news-time">Nguồn: YouTube</div>
+        <div class="video-content">
+            <a href="#" class="video-title" onclick="showPage('video1')">Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</a>
+            <div class="video-time">Nguồn: YouTube</div>
         </div>
       </div>
         
-    <div class="news-item">
+    <div class="video-item">
         <img src="https://i.ytimg.com/vi/ERrf7IFvRBY/hqdefault.jpg?sqp=-oaymwFBCPYBEIoBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AG-BIACgAqKAgwIABABGDkgUSh_MA8=&rs=AOn4CLC7IxFC-1z18ejxG16c_x5IAeBkXw" alt="" width="150px" class="me-3">
-        <div class="news-content">
-            <a href="#" class="news-title" onclick="showPage('video2')">live phạm thoại và mẹ bé bắp full</a>
-            <div class="news-time">Nguồn: YouTube</div>
+        <div class="video-content">
+            <a href="#" class="video-title" onclick="showPage('video2')">live phạm thoại và mẹ bé bắp full</a>
+            <div class="video-time">Nguồn: YouTube</div>
         </div>
       </div>
     <hr>
     <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
+    <script>
+      document.getElementById("searchInputVideo").addEventListener("keyup", function() {
+        let filter = this.value.toLowerCase();
+        let items = document.querySelectorAll(".video-item");
+        let noResults = document.getElementById("noResultsVideo");
+        let found = false;
+      
+        items.forEach(item => {
+            let title = item.querySelector(".video-title").textContent.toLowerCase();
+            if (title.includes(filter)) {
+                item.style.display = "flex";
+                found = true;
+            } else {
+                item.style.display = "none";
+            }
+        });
+      
+        // Hiển thị hoặc ẩn thông báo không tìm thấy kết quả
+        noResults.style.display = found ? "none" : "block";
+      });
+      </script>
     </div>
      
     <div id="video1" class="page d-none">
