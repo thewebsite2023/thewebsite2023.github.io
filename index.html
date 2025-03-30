@@ -610,21 +610,26 @@ function showPage(pageId) {
     }
 });
     </script>
-<!-- <div class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" id="modalChoice">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content rounded-3 shadow">
-      <div class="modal-body p-4 text-center">
-        <h5 class="mb-0">Xin lỗi, trang này không thể truy cập được ngay bây giờ</h5>
-        <p class="mb-0">Yêu cầu bị chặn. Chúng tôi không thể kết nối với máy chủ cho ứng dụng hoặc trang web này tại thời điểm này. Có thể có quá nhiều lưu lượng truy cập hoặc lỗi cấu hình. Hãy thử lại sau hoặc liên hệ với chủ sở hữu ứng dụng hoặc trang web. Nếu bạn cung cấp nội dung cho khách hàng thông qua CloudFront, bạn có thể tìm các bước để khắc phục sự cố và giúp ngăn ngừa lỗi này bằng cách xem lại tài liệu CloudFront.</p>
-        <p class="mb-0">Mã lỗi: 404_ERROR</p>
-        <p class="mb-0">Bấm vào Tìm hiểu thêm để biết thêm thông tin về lỗi</p>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Thông báo</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        WebPgae News đã có sẵn chương trình Beta cho phép mọi người khám phá trước phiên bản mới. Tham gia ngay!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không, cảm ơn</button>
+        <a href="https://thewebsite2023.github.io/beta_version.html#" class="btn btn-primary">Tham gia</a>
       </div>
     </div>
   </div>
-    </div> -->
+</div>
         <script>  
         $(document).ready(function(){  
-            $("#modalChoice").modal('show'); 
+            $("#exampleModal").modal('show'); 
         });  
         </script>
 </body>
