@@ -221,6 +221,106 @@ strong {
   width: 20px;
   height: 20px;
 }
+  .audio-player-container { /* Kiểu dáng cho container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.audio-player {
+    background-color: white;
+    width: 600px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.audio-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.audio-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.audio-details {
+    flex-grow: 1;
+}
+
+.audio-title {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.audio-meta, .audio-description {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icon {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2em;
+}
+
+.audio-controls {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.time-controls {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.current-time, .total-time {
+    font-size: 0.8em;
+    color: #555;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+.playback-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.playback-controls button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.playback-speed {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.author {
+    text-align: right;
+    font-size: 0.9em;
+    color: #555;
+}
 </style>
 </head>
 <body>
@@ -563,26 +663,91 @@ Drive sao kê của Phạm Thoại: <a href="https://drive.google.com/drive/mobi
     <div id="podcast1" class="page d-none">
       <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('podcast')">Podcast</a> > <a href="#" onclick="showPage('news1')">Mẫu máy tính....</a></h3></div>
       <hr>
-        <div class="podcast-info">
-          <div class="podcast-image">
-            <img src="https://i1-vnexpress.vnecdn.net/2025/03/13/ThumbFrame192-1741838094-5421-1741838663.jpg?w=320&h=320&q=100&dpr=2&fit=crop&s=caTfFw7E7aaoYHi55fOmiQ" alt="Podcast Image">
-          </div>
-          <div class="podcast-details">
-            <p class="podcast-title">Mẫu máy tính từng bị Apple chôn vùi</p>
-            <p class="podcast-description">Lisa là chiếc máy tính đầu tiên có giao diện đồ họa người dùng do Apple sản xuất, nhưng có tin đồn hãng này từng âm thầm khai tử 2700 chiếc xuống một bãi rác mà không rõ nguyên nhân.</p>
-            <div class="podcast-meta">
-              <p class="podcast-date">Thứ năm, 13/3/2025, 11:00 (GMT+7)</p>
+               <div class="audio-player-container"> 
+           <div class="audio-player">
+            <div class="audio-info">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/03/13/ThumbFrame192-1741838094-5421-1741838663.jpg?w=320&h=320&q=100&dpr=2&fit=crop&s=caTfFw7E7aaoYHi55fOmiQ" alt="Ảnh bìa âm thanh" class="audio-image">
+                <div class="audio-details">
+                    <h2 class="audio-title">Mẫu máy tính từng bị Apple chôn vùi</h2>
+                    <p class="audio-meta">Thứ năm, 13/3/2025, 11:00 (GMT+7)</p>
+                    <p class="audio-description">Lisa là chiếc máy tính đầu tiên có giao diện đồ họa người dùng do Apple sản xuất, nhưng có tin đồn hãng này từng âm thầm khai tử 2700 chiếc xuống một bãi rác mà không rõ nguyên nhân.</p>
+                </div>
             </div>
-            <audio controls>
-              <source src="https://v.vnecdn.net/vnexpress/video/audio/2025/03/13/2700-chiec-may-tinh-tung-bi-apple-chon-xuong-bai-rac-1741838665.mp3" type="audio/mpeg">
-            </audio>
-          </div>
-      </div>
+            <div class="audio-controls">
+                <div class="time-controls">
+                    <span class="current-time">00:01</span>
+                    <input type="range" min="0" max="100" value="0" class="progress-bar" disabled>
+                    <span class="total-time">13:46</span>
+                </div>
+                <div class="playback-controls">
+                    <button class="skip-backward">◀ 10</button>
+                    <button class="play-pause">▶</button>
+                    <button class="skip-forward">10 ▶</button>
+                    <span class="playback-speed">Tốc độ phát 1x</span>
+                </div>
+            </div>
+        </div>
+               </div>
       <hr>
       <a href="#" onclick="showPage('home')" class="btn btn-primary">< Quay lại trang chủ</a>
     </div>
       </div>
+<script>
+          const audio = new Audio("https://v.vnecdn.net/vnexpress/video/audio/2025/03/13/2700-chiec-may-tinh-tung-bi-apple-chon-xuong-bai-rac-1741838665.mp3"); // Thay thế bằng đường dẫn tệp âm thanh của bạn
+const playPauseBtn = document.querySelector(".play-pause");
+const progressBar = document.querySelector(".progress-bar");
+const currentTime = document.querySelector(".current-time");
+const totalTime = document.querySelector(".total-time");
+const skipBackwardBtn = document.querySelector(".skip-backward");
+const skipForwardBtn = document.querySelector(".skip-forward");
+const playbackSpeed = document.querySelector(".playback-speed");
 
+playPauseBtn.addEventListener("click", () => {
+    if (audio.paused) {
+        audio.play();
+        playPauseBtn.textContent = "⏸";
+    } else {
+        audio.pause();
+        playPauseBtn.textContent = "▶";
+    }
+});
+
+audio.addEventListener("timeupdate", () => {
+    const minutes = Math.floor(audio.currentTime / 60);
+    const seconds = Math.floor(audio.currentTime % 60);
+    currentTime.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    progressBar.value = (audio.currentTime / audio.duration) * 100;
+});
+
+audio.addEventListener("loadedmetadata", () => {
+    const minutes = Math.floor(audio.duration / 60);
+    const seconds = Math.floor(audio.duration % 60);
+    totalTime.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+});
+
+progressBar.addEventListener("input", () => {
+    audio.currentTime = (progressBar.value * audio.duration) / 100;
+});
+
+skipBackwardBtn.addEventListener("click", () => {
+    audio.currentTime -= 10;
+});
+
+skipForwardBtn.addEventListener("click", () => {
+    audio.currentTime += 10;
+});
+
+playbackSpeed.addEventListener("click", () => {
+    if (audio.playbackRate === 1) {
+        audio.playbackRate = 1.5;
+        playbackSpeed.textContent = "Tốc độ phát 1.5x";
+    } else {
+        audio.playbackRate = 1;
+        playbackSpeed.textContent = "Tốc độ phát 1x";
+    }
+});
+
+</script>
 <script>
 function showPage(pageId) {
     // Ẩn tất cả các trang
