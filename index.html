@@ -160,6 +160,67 @@ strong {
     display: block;
     margin-bottom: 5px;
         }
+        .podcast-container {
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px auto; /* Căn giữa container theo chiều ngang */
+}
+
+.podcast-info {
+  display: flex;
+  align-items: flex-start;
+}
+
+.podcast-image {
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+.podcast-image img {
+  width: 120px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.podcast-details {
+  flex-grow: 1;
+}
+
+.podcast-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.podcast-description {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.podcast-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9em;
+  color: #888;
+}
+
+.podcast-actions {
+  display: flex;
+}
+
+.action-icon {
+  margin-left: 10px;
+}
+
+.action-icon img {
+  width: 20px;
+  height: 20px;
+}
 </style>
 </head>
 <body>
@@ -189,6 +250,9 @@ strong {
               </li>
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="showPage('video')">Video</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="showPage('podcast')">Podcast</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#" onclick="showPage('contact')">Thông tin</a>
@@ -233,6 +297,14 @@ strong {
           <img src="https://i1-vnexpress.vnecdn.net/2025/03/14/233a0379-1741945566-1741945710-9467-1741945723.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=u8nPU1p0AmyPzEede89Q7Q" alt="" width="150px" class="me-3">
           <div class="search-news-content">
               <a href="#" class="search-news-title" onclick="showPage('news1')">Bộ Giáo dục: Đột ngột dừng dạy thêm ảnh hưởng tâm lý học sinh</a>
+              <div class="search-news-time">Nguồn: VnExpress</div>
+          </div>
+        </div>
+
+        <div class="search-news-item">
+          <img src="https://i1-vnexpress.vnecdn.net/2025/03/13/ThumbFrame192-1741838094-5421-1741838663.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=rJh3Qjw2aAGT4qvGKqzCaw" alt="" width="120px" height="100px" class="me-3">
+          <div class="search-news-content">
+              <a href="#" class="search-news-title" onclick="showPage('podcast1')">Mẫu máy tính từng bị Apple chôn vùi</a>
               <div class="search-news-time">Nguồn: VnExpress</div>
           </div>
         </div>
@@ -288,7 +360,7 @@ strong {
             <div class="card">
                 <div class="card-header">VIDEO</div>
                 <div class="card-body d-flex">
-                    <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="170px" height="160px" class="me-3">
+                    <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="190px" height="150px" class="me-3">
                   <div>
                         <h5 class="card-title">Xem ngay: Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</h5>
                         <p class="card-text">Bấm vào xem chi tiết để biết thêm thông tin</p>
@@ -298,7 +370,6 @@ strong {
             </div>
         </div>
   </div>
-<br>
   <div class="row">
     <div class="col-md-6">
       <div class="card">
@@ -313,6 +384,19 @@ strong {
           </div>
       </div>
   </div>
+  <div class="col-md-6">
+    <div class="card">
+        <div class="card-header">PODCAST</div>
+        <div class="card-body d-flex">
+            <img src="https://i1-vnexpress.vnecdn.net/2025/03/13/ThumbFrame192-1741838094-5421-1741838663.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=rJh3Qjw2aAGT4qvGKqzCaw" alt="" width="190px" height="150px" class="me-3">
+          <div>
+                <h5 class="card-title">Xem ngay: Mẫu máy tính từng bị Apple chôn vùi</h5>
+                <p class="card-text">Bấm vào xem chi tiết để biết thêm thông tin</p>
+                  <a href="#" class="btn btn-primary" onclick="showPage('podcast1')">Xem chi tiết</a>
+          </div>
+        </div>
+    </div>
+</div>
 <hr>
 <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
   </div>
@@ -371,6 +455,20 @@ strong {
     <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
     </div>
      
+    <div id="podcast" class="page d-none">
+      <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('podcast')">Podcast</a></h3></div>
+      <hr>
+      <div class="news-item">
+        <img src="https://i1-vnexpress.vnecdn.net/2025/03/13/ThumbFrame192-1741838094-5421-1741838663.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=rJh3Qjw2aAGT4qvGKqzCaw" alt="" width="150px" class="me-3">
+        <div class="news-content">
+            <a href="#" class="news-title" onclick="showPage('podcast1')">Mẫu máy tính từng bị Apple chôn vùi</a>
+            <div class="news-time">Nguồn: VnExpress</div>
+        </div>
+      </div>
+      <hr>
+<center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
+    </div>
+
     <div id="video1" class="page d-none">
       <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('video')">Video</a> > <a href="#" onclick="showPage('video1')">Vụ TikToker ...</a></h3></div>
     <hr>
@@ -459,6 +557,28 @@ Drive sao kê của Phạm Thoại: <a href="https://drive.google.com/drive/mobi
      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v22.0&appId=983011257079655"></script>
      <div class="fb-comments" data-href="https://thewebsite2023.github.io/news1.html" data-width="" data-numposts="5"></div>
         <hr>
+      <a href="#" onclick="showPage('home')" class="btn btn-primary">< Quay lại trang chủ</a>
+    </div>
+
+    <div id="podcast1" class="page d-none">
+      <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('podcast')">Podcast</a> > <a href="#" onclick="showPage('news1')">Mẫu máy tính....</a></h3></div>
+      <hr>
+        <div class="podcast-info">
+          <div class="podcast-image">
+            <img src="https://i1-vnexpress.vnecdn.net/2025/03/13/ThumbFrame192-1741838094-5421-1741838663.jpg?w=320&h=320&q=100&dpr=2&fit=crop&s=caTfFw7E7aaoYHi55fOmiQ" alt="Podcast Image">
+          </div>
+          <div class="podcast-details">
+            <p class="podcast-title">Mẫu máy tính từng bị Apple chôn vùi</p>
+            <p class="podcast-description">Lisa là chiếc máy tính đầu tiên có giao diện đồ họa người dùng do Apple sản xuất, nhưng có tin đồn hãng này từng âm thầm khai tử 2700 chiếc xuống một bãi rác mà không rõ nguyên nhân.</p>
+            <div class="podcast-meta">
+              <p class="podcast-date">Thứ năm, 13/3/2025, 11:00 (GMT+7)</p>
+            </div>
+            <audio controls>
+              <source src="https://v.vnecdn.net/vnexpress/video/audio/2025/03/13/2700-chiec-may-tinh-tung-bi-apple-chon-xuong-bai-rac-1741838665.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+      </div>
+      <hr>
       <a href="#" onclick="showPage('home')" class="btn btn-primary">< Quay lại trang chủ</a>
     </div>
       </div>
