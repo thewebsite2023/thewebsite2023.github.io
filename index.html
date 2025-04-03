@@ -665,30 +665,30 @@ Drive sao kê của Phạm Thoại: <a href="https://drive.google.com/drive/mobi
       <div><h3><a href="#" onclick="showPage('home')">Trang chủ</a> > <a href="#" onclick="showPage('podcast')">Podcast</a> > <a href="#" onclick="showPage('news1')">Mẫu máy tính....</a></h3></div>
       <hr>
                <div class="audio-player-container"> 
-           <div class="audio-player">
-            <div class="audio-info">
-                <img src="https://i1-vnexpress.vnecdn.net/2025/03/13/ThumbFrame192-1741838094-5421-1741838663.jpg?w=320&h=320&q=100&dpr=2&fit=crop&s=caTfFw7E7aaoYHi55fOmiQ" alt="Ảnh bìa âm thanh" class="audio-image">
-                <div class="audio-details">
-                    <h2 class="audio-title">Mẫu máy tính từng bị Apple chôn vùi</h2>
-                    <p class="audio-meta">Thứ năm, 13/3/2025, 11:00 (GMT+7)</p>
-                    <p class="audio-description">Lisa là chiếc máy tính đầu tiên có giao diện đồ họa người dùng do Apple sản xuất, nhưng có tin đồn hãng này từng âm thầm khai tử 2700 chiếc xuống một bãi rác mà không rõ nguyên nhân.</p>
-                </div>
-            </div>
-            <div class="audio-controls">
-                <div class="time-controls">
-                    <span class="current-time">00:01</span>
-                    <input type="range" min="0" max="100" value="0" class="progress-bar">
-                    <span class="total-time">13:46</span>
-                </div>
-                <div class="playback-controls">
-                    <button class="skip-backward yul">◀ 10</button>
-                    <button class="play-pause">▶</button>
-                    <button class="skip-forward">10 ▶</button>
-                    <span class="playback-speed">Tốc độ phát 1x</span>
-                </div>
+    <div class="audio-player" data-src="https://v.vnecdn.net/vnexpress/video/audio/2025/03/13/2700-chiec-may-tinh-tung-bi-apple-chon-xuong-bai-rac-1741838665.mp3">
+        <div class="audio-info">
+            <img src="https://i1-vnexpress.vnecdn.net/2025/03/13/ThumbFrame192-1741838094-5421-1741838663.jpg?w=320&h=320&q=100&dpr=2&fit=crop&s=caTfFw7E7aaoYHi55fOmiQ" alt="Ảnh bìa âm thanh" class="audio-image">
+            <div class="audio-details">
+                <h2 class="audio-title">Mẫu máy tính từng bị Apple chôn vùi</h2>
+                <p class="audio-meta">Thứ năm, 13/3/2025, 11:00 (GMT+7)</p>
+                <p class="audio-description">Lisa là chiếc máy tính đầu tiên có giao diện đồ họa người dùng do Apple sản xuất, nhưng có tin đồn hãng này từng âm thầm khai tử 2700 chiếc.</p>
             </div>
         </div>
-               </div>
+        <div class="audio-controls">
+            <div class="time-controls">
+                <span class="current-time">00:00</span>
+                <input type="range" min="0" max="100" value="0" class="progress-bar">
+                <span class="total-time">00:00</span>
+            </div>
+            <div class="playback-controls">
+                <button class="skip-backward">◀ 10</button>
+                <button class="play-pause">▶</button>
+                <button class="skip-forward">10 ▶</button>
+                <span class="playback-speed">Tốc độ phát 1x</span>
+            </div>
+        </div>
+    </div>
+</div>
         <br>
         <br>
         <h3>Bình luận về bài viết</h3>
@@ -700,58 +700,56 @@ Drive sao kê của Phạm Thoại: <a href="https://drive.google.com/drive/mobi
     </div>
       </div>
 <script>
-          const audio = new Audio("https://v.vnecdn.net/vnexpress/video/audio/2025/03/13/2700-chiec-may-tinh-tung-bi-apple-chon-xuong-bai-rac-1741838665.mp3"); // Thay thế bằng đường dẫn tệp âm thanh của bạn
-const playPauseBtn = document.querySelector(".play-pause");
-const progressBar = document.querySelector(".progress-bar");
-const currentTime = document.querySelector(".current-time");
-const totalTime = document.querySelector(".total-time");
-const skipBackwardBtn = document.querySelector(".skip-backward");
-const skipForwardBtn = document.querySelector(".skip-forward");
-const playbackSpeed = document.querySelector(".playback-speed");
+ document.querySelectorAll(".audio-player").forEach(player => {
+    const audio = new Audio(player.getAttribute("data-src"));
+    const playPauseBtn = player.querySelector(".play-pause");
+    const progressBar = player.querySelector(".progress-bar");
+    const currentTime = player.querySelector(".current-time");
+    const totalTime = player.querySelector(".total-time");
+    const skipBackwardBtn = player.querySelector(".skip-backward");
+    const skipForwardBtn = player.querySelector(".skip-forward");
+    const playbackSpeed = player.querySelector(".playback-speed");
 
-playPauseBtn.addEventListener("click", () => {
-    if (audio.paused) {
-        audio.play();
-        playPauseBtn.textContent = "⏸";
-    } else {
-        audio.pause();
-        playPauseBtn.textContent = "▶️";
+    function formatTime(time) {
+        const minutes = Math.floor(time / 60);
+        const seconds = Math.floor(time % 60);
+        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     }
-});
 
-audio.addEventListener("timeupdate", () => {
-    const minutes = Math.floor(audio.currentTime / 60);
-    const seconds = Math.floor(audio.currentTime % 60);
-    currentTime.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    progressBar.value = (audio.currentTime / audio.duration) * 100;
-});
-
-audio.addEventListener("loadedmetadata", () => {
-    const minutes = Math.floor(audio.duration / 60);
-    const seconds = Math.floor(audio.duration % 60);
-    totalTime.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-});
-
-progressBar.addEventListener("input", () => {
-    audio.currentTime = (progressBar.value * audio.duration) / 100;
-});
-
-skipBackwardBtn.addEventListener("click", () => {
-    audio.currentTime -= 10;
-});
-
-skipForwardBtn.addEventListener("click", () => {
-    audio.currentTime += 10;
-});
-
-playbackSpeed.addEventListener("click", () => {
-    if (audio.playbackRate === 1) {
-        audio.playbackRate = 1.5;
-        playbackSpeed.textContent = "Tốc độ phát 1.5x";
-    } else {
-        audio.playbackRate = 1;
-        playbackSpeed.textContent = "Tốc độ phát 1x";
+    function updateProgress() {
+        currentTime.textContent = formatTime(audio.currentTime);
+        progressBar.value = (audio.currentTime / audio.duration) * 100;
     }
+
+    function togglePlayback() {
+        if (audio.paused) {
+            audio.play();
+            playPauseBtn.textContent = "⏸";
+        } else {
+            audio.pause();
+            playPauseBtn.textContent = "▶️";
+        }
+    }
+
+    function toggleSpeed() {
+        audio.playbackRate = audio.playbackRate === 1 ? 1.5 : 1;
+        playbackSpeed.textContent = `Tốc độ phát ${audio.playbackRate}x`;
+    }
+
+    playPauseBtn.addEventListener("click", togglePlayback);
+    audio.addEventListener("timeupdate", updateProgress);
+
+    audio.addEventListener("loadedmetadata", () => {
+        totalTime.textContent = formatTime(audio.duration);
+    });
+
+    progressBar.addEventListener("input", () => {
+        audio.currentTime = (progressBar.value * audio.duration) / 100;
+    });
+
+    skipBackwardBtn.addEventListener("click", () => audio.currentTime -= 10);
+    skipForwardBtn.addEventListener("click", () => audio.currentTime += 10);
+    playbackSpeed.addEventListener("click", toggleSpeed);
 });
 
 </script>
