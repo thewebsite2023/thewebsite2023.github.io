@@ -489,6 +489,7 @@ strong {
           </div>
         </div>
         
+
         <div class="search-news-item">
           <img src="https://i1-vnexpress.vnecdn.net/2025/04/05/luadap-1743849262-4317-1743849512.png?w=320&h=320&q=100&dpr=2&fit=crop&s=aqOZDX6uc61_k3QOT4P7bA" alt="" width="120px" height="100px" class="me-3">
           <div class="search-news-content">
@@ -514,32 +515,54 @@ strong {
         </div>
 
           <div class="search-news-item">
-            <img src="https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2025/4/5/z64775845039825f1be7aa9172a7a70884aabd077f20a9-17438705239541996196351.jpg" alt="" width="120px" height="100px" class="me-3">
+            <img src="https://i.ytimg.com/vi/z3LpBUru0R4/sddefault.jpg" alt="" width="120px" height="100px" class="me-3">
             <div class="search-news-content">
                 <a href="#dung_lai_hien_truong_lanh_leo_vu_an" class="search-news-title">Dựng Lại Hiện Trường Lạnh Lẽo Vụ Án Người Mẹ Sát Hại Con Vì 4 Tỷ Tiền Bảo Hiểm, Ngàn Người Theo Dõi</a>
                 <div class="search-news-time">Nguồn: YouTube</div>
           </div>
         </div>
+
+        <div class="search-news-item">
+          <img src="https://i.ytimg.com/vi_webp/Cw9I6H1DopU/sddefault.webp" alt="" width="120px" height="100px" class="me-3">
+          <div class="search-news-content">
+              <a href="#tu_1_tinh_tiet_rung_ron_ma_khong_ai_ngo_toi" class="search-news-title">TỪ 1 TÌNH TIẾT RÙNG RỢN MÀ KHÔNG AI NGỜ TỚI - CÔNG AN ĐÃ VẠCH TRẦN TỘI ÁC CỦA KẺ SÁT HẠI CON RUỘT</a>
+              <div class="search-news-time">Nguồn: YouTube</div>
+        </div>
+      </div>
+
+        <div class="search-news-item">
+          <img src="https://i1-vnexpress.vnecdn.net/2025/02/27/Thumbgiaima19-1740623034-4624-1740623824.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=nC5gO0Egyt2-dwrJBpi_NA" alt="" width="120px" height="100px" class="me-3">
+          <div class="search-news-content">
+              <a href="#hoi_chung_bi_an_tung_tan_cong_1-500_vien_chuc_ngoai_giao_my" class="search-news-title">Hội chứng bí ẩn từng tấn công 1.500 viên chức ngoại giao Mỹ</a>
+              <div class="search-news-time">Nguồn: VnExpress</div>
+          </div>
+        </div>
           <script>
-            document.getElementById("searchInput").addEventListener("keyup", function() {
-              let filter = this.value.toLowerCase();
-              let items = document.querySelectorAll(".search-news-item");
-              let noResults = document.getElementById("noResults");
-              let found = false;
-            
-              items.forEach(item => {
-                  let title = item.querySelector(".search-news-title").textContent.toLowerCase();
-                  if (title.includes(filter)) {
-                      item.style.display = "flex";
-                      found = true;
-                  } else {
-                      item.style.display = "none";
-                  }
-              });
-            
-              // Hiển thị hoặc ẩn thông báo không tìm thấy kết quả
-              noResults.style.display = found ? "none" : "block";
-            });
+           document.getElementById("searchInput").addEventListener("keyup", function () {
+  let filter = removeDiacritics(this.value.toLowerCase());
+  let items = document.querySelectorAll(".search-news-item");
+  let noResults = document.getElementById("noResults");
+  let found = false;
+
+  items.forEach(item => {
+    let title = item.querySelector(".search-news-title").textContent.toLowerCase();
+    let normalizedTitle = removeDiacritics(title);
+
+    if (normalizedTitle.includes(filter)) {
+      item.style.display = "flex";
+      found = true;
+    } else {
+      item.style.display = "none";
+    }
+  });
+
+  noResults.style.display = found ? "none" : "block";
+});
+
+// Hàm loại bỏ dấu tiếng Việt
+function removeDiacritics(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
             </script>
       </div>
       <div class="modal-footer">
@@ -678,7 +701,14 @@ strong {
       <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#video">Video</a></h3></div>
       <hr>
       <div class="news-item">
-        <img src="https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2025/4/5/z64775845039825f1be7aa9172a7a70884aabd077f20a9-17438705239541996196351.jpg" alt="" width="150px" class="me-3">
+        <img src="https://i.ytimg.com/vi_webp/Cw9I6H1DopU/sddefault.webp" alt="" width="150px" class="me-3">
+        <div class="news-content">
+            <a href="#tu_1_tinh_tiet_rung_ron_ma_khong_ai_ngo_toi" class="news-title">TỪ 1 TÌNH TIẾT RÙNG RỢN MÀ KHÔNG AI NGỜ TỚI - CÔNG AN ĐÃ VẠCH TRẦN TỘI ÁC CỦA KẺ SÁT HẠI CON RUỘT</a>
+            <div class="news-time">Nguồn: YouTube</div>
+        </div>
+      </div>
+      <div class="news-item">
+        <img src="https://i.ytimg.com/vi/z3LpBUru0R4/sddefault.jpg" alt="" width="150px" class="me-3">
         <div class="news-content">
             <a href="#dung_lai_hien_truong_lanh_leo_vu_an" class="news-title">Dựng Lại Hiện Trường Lạnh Lẽo Vụ Án Người Mẹ Sát Hại Con Vì 4 Tỷ Tiền Bảo Hiểm, Ngàn Người Theo Dõi</a>
             <div class="news-time">Nguồn: YouTube</div>
@@ -705,6 +735,13 @@ strong {
     <div id="podcast" class="page d-none">
       <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#podcast">Podcast</a></h3></div>
       <hr>
+      <div class="news-item">
+        <img src="https://i1-vnexpress.vnecdn.net/2025/02/27/Thumbgiaima19-1740623034-4624-1740623824.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=nC5gO0Egyt2-dwrJBpi_NA" alt="" width="150px" class="me-3">
+        <div class="news-content">
+            <a href="#hoi_chung_bi_an_tung_tan_cong_1-500_vien_chuc_ngoai_giao_my" class="news-title">Hội chứng bí ẩn từng tấn công 1.500 viên chức ngoại giao Mỹ</a>
+            <div class="news-time">Nguồn: VnExpress</div>
+        </div>
+    </div>
       <div class="news-item">
         <img src="https://i1-vnexpress.vnecdn.net/2025/04/11/7896440bb438473eac78f84da52391-4178-7945-1744339281.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=iTEJlS66WjdsnE-4lohoxA" alt="" width="150px" class="me-3">
         <div class="news-content">
@@ -789,6 +826,18 @@ strong {
 <div class="fb-comments" data-href="https://thewebsite2023.github.io/#dung_lai_hien_truong_lanh_leo_vu_an" data-width="" data-numposts="5"></div>
     <hr>
     <a href="#trang_chu" class="btn btn-primary">< Quay lại trang chủ</a>
+    </div>
+
+    <div id="tu_1_tinh_tiet_rung_ron_ma_khong_ai_ngo_toi" class="page d-none">
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#video">Video</a> > <a href="#tu_1_tinh_tiet_rung_ron_ma_khong_ai_ngo_toi">Từ 1 tình tiết...</a></h3></div>
+    <hr>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Cw9I6H1DopU?si=GEgzml6-fS0XQtiB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h5>TỪ 1 TÌNH TIẾT RÙNG RỢN MÀ KHÔNG AI NGỜ TỚI - CÔNG AN ĐÃ VẠCH TRẦN TỘI ÁC CỦA KẺ SÁT HẠI CON RUỘT</h5>
+    <br>
+      <h3>Bình luận về bài viết</h3>
+      <div class="fb-comments" data-href="https://thewebsite2023.github.io/#tu_1_tinh_tiet_rung_ron_ma_khong_ai_ngo_toi" data-width="" data-numposts="5"></div>
+          <hr>
+          <a href="#trang_chu" class="btn btn-primary">< Quay lại trang chủ</a>
     </div>
 
         <div id="dot_ngot_dung_day_them_anh_huong_tam_ly_hoc_sinh" class="page d-none">
@@ -1116,6 +1165,40 @@ strong {
     <div class="fb-comments" data-href="https://thewebsite2023.github.io/#pha_an_tu_bo_xuong_kho" data-width="" data-numposts="5"></div>
     <hr>
     <a href="#trang_chu" class="btn btn-primary">< Quay lại trang chủ</a>
+    </div>
+    <div id="hoi_chung_bi_an_tung_tan_cong_1-500_vien_chuc_ngoai_giao_my" class="page d-none">
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#podcast">Podcast</a> > <a href="#hoi_chung_bi_an_tung_tan_cong_1-500_vien_chuc_ngoai_giao_my">Hội chứng bí ẩn....</a></h3></div>
+      <hr>
+      <div class="audio-player-container"> 
+        <div class="audio-player" data-src="https://v.vnecdn.net/vnexpress/video/audio/2025/02/27/hoi-chung-bi-an-tan-cong-1-500-vien-chuc-ngoai-giao-my-1740623825.mp3">
+            <div class="audio-info">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/02/27/Thumbgiaima19-1740623034-4624-1740623824.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=nC5gO0Egyt2-dwrJBpi_NA" alt="Ảnh bìa âm thanh" class="audio-image">
+                <div class="audio-details">
+                    <h2 class="audio-title">Hội chứng bí ẩn từng tấn công 1.500 viên chức ngoại giao Mỹ</h2>
+                    <p class="audio-meta">Thứ năm, 27/2/2025, 11:00 (GMT+7)</p>
+                    <p class="audio-description">Các nghiên cứu chỉ ra nguyên nhân khiến các nhân viên ngoại giao Mỹ đau đầu dữ dội và nghe thấy các âm thanh lạ vào ban đêm đến từ vi sóng hoặc chứng phân ly tập thể vào cuối năm 2016.</p>
+                </div>
+            </div>
+            <div class="audio-controls">
+                <div class="time-controls">
+                    <span class="current-time">00:00</span>
+                    <input type="range" min="0" max="100" value="0" class="progress-bar">
+                    <span class="total-time">00:00</span>
+                </div>
+                <div class="playback-controls">
+                    <button class="skip-backward">◀ 10</button>
+                    <button class="play-pause">▶</button>
+                    <button class="skip-forward">10 ▶</button>
+                    <span class="playback-speed">Tốc độ phát 1x</span>
+                </div>
+            </div>
+        </div>
+    </div>
+      <br>
+      <h3>Bình luận về bài viết</h3>
+      <div class="fb-comments" data-href="https://thewebsite2023.github.io/#hoi_chung_bi_an_tung_tan_cong_1-500_vien_chuc_ngoai_giao_my" data-width="" data-numposts="5"></div>
+      <hr>
+      <a href="#trang_chu" class="btn btn-primary">< Quay lại trang chủ</a>
     </div>
       </div>
 <script>
