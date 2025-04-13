@@ -323,6 +323,42 @@ strong {
     font-size: 0.9em;
     color: #555;
 }
+
+.nav-tabs-custom {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.nav-tabs-custom .nav-link {
+  font-weight: bold;
+  color: #555;
+  position: relative;
+  margin: 0 10px;
+  padding-bottom: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.nav-tabs-custom .nav-link:hover {
+  color: #007bff;
+}
+
+.nav-tabs-custom .nav-link.active {
+  color: #007bff;
+}
+
+.nav-tabs-custom .nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: hotpink;
+  border-radius: 3px;
+}
+
 </style>
 </head>
 <body>
@@ -345,7 +381,7 @@ strong {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav nav-tabs-custom me-auto mb-2 mb-lg-0" id="customNavTabs">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#trang_chu">Trang chủ</a>
               </li>
@@ -1166,6 +1202,35 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 });
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll("#customNavTabs .nav-link");
+  
+    function setActiveLinkFromHash() {
+      const currentHash = window.location.hash;
+      navLinks.forEach(link => {
+        if (link.getAttribute("href") === currentHash) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    }
+  
+    navLinks.forEach(link => {
+      link.addEventListener("click", function () {
+        navLinks.forEach(l => l.classList.remove("active"));
+        this.classList.add("active");
+      });
+    });
+  
+    // Tự động active link khi tải lại trang theo URL hash
+    setActiveLinkFromHash();
+  
+    // Nếu người dùng thay đổi hash bằng tay
+    window.addEventListener("hashchange", setActiveLinkFromHash);
+  });
+  </script>  
 <script>
     document.addEventListener("DOMContentLoaded", function () {
     if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
