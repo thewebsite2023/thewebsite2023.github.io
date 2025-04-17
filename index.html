@@ -72,6 +72,200 @@ document.onclick=reEnable
     };
 </script>
 <style>
+    body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            max-width: 90%;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: calc(100% - 12px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.85em;
+        }
+
+        .success-message {
+            color: green;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.85em;
+        }
+
+        .info-message {
+            color: blue;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.85em;
+            display: none;
+        }
+
+        .form-navigation {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        .form-navigation a {
+            color: #007bff;
+            text-decoration: none;
+            cursor: pointer;
+            transition: text-decoration 0.3s ease;
+        }
+
+        .form-navigation a:hover {
+            text-decoration: underline;
+        }
+
+        /* Account Info Section */
+        #accountInfo {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #accountInfo p {
+            font-size: 1.1em;
+        }
+
+        #accountInfo button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        #accountInfo button.logout {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        #accountInfo button.delete {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        #accountInfo button.changePassword,
+        #accountInfo button.updateEmail {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Update Email Form */
+        #updateEmailForm, #changePasswordForm, #forgot-password-form {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #updateEmailForm input, #changePasswordForm input, #forgot-password-form input {
+            width: calc(100% - 12px);
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        #updateEmailForm button, #changePasswordForm button, #forgot-password-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        #accountDeleted {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #accountDeleted p {
+            font-size: 1.1em;
+            color: red;
+            margin-bottom: 15px;
+        }
+
+        #accountDeleted button {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        #accountDeleted button:hover {
+            background-color: #545b62;
+        }
             .news-item {
             display: flex;
             align-items: center;
@@ -397,6 +591,9 @@ strong {
               <li class="nav-item">
                 <a class="nav-link" href="#lien_he">Thông tin</a>
               </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#dang_nhap""Đăng nhập</a>
+                </li>
             </ul>
         <form class="d-flex" role="search">
          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#searchModal">
@@ -696,6 +893,117 @@ function removeDiacritics(str) {
         <hr>
         <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
     </div>
+
+     <div id="dang_nhap" class="page d-none>
+   <div class="container">
+        <div id="login-form">
+            <h2>Đăng nhập</h2>
+            <form id="loginSubmitForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Mật khẩu:</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit">Đăng nhập</button>
+                <div class="error-message" id="loginError"></div>
+                <div class="success-message" id="loginSuccess"></div>
+            </form>
+            <div class="form-navigation">
+                <a id="showForgotPasswordForm">Quên mật khẩu?</a> |
+                <a id="showSignupForm">Đăng ký</a>
+            </div>
+        </div>
+
+        <div id="signup-form">
+            <h2>Đăng ký</h2>
+            <form id="signupSubmitForm">
+                <div class="form-group">
+                    <label for="signupEmail">Email:</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Mật khẩu:</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <button type="submit">Đăng ký</button>
+                <div class="error-message" id="signupError"></div>
+                <div class="success-message" id="signupSuccess"></div>
+            </form>
+            <div class="form-navigation">
+                <a id="showLoginFormFromSignup">Quay lại đăng nhập</a>
+            </div>
+        </div>
+
+        <div id="forgot-password-form">
+            <h2>Khôi phục mật khẩu</h2>
+            <form id="resetSubmitForm">
+                <div class="form-group">
+                    <label for="resetEmail">Email:</label>
+                    <input type="email" id="resetEmail" required>
+                </div>
+                <button type="submit">Gửi email khôi phục</button>
+                <div class="error-message" id="resetError"></div>
+                <div class="success-message" id="resetSuccess"></div>
+            </form>
+            <div class="form-navigation">
+                <a id="showLoginFormFromReset">Quay lại đăng nhập</a>
+            </div>
+        </div>
+
+        <div id="accountInfo">
+            <p>Xin chào, <span id="accountEmail"></span></p>
+            <p>Email của bạn: <span id="currentEmail"></span></p>
+            <button id="logoutButton" class="logout">Đăng xuất</button>
+            <button id="deleteAccountButton" class="delete">Xóa tài khoản</button>
+            <button id="changePasswordButton" class="changePassword">Đổi mật khẩu</button>
+            <button id="updateEmailButton" class="updateEmail">Cập nhật email</button>
+        </div>
+
+        <div id="updateEmailForm">
+            <h2>Cập nhật email</h2>
+            <form id="updateEmailSubmitForm">
+                <div class="form-group">
+                    <label for="newEmail">Email mới:</label>
+                    <input type="email" id="newEmail" required>
+                </div>
+                <button type="submit">Cập nhật email</button>
+                <div class="error-message" id="updateEmailError"></div>
+                <div class="success-message" id="updateEmailSuccess"></div>
+            </form>
+            <button id="cancelUpdateEmail">Hủy</button>
+        </div>
+
+        <div id="changePasswordForm">
+            <h2>Đổi mật khẩu</h2>
+            <form id="changePasswordSubmitForm">
+                <div class="form-group">
+                    <label for="currentPassword">Mật khẩu hiện tại:</label>
+                    <input type="password" id="currentPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">Mật khẩu mới:</label>
+                    <input type="password" id="newPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmNewPassword">Xác nhận mật khẩu mới:</label>
+                    <input type="password" id="confirmNewPassword" required>
+                </div>
+                <button type="submit">Đổi mật khẩu</button>
+                <div class="error-message" id="changePasswordError"></div>
+                <div class="success-message" id="changePasswordSuccess"></div>
+            </form>
+            <button id="cancelChangePassword">Hủy</button>
+        </div>
+
+        <div id="accountDeleted">
+            <p class="success-message">Tài khoản đã bị xóa.</p>
+            <button id="backToLoginFromDelete">Quay lại đăng nhập</button>
+        </div>
+     </div>
+ </div>
      
     <div id="video" class="page d-none">
       <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#video">Video</a></h3></div>
@@ -1332,5 +1640,317 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 });
     </script>
+<script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification, signOut, deleteUser, updateEmail, updateProfile, updatePassword, reauthenticateWithCredential, EmailAuthProvider } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1Jx3BVxVp0oaX5y2EdPLOmgcau6E8P8M",
+  authDomain: "webpage-news.firebaseapp.com",
+  projectId: "webpage-news",
+  storageBucket: "webpage-news.firebasestorage.app",
+  messagingSenderId: "95738658476",
+  appId: "1:95738658476:web:ca38f584a24b71063d6909",
+  measurementId: "G-3KJR1G7EXF"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const loginFormContainer = document.getElementById('login-form');
+        const signupFormContainer = document.getElementById('signup-form');
+        const forgotPasswordFormContainer = document.getElementById('forgot-password-form');
+        const accountInfoDiv = document.getElementById('accountInfo');
+        const updateEmailFormDiv = document.getElementById('updateEmailForm');
+        const changePasswordFormDiv = document.getElementById('changePasswordForm');
+        const accountDeletedDiv = document.getElementById('accountDeleted');
+        const backToLoginFromDeleteButton = document.getElementById('backToLoginFromDelete');
+        const cancelUpdateEmailButton = document.getElementById('cancelUpdateEmail');
+        const cancelChangePasswordButton = document.getElementById('cancelChangePassword');
+
+        const showSignupLink = document.getElementById('showSignupForm');
+        const showForgotPasswordLink = document.getElementById('showForgotPasswordForm');
+        const showLoginFormFromSignupLink = document.getElementById('showLoginFormFromSignup');
+        const showLoginFormFromResetLink = document.getElementById('showLoginFormFromReset');
+        const updateEmailButton = document.getElementById('updateEmailButton');
+        const changePasswordButton = document.getElementById('changePasswordButton');
+        const logoutButton = document.getElementById('logoutButton');
+        const deleteAccountButton = document.getElementById('deleteAccountButton');
+
+        // Function to hide all forms except the one to show
+        function hideAllForms() {
+            loginFormContainer.style.display = 'none';
+            signupFormContainer.style.display = 'none';
+            forgotPasswordFormContainer.style.display = 'none';
+            accountInfoDiv.style.display = 'none';
+            updateEmailFormDiv.style.display = 'none';
+            changePasswordFormDiv.style.display = 'none';
+            accountDeletedDiv.style.display = 'none';
+        }
+
+        // Event listeners for navigation
+        showSignupLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            hideAllForms();
+            signupFormContainer.style.display = 'block';
+        });
+
+        showForgotPasswordLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            hideAllForms();
+            forgotPasswordFormContainer.style.display = 'block';
+        });
+
+        showLoginFormFromSignupLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            hideAllForms();
+            loginFormContainer.style.display = 'block';
+        });
+
+        showLoginFormFromResetLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            hideAllForms();
+            loginFormContainer.style.display = 'block';
+        });
+
+        updateEmailButton.addEventListener('click', () => {
+            hideAllForms();
+            updateEmailFormDiv.style.display = 'block';
+        });
+
+        changePasswordButton.addEventListener('click', () => {
+            hideAllForms();
+            changePasswordFormDiv.style.display = 'block';
+        });
+
+        cancelUpdateEmailButton.addEventListener('click', () => {
+            hideAllForms();
+            accountInfoDiv.style.display = 'block';
+        });
+
+        cancelChangePasswordButton.addEventListener('click', () => {
+            hideAllForms();
+            accountInfoDiv.style.display = 'block';
+        });
+
+        backToLoginFromDeleteButton.addEventListener('click', () => {
+            hideAllForms();
+            loginFormContainer.style.display = 'block';
+            // Prevent going back
+            window.history.replaceState(null, null, window.location.pathname + window.location.search);
+        });
+
+        // Function to show account info
+        function showAccountInfo(user) {
+            hideAllForms();
+            accountInfoDiv.style.display = 'block';
+            document.getElementById('accountEmail').textContent = user.email;
+            document.getElementById('currentEmail').textContent = user.email;
+        }
+
+        // Handle user logout
+        logoutButton.addEventListener('click', async () => {
+            await signOut(auth);
+            hideAllForms();
+            loginFormContainer.style.display = 'block';
+        });
+
+        // Handle delete account
+        deleteAccountButton.addEventListener('click', async () => {
+            const user = auth.currentUser;
+            if (user && confirm('Bạn có chắc chắn muốn xóa tài khoản này? Thao tác này không thể hoàn tác.')) {
+                try {
+                    await deleteUser(user);
+                    hideAllForms();
+                    accountDeletedDiv.style.display = 'block';
+                    // Prevent going back
+                    window.history.replaceState(null, null, window.location.pathname + window.location.search);
+                } catch (error) {
+                    document.getElementById('accountInfo').innerHTML = `<p class="error-message">Lỗi khi xóa tài khoản: ${error.message}</p>`;
+                }
+            }
+        });
+
+        // Handle update email
+        document.getElementById('updateEmailSubmitForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const newEmail = document.getElementById('newEmail').value;
+            const user = auth.currentUser;
+            if (user) {
+                try {
+                    await updateEmail(user, newEmail);
+                    document.getElementById('updateEmailSuccess').textContent = 'Cập nhật email thành công!';
+                    document.getElementById('updateEmailError').textContent  = '';
+                    document.getElementById('currentEmail').textContent = newEmail;
+                    setTimeout(() => {
+                        hideAllForms();
+                        accountInfoDiv.style.display = 'block';
+                    }, 2000);
+                } catch (error) {
+                    document.getElementById('updateEmailError').textContent = `Lỗi khi cập nhật email: ${error.message}`;
+                    document.getElementById('updateEmailSuccess').textContent = '';
+                }
+            } else {
+                document.getElementById('updateEmailError').textContent = 'Vui lòng nhập email mới.';
+            }
+        });
+
+        // Handle change password
+        document.getElementById('changePasswordSubmitForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+            const user = auth.currentUser;
+
+            if (!user) {
+                document.getElementById('changePasswordError').textContent = 'Không có người dùng nào đăng nhập.';
+                return;
+            }
+
+            if (newPassword !== confirmNewPassword) {
+                document.getElementById('changePasswordError').textContent = 'Mật khẩu mới và xác nhận không khớp.';
+                return;
+            }
+
+            if (newPassword.length < 6) {
+                document.getElementById('changePasswordError').textContent = 'Mật khẩu mới phải có ít nhất 6 ký tự.';
+                return;
+            }
+
+            if (!currentPassword) {
+                document.getElementById('changePasswordError').textContent = 'Vui lòng nhập mật khẩu hiện tại.';
+                return;
+            }
+
+            const credential = EmailAuthProvider.credential(user.email, currentPassword);
+
+            try {
+                await reauthenticateWithCredential(user, credential);
+                await updatePassword(user, newPassword);
+                document.getElementById('changePasswordSuccess').textContent = 'Đổi mật khẩu thành công!';
+                document.getElementById('changePasswordError').textContent = '';
+                setTimeout(() => {
+                    hideAllForms();
+                    accountInfoDiv.style.display = 'block';
+                }, 2000);
+            } catch (error) {
+                if (error.code === 'auth/wrong-password') {
+                    document.getElementById('changePasswordError').textContent = 'Mật khẩu hiện tại không đúng.';
+                } else {
+                    document.getElementById('changePasswordError').textContent = `Lỗi khi đổi mật khẩu: ${error.message}`;
+                }
+                document.getElementById('changePasswordSuccess').textContent = '';
+            } finally {
+                document.getElementById('currentPassword').value = '';
+                document.getElementById('newPassword').value = '';
+                document.getElementById('confirmNewPassword').value = '';
+            }
+        });
+
+        // Handle login
+        document.getElementById('loginSubmitForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            document.getElementById('loginError').textContent = '';
+            document.getElementById('loginSuccess').textContent = '';
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                if (user) {
+                    if (!user.emailVerified) {
+                        await sendEmailVerification(auth.currentUser);
+                        document.getElementById('loginSuccess').textContent = 'Đăng nhập thành công! Vui lòng kiểm tra email để xác thực tài khoản.';
+                    } else {
+                        showAccountInfo(user);
+                    }
+                }
+            } catch (error) {
+                document.getElementById('loginError').textContent = getErrorMessage(error.code);
+            }
+        });
+
+        // Handle signup
+        document.getElementById('signupSubmitForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            document.getElementById('signupError').textContent = '';
+            document.getElementById('signupSuccess').textContent = '';
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                await sendEmailVerification(user);
+                document.getElementById('signupSuccess').textContent = 'Đăng ký thành công! Vui lòng kiểm tra email để xác thực tài khoản.';
+                setTimeout(() => {
+                    hideAllForms();
+                    loginFormContainer.style.display = 'block';
+                }, 3000);
+            } catch (error) {
+                document.getElementById('signupError').textContent = getErrorMessage(error.code);
+            } finally {
+                document.getElementById('signupEmail').value = '';
+                document.getElementById('signupPassword').value = '';
+            }
+        });
+
+        // Handle forgot password
+        document.getElementById('resetSubmitForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('resetEmail').value;
+            document.getElementById('resetError').textContent = '';
+            document.getElementById('resetSuccess').textContent = '';
+            try {
+                await sendPasswordResetEmail(auth, email);
+                document.getElementById('resetSuccess').textContent = 'Email khôi phục mật khẩu đã được gửi. Vui lòng kiểm tra hộp thư đến.';
+            } catch (error) {
+                document.getElementById('resetError').textContent = getErrorMessage(error.code);
+            } finally {
+                document.getElementById('resetEmail').value = '';
+            }
+        });
+
+        // Initially hide all forms and show login
+        hideAllForms();
+        loginFormContainer.style.display = 'block';
+        forgotPasswordFormContainer.style.display = 'none'; // Initially hide forgot password form
+        accountInfoDiv.style.display = 'none'; // Initially hide account info
+        updateEmailFormDiv.style.display = 'none'; // Initially hide update email form
+        changePasswordFormDiv.style.display = 'none'; // Initially hide change password form
+        accountDeletedDiv.style.display = 'none'; // Initially hide account deleted message
+
+        // Listen for auth state changes
+        auth.onAuthStateChanged(user => {
+            if (user && user.emailVerified) {
+                showAccountInfo(user);
+            } else if (user && !user.emailVerified) {
+                hideAllForms();
+                loginFormContainer.style.display = 'block';
+                document.getElementById('loginSuccess').textContent = 'Vui lòng xác thực email để tiếp tục.';
+            } else {
+                hideAllForms();
+                loginFormContainer.style.display = 'block';
+            }
+        });
+        function getErrorMessage(errorCode) {
+            switch (errorCode) {
+                case 'auth/user-disabled':
+                    return 'Tài khoản này hiện đang bị khóa.'
+                case 'auth/invalid-email':
+                    return 'Địa chỉ email không hợp lệ.';
+                case 'auth/user-not-found':
+                    return 'Không tìm thấy người dùng với email này.';
+                case 'auth/wrong-password':
+                    return 'Mật khẩu không đúng.';
+                case 'auth/email-already-in-use':
+                    return 'Địa chỉ email này đã được sử dụng.';
+                case 'auth/weak-password':
+                    return 'Mật khẩu quá yếu. Mật khẩu phải có ít nhất 6 ký tự.';
+                default:
+                    return 'Đã có lỗi xảy ra. Vui lòng thử lại sau.';
+            }
+            }
+                </script>
 </body>
 </html>
