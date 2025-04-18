@@ -315,7 +315,7 @@
             try {
                 await reauthenticateWithCredential(user, credential);
                 const actionCodeSettings = {
-                    url: 'https://thewebsite2023.github.io/reset-password', // SỬA LỖI: Đảm bảo URL này được cho phép
+                    url: 'https://thewebsite2023.github.io/', // SỬA LỖI: Đảm bảo URL này được cho phép
                     handleCodeInApp: false
                 };
                 await updatePassword(user, newPassword);
@@ -352,7 +352,7 @@
                 if (user) {
                     if (!user.emailVerified) {
                         const actionCodeSettings = {
-                            url: 'https://thewebsite2023.github.io/verify-email', // SỬA LỖI: Đảm bảo URL này được cho phép
+                            url: 'https://thewebsite2023.github.io/verify-email',
                             handleCodeInApp: false
                         };
                         await sendEmailVerification(auth.currentUser, actionCodeSettings);
@@ -362,7 +362,13 @@
                     }
                 }
             } catch (error) {
-                document.getElementById('loginError').textContent = getErrorMessage(error.code);
+                // Xử lý tất cả các lỗi xác thực chung chung
+                if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
+                    document.getElementById('loginError').textContent = 'Email hoặc mật khẩu không đúng. Vui lòng thử lại sau.';
+                } else {
+                    // Xử lý các lỗi khác (ví dụ: kết nối mạng)
+                    document.getElementById('loginError').textContent = getErrorMessage(error.code);
+                }
             }
         });
 
