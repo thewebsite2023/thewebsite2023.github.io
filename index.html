@@ -1473,7 +1473,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 });
     </script>
-    <script type="module">
+       <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification, signOut, deleteUser, updateEmail, updateProfile, updatePassword, reauthenticateWithCredential, EmailAuthProvider } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
@@ -1550,6 +1550,8 @@ window.addEventListener("DOMContentLoaded", () => {
                     return 'Địa chỉ email này đã được sử dụng.';
                 case 'auth/weak-password':
                     return 'Mật khẩu quá yếu. Mật khẩu phải có ít nhất 6 ký tự.';
+                case 'auth/invalid-continue-uri': // Thêm xử lý lỗi này (mặc dù nó nên được fix ở cấu hình)
+                    return 'Đường dẫn chuyển hướng không hợp lệ. Vui lòng kiểm tra cấu hình Firebase.';
                 default:
                     return 'Đã có lỗi xảy ra. Vui lòng thử lại sau.';
             }
@@ -1591,20 +1593,20 @@ window.addEventListener("DOMContentLoaded", () => {
             const user = auth.currentUser;
             if (user) {
                 try {
-                    await updateEmail(user, newEmail);
-                    document.getElementById('updateEmailSuccess').textContent = 'Cập nhật email thành công!';
+                    const actionCodeSettings = {
+                        url: 'https://thewebsite2023.github.io', // SỬA LỖI: Đảm bảo URL này được cho phép
+                        handleCodeInApp: false // Phải là false nếu bạn muốn chuyển hướng đến URL
+                    };
+                    await sendEmailVerification(user, actionCodeSettings);
+                    document.getElementById('updateEmailSuccess').textContent = 'Email xác minh đã được gửi đến ' + newEmail + '. Vui lòng kiểm tra hộp thư đến và nhấp vào liên kết để xác minh trước khi email của bạn được cập nhật.';
                     document.getElementById('updateEmailError').textContent = '';
-                    document.getElementById('currentEmail').textContent = newEmail;
-                    setTimeout(() => {
-                        hideAllForms();
-                        accountInfoDiv.style.display = 'block';
-                    }, 2000);
+                    // Optionally disable the update email button or show a waiting message
                 } catch (error) {
-                    document.getElementById('updateEmailError').textContent = `Lỗi khi cập nhật email: ${error.message}`;
+                    document.getElementById('updateEmailError').textContent = `Lỗi khi gửi email xác minh: ${error.message}`;
                     document.getElementById('updateEmailSuccess').textContent = '';
                 }
             } else {
-                document.getElementById('updateEmailError').textContent = 'Vui lòng nhập email mới.';
+                document.getElementById('updateEmailError').textContent = 'Không có người dùng nào đăng nhập.';
             }
         });
 
@@ -1640,8 +1642,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
             try {
                 await reauthenticateWithCredential(user, credential);
+                const actionCodeSettings = {
+                    url: 'https://thewebsite2023.github.io/reset-password', // SỬA LỖI: Đảm bảo URL này được cho phép
+                    handleCodeInApp: false
+                };
                 await updatePassword(user, newPassword);
-                document.getElementById('changePasswordSuccess').textContent = 'Đổi mật khẩu thành công!';
+                                document.getElementById('changePasswordSuccess').textContent = 'Đổi mật khẩu thành công!';
                 document.getElementById('changePasswordError').textContent = '';
                 setTimeout(() => {
                     hideAllForms();
@@ -1673,7 +1679,11 @@ window.addEventListener("DOMContentLoaded", () => {
                 const user = userCredential.user;
                 if (user) {
                     if (!user.emailVerified) {
-                        await sendEmailVerification(auth.currentUser);
+                        const actionCodeSettings = {
+                            url: 'https://thewebsite2023.github.io/verify-email', // SỬA LỖI: Đảm bảo URL này được cho phép
+                            handleCodeInApp: false
+                        };
+                        await sendEmailVerification(auth.currentUser, actionCodeSettings);
                         document.getElementById('loginSuccess').textContent = 'Đăng nhập thành công! Vui lòng kiểm tra email để xác thực tài khoản.';
                     } else {
                         showAccountInfo(user);
@@ -1694,7 +1704,11 @@ window.addEventListener("DOMContentLoaded", () => {
             try {
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
-                await sendEmailVerification(user);
+                const actionCodeSettings = {
+                    url: 'https://thewebsite2023.github.io/verify-email', // SỬA LỖI: Đảm bảo URL này được cho phép
+                    handleCodeInApp: false
+                };
+                await sendEmailVerification(user, actionCodeSettings);
                 document.getElementById('signupSuccess').textContent = 'Đăng ký thành công! Vui lòng kiểm tra email để xác thực tài khoản.';
                 setTimeout(() => {
                     hideAllForms();
@@ -1715,7 +1729,11 @@ window.addEventListener("DOMContentLoaded", () => {
             document.getElementById('resetError').textContent = '';
             document.getElementById('resetSuccess').textContent = '';
             try {
-                await sendPasswordResetEmail(auth, email);
+                const actionCodeSettings = {
+                    url: 'https://thewebsite2023.github.io/reset-password', // SỬA LỖI: Đảm bảo URL này được cho phép
+                    handleCodeInApp: false
+                };
+                await sendPasswordResetEmail(auth, email, actionCodeSettings);
                 document.getElementById('resetSuccess').textContent = 'Email khôi phục mật khẩu đã được gửi. Vui lòng kiểm tra hộp thư đến.';
             } catch (error) {
                 document.getElementById('resetError').textContent = getErrorMessage(error.code);
@@ -1741,6 +1759,6 @@ window.addEventListener("DOMContentLoaded", () => {
                 loginFormContainer.style.display = 'block';
             }
         });
-    </script>
+       </script>
 </body>
 </html>
