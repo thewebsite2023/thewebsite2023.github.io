@@ -266,7 +266,7 @@
             if (user) {
                 try {
                     const actionCodeSettings = {
-                        url: 'https://thewebsite2023.github.io', // SỬA LỖI: Đảm bảo URL này được cho phép
+                        url: 'https://thewebsite2023.github.io/login.html', // SỬA LỖI: Đảm bảo URL này được cho phép
                         handleCodeInApp: false // Phải là false nếu bạn muốn chuyển hướng đến URL
                     };
                     await sendEmailVerification(user, actionCodeSettings);
@@ -315,7 +315,7 @@
             try {
                 await reauthenticateWithCredential(user, credential);
                 const actionCodeSettings = {
-                    url: 'https://thewebsite2023.github.io/', // SỬA LỖI: Đảm bảo URL này được cho phép
+                    // SỬA LỖI: Đảm bảo URL này được cho phép
                     handleCodeInApp: false
                 };
                 await updatePassword(user, newPassword);
@@ -352,6 +352,7 @@
                 if (user) {
                     if (!user.emailVerified) {
                         const actionCodeSettings = {
+                            url: 'https://thewebsite2023.github.io/login.html', 
                             handleCodeInApp: false
                         };
                         await sendEmailVerification(auth.currentUser, actionCodeSettings);
@@ -382,7 +383,7 @@
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
                 const actionCodeSettings = {
-                    url: 'https://thewebsite2023.github.io/verify-email', // SỬA LỖI: Đảm bảo URL này được cho phép
+                   url: 'https://thewebsite2023.github.io/login.html',  // SỬA LỖI: Đảm bảo URL này được cho phép
                     handleCodeInApp: false
                 };
                 await sendEmailVerification(user, actionCodeSettings);
@@ -407,7 +408,7 @@
             document.getElementById('resetSuccess').textContent = '';
             try {
                 const actionCodeSettings = {
-                    url: 'https://thewebsite2023.github.io/reset-password', // SỬA LỖI: Đảm bảo URL này được cho phép
+                    url: 'https://thewebsite2023.github.io/login.html',  // SỬA LỖI: Đảm bảo URL này được cho phép
                     handleCodeInApp: false
                 };
                 await sendPasswordResetEmail(auth, email, actionCodeSettings);
@@ -439,4 +440,4 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
-</html>
+                        </html>
