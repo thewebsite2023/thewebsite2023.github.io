@@ -352,7 +352,6 @@
                 if (user) {
                     if (!user.emailVerified) {
                         const actionCodeSettings = {
-                            url: 'https://thewebsite2023.github.io/verify-email',
                             handleCodeInApp: false
                         };
                         await sendEmailVerification(auth.currentUser, actionCodeSettings);
