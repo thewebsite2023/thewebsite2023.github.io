@@ -215,7 +215,7 @@
                 case 'auth/invalid-email':
                     return 'Địa chỉ email không hợp lệ.';
                 case 'auth/user-not-found':
-                    return 'Không tìm thấy người dùng với email này.';
+                    return 'Không tìm thấy người dùng với email này. Nếu bạn chưa có tài khoản, hãy đăng ký ngay!';
                 case 'auth/wrong-password':
                     return 'Mật khẩu không đúng.';
                 case 'auth/email-already-in-use':
@@ -363,7 +363,7 @@
                 }
             } catch (error) {
                 // Xử lý tất cả các lỗi xác thực chung chung
-                if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
+                if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') {
                     document.getElementById('loginError').textContent = 'Email hoặc mật khẩu không đúng. Vui lòng thử lại sau.';
                 } else {
                     // Xử lý các lỗi khác (ví dụ: kết nối mạng)
