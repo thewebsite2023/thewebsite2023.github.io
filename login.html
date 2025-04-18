@@ -1,135 +1,437 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <title>Form login unitop.vn</title>
+    <title>Đăng nhập, Đăng ký, Quên mật khẩu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .form-wrapper {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #f9f9f9;
+            width: 60%;
+        }
+    </style>
 </head>
 <body>
-    <div id="wrapper">
-        <form action="" id="form-login">
-            <h1 class="form-heading">Đăng nhập</h1>
-           <a href="https://oauth.zaloapp.com/v4/permission?app_id=3344099605762182265&redirect_uri=https://thewebsite2023.github.io/&code_challenge=CUZX5qE8Wvye6kS_SasIsa8MMxacJftmWdsIA_iKp3I&state=active" style="border-radius: 100px;" class="btn btn-outline-primary">Login by Zalo</a>
-           <br>
-           <h6 style="color: white;">hoặc</h6>
-           <a href="https://oauth.zaloapp.com/v4/oa/permission?app_id=3344099605762182265&redirect_uri=https%3A%2F%2Fthewebsite2023.github.io" class="btn btn-outline-success" style="border-radius:100px ;">Login by Zalo for Official Account</a>
-            <h6 style="color: white;">hoặc</h6>
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v22.0&appId=983011257079655"></script>
-<div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="" data-use-continue-as=""></div>
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '{983011257079655}',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{v22.0}'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
+    <div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+        <div class="container">
+            <div id="login-form" class="form-wrapper">
+                <h2 class="text-center mb-3">Đăng nhập</h2>
+                <form id="loginSubmitForm">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="loginEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Mật khẩu:</label>
+                        <input type="password" class="form-control" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
+                    <div id="loginError" class="mt-2 text-danger text-center"></div>
+                    <div id="loginSuccess" class="mt-2 text-success text-center"></div>
+                    <div class="text-center mt-3">
+                        <a href="#" data-target="forgot-password-form" class="link-primary me-2 show-form">Quên mật khẩu?</a>
+                        <span>|</span>
+                        <a href="#" data-target="signup-form" class="link-primary ms-2 show-form">Đăng ký</a>
+                    </div>
+                </form>
+            </div>
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-    
-FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-});
+            <div id="signup-form" style="display: none;" class="form-wrapper">
+                <h2 class="text-center mb-3">Đăng ký</h2>
+                <form id="signupSubmitForm">
+                    <div class="mb-3">
+                        <label for="signupEmail" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="signupEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signupPassword" class="form-label">Mật khẩu:</label>
+                        <input type="password" class="form-control" id="signupPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Đăng ký</button>
+                    <div id="signupError" class="mt-2 text-danger text-center"></div>
+                    <div id="signupSuccess" class="mt-2 text-success text-center"></div>
+                    <div class="text-center mt-3">
+                        <a href="#" data-target="login-form" class="link-info show-form">Quay lại đăng nhập</a>
+                    </div>
+                </form>
+            </div>
 
-function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-}
-{
-    status: 'connected',
-    authResponse: {
-        accessToken: '...',
-        expiresIn:'...',
-        signedRequest:'...',
-        userID:'...'
-    }
-}
-</script>
-    <style>
-        body{
-    background: url('../images/bg.jpeg');
-    background-size: cover;
-    background-position-y: -80px;
-    font-size: 16px;
-}
-#wrapper{
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#form-login{
-    max-width: 400px;
-    background: rgba(0, 0, 0 , 0.8);
-    flex-grow: 1;
-    padding: 30px 30px 40px;
-    box-shadow: 0px 0px 17px 2px rgba(255, 255, 255, 0.8);
-}
-.form-heading{
-    font-size: 25px;
-    color: #f5f5f5;
-    text-align: center;
-    margin-bottom: 30px;
-}
-.form-group{
-    border-bottom: 1px solid #fff;
-    margin-top: 15px;
-    margin-bottom: 20px;
-    display: flex;
-}
-.form-group i{
-    color: #fff;
-    font-size: 14px;
-    padding-top: 5px;
-    padding-right: 10px;
-}
-.form-input{
-    background: transparent;
-    border: 0;
-    outline: 0;
-    color: #f5f5f5;
-    flex-grow: 1;
-}
-.form-input::placeholder{
-    color: #f5f5f5;
-}
-#eye i{
-    padding-right: 0;
-    cursor: pointer;
-}
+            <div id="forgot-password-form" style="display: none;" class="form-wrapper">
+                <h2 class="text-center mb-3">Khôi phục mật khẩu</h2>
+                <form id="resetSubmitForm">
+                    <div class="mb-3">
+                        <label for="resetEmail" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="resetEmail" required>
+                    </div>
+                    <button type="submit" class="btn btn-warning w-100">Gửi email khôi phục</button>
+                    <div id="resetError" class="mt-2 text-danger text-center"></div>
+                    <div id="resetSuccess" class="mt-2 text-success text-center"></div>
+                    <div class="text-center mt-3">
+                        <a href="#" data-target="login-form" class="link-info show-form">Quay lại đăng nhập</a>
+                    </div>
+                </form>
+            </div>
 
-.form-submit{
-    border-radius: 100px;
-    background: transparent;
-    border: 1px solid #f5f5f5;
-    color: #fff;
-    width: 100%;
-    text-transform: uppercase;
-    padding: 6px 10px;
-    transition: 0.25s ease-in-out;
-    margin-top: 30px;
-}
-.form-submit:hover{
-    border: 1px solid #54a0ff;
-}
-    </style>
+            <div id="accountInfo" style="display: none;" class="form-wrapper">
+                <h2 class="text-center mb-3">Thông tin tài khoản</h2>
+                <p class="mb-2">Xin chào, <span id="accountEmail" class="fw-bold"></span></p>
+                <p class="mb-2">Email của bạn: <span id="currentEmail" class="fw-bold"></span></p>
+                <form id="accountActionsForm">
+                    <div class="d-grid gap-2">
+                        <button id="logoutButton" type="button" class="btn btn-danger">Đăng xuất</button>
+                        <button id="deleteAccountButton" type="button" class="btn btn-secondary">Xóa tài khoản</button>
+                        <button data-target="changePasswordForm" class="btn btn-primary show-form" type="button" id="changePasswordButton">Đổi mật khẩu</button>
+                        <button data-target="updateEmailForm" class="btn btn-info show-form" type="button" id="updateEmailButton">Cập nhật email</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="updateEmailForm" style="display: none;" class="form-wrapper">
+                <h2 class="text-center mb-3">Cập nhật email</h2>
+                <form id="updateEmailSubmitForm">
+                    <div class="mb-3">
+                        <label for="newEmail" class="form-label">Email mới:</label>
+                        <input type="email" class="form-control" id="newEmail" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Cập nhật email</button>
+                    <div id="updateEmailError" class="mt-2 text-danger text-center"></div>
+                    <div id="updateEmailSuccess" class="mt-2 text-success text-center"></div>
+                    <div class="text-center mt-3">
+                        <button data-target="accountInfo" class="btn btn-secondary show-form" type="button" id="cancelUpdateEmail">Hủy</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="changePasswordForm" style="display: none;" class="form-wrapper">
+                <h2 class="text-center mb-3">Đổi mật khẩu</h2>
+                <form id="changePasswordSubmitForm">
+                    <div class="mb-3">
+                        <label for="currentPassword" class="form-label">Mật khẩu hiện tại:</label>
+                        <input type="password" class="form-control" id="currentPassword" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newPassword" class="form-label">Mật khẩu mới:</label>
+                        <input type="password" class="form-control" id="newPassword" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmNewPassword" class="form-label">Xác nhận mật khẩu mới:</label>
+                        <input type="password" class="form-control" id="confirmNewPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Đổi mật khẩu</button>
+                    <div id="changePasswordError" class="mt-2 text-danger text-center"></div>
+                    <div id="changePasswordSuccess" class="mt-2 text-success text-center"></div>
+                    <div class="text-center mt-3">
+                        <button data-target="accountInfo" class="btn btn-secondary show-form" type="button" id="cancelChangePassword">Hủy</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="accountDeleted" style="display: none;" class="form-wrapper">
+                <h2 class="text-center mb-3 text-danger">Tài khoản đã bị xóa</h2>
+                <p class="mt-2 text-success text-center">Tài khoản của bạn đã bị xóa thành công.</p>
+                <div class="text-center mt-3">
+                    <form id="backToLoginFromDeleteForm">
+                        <button data-target="login-form" class="btn btn-info show-form" type="button" id="backToLoginFromDelete">Quay lại đăng nhập</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification, signOut, deleteUser, updateEmail, updateProfile, updatePassword, reauthenticateWithCredential, EmailAuthProvider } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1Jx3BVxVp0oaX5y2EdPLOmgcau6E8P8M",
+            authDomain: "webpage-news.firebaseapp.com",
+            projectId: "webpage-news",
+            storageBucket: "webpage-news.firebasestorage.app",
+            messagingSenderId: "95738658476",
+            appId: "1:95738658476:web:ca38f584a24b71063d6909",
+            measurementId: "G-3KJR1G7EXF"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const loginFormContainer = document.getElementById('login-form');
+        const signupFormContainer = document.getElementById('signup-form');
+        const forgotPasswordFormContainer = document.getElementById('forgot-password-form');
+        const accountInfoDiv = document.getElementById('accountInfo');
+        const updateEmailFormDiv = document.getElementById('updateEmailForm');
+        const changePasswordFormDiv = document.getElementById('changePasswordForm');
+        const accountDeletedDiv = document.getElementById('accountDeleted');
+
+        // Get all elements with the class 'show-form'
+        const showFormLinks = document.querySelectorAll('.show-form');
+
+        // Function to hide all forms
+        function hideAllForms() {
+            loginFormContainer.style.display = 'none';
+            signupFormContainer.style.display = 'none';
+            forgotPasswordFormContainer.style.display = 'none';
+            accountInfoDiv.style.display = 'none';
+            updateEmailFormDiv.style.display = 'none';
+            changePasswordFormDiv.style.display = 'none';
+            accountDeletedDiv.style.display = 'none';
+        }
+
+        // Add event listener to each 'show-form' element
+        showFormLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.dataset.target;
+                hideAllForms();
+                const targetForm = document.getElementById(targetId);
+                if (targetForm) {
+                    targetForm.style.display = 'block';
+                }
+            });
+        });
+
+        // Function to show account info
+        function showAccountInfo(user) {
+            hideAllForms();
+            accountInfoDiv.style.display = 'block';
+            document.getElementById('accountEmail').textContent = user.email || 'Không có email';
+            document.getElementById('currentEmail').textContent = user.email || 'Không có email';
+        }
+
+        // Function to get error message
+        function getErrorMessage(errorCode) {
+            switch (errorCode) {
+                case 'auth/user-disabled':
+                    return 'Tài khoản này hiện đang bị khóa.';
+                case 'auth/invalid-email':
+                    return 'Địa chỉ email không hợp lệ.';
+                case 'auth/user-not-found':
+                    return 'Không tìm thấy người dùng với email này.';
+                case 'auth/wrong-password':
+                    return 'Mật khẩu không đúng.';
+                case 'auth/email-already-in-use':
+                    return 'Địa chỉ email này đã được sử dụng.';
+                case 'auth/weak-password':
+                    return 'Mật khẩu quá yếu. Mật khẩu phải có ít nhất 6 ký tự.';
+                case 'auth/invalid-continue-uri': // Thêm xử lý lỗi này (mặc dù nó nên được fix ở cấu hình)
+                    return 'Đường dẫn chuyển hướng không hợp lệ. Vui lòng kiểm tra cấu hình Firebase.';
+                default:
+                    return 'Đã có lỗi xảy ra. Vui lòng thử lại sau.';
+            }
+        }
+
+        // Handle user logout
+        const logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', async () => {
+                await signOut(auth);
+                hideAllForms();
+                loginFormContainer.style.display = 'block';
+            });
+        }
+
+        // Handle delete account
+        const deleteAccountButton = document.getElementById('deleteAccountButton');
+        if (deleteAccountButton) {
+            deleteAccountButton.addEventListener('click', async () => {
+                const user = auth.currentUser;
+                if (user && confirm('Bạn có chắc chắn muốn xóa tài khoản này? Thao tác này không thể hoàn tác.')) {
+                    try {
+                        await deleteUser(user);
+                        hideAllForms();
+                        accountDeletedDiv.style.display = 'block';
+                        // Prevent going back
+                        window.history.replaceState(null, null, window.location.pathname + window.location.search);
+                    } catch (error) {
+                        document.getElementById('accountInfo').innerHTML = `<p class="text-danger text-center mt-2">Lỗi khi xóa tài khoản: ${error.message}</p>`;
+                    }
+                }
+            });
+        }
+
+        // Handle update email
+        document.getElementById('updateEmailSubmitForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const newEmail = document.getElementById('newEmail').value;
+            const user = auth.currentUser;
+            if (user) {
+                try {
+                    const actionCodeSettings = {
+                        url: 'https://thewebsite2023.github.io', // SỬA LỖI: Đảm bảo URL này được cho phép
+                        handleCodeInApp: false // Phải là false nếu bạn muốn chuyển hướng đến URL
+                    };
+                    await sendEmailVerification(user, actionCodeSettings);
+                    document.getElementById('updateEmailSuccess').textContent = 'Email xác minh đã được gửi đến ' + newEmail + '. Vui lòng kiểm tra hộp thư đến và nhấp vào liên kết để xác minh trước khi email của bạn được cập nhật.';
+                    document.getElementById('updateEmailError').textContent = '';
+                    // Optionally disable the update email button or show a waiting message
+                } catch (error) {
+                    document.getElementById('updateEmailError').textContent = `Lỗi khi gửi email xác minh: ${error.message}`;
+                    document.getElementById('updateEmailSuccess').textContent = '';
+                }
+            } else {
+                document.getElementById('updateEmailError').textContent = 'Không có người dùng nào đăng nhập.';
+            }
+        });
+
+        // Handle change password
+        document.getElementById('changePasswordSubmitForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+            const user = auth.currentUser;
+
+            if (!user) {
+                document.getElementById('changePasswordError').textContent = 'Không có người dùng nào đăng nhập.';
+                return;
+            }
+
+            if (newPassword !== confirmNewPassword) {
+                document.getElementById('changePasswordError').textContent = 'Mật khẩu mới và xác nhận không khớp.';
+                return;
+            }
+
+            if (newPassword.length < 6) {
+                document.getElementById('changePasswordError').textContent = 'Mật khẩu mới phải có ít nhất 6 ký tự.';
+                return;
+            }
+
+            if (!currentPassword) {
+                document.getElementById('changePasswordError').textContent = 'Vui lòng nhập mật khẩu hiện tại.';
+                return;
+            }
+
+            const credential = EmailAuthProvider.credential(user.email, currentPassword);
+
+            try {
+                await reauthenticateWithCredential(user, credential);
+                const actionCodeSettings = {
+                    url: 'https://thewebsite2023.github.io/reset-password', // SỬA LỖI: Đảm bảo URL này được cho phép
+                    handleCodeInApp: false
+                };
+                await updatePassword(user, newPassword);
+                document.getElementById('changePasswordSuccess').textContent = 'Đổi mật khẩu thành công!';
+                document.getElementById('changePasswordError').textContent = '';
+                setTimeout(() => {
+                    hideAllForms();
+                    accountInfoDiv.style.display = 'block';
+                }, 2000);
+            } catch (error) {
+                if (error.code === 'auth/wrong-password') {
+                    document.getElementById('changePasswordError').textContent = 'Mật khẩu hiện tại không đúng.';
+                } else {
+                    document.getElementById('changePasswordError').textContent = getErrorMessage(error.code);
+                }
+                document.getElementById('changePasswordSuccess').textContent = '';
+            } finally {
+                document.getElementById('currentPassword').value = '';
+                document.getElementById('newPassword').value = '';
+                document.getElementById('confirmNewPassword').value = '';
+            }
+        });
+
+                // Handle login
+        document.getElementById('loginSubmitForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            document.getElementById('loginError').textContent = '';
+            document.getElementById('loginSuccess').textContent = '';
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                if (user) {
+                    if (!user.emailVerified) {
+                        const actionCodeSettings = {
+                            url: 'https://thewebsite2023.github.io/verify-email', // SỬA LỖI: Đảm bảo URL này được cho phép
+                            handleCodeInApp: false
+                        };
+                        await sendEmailVerification(auth.currentUser, actionCodeSettings);
+                        document.getElementById('loginSuccess').textContent = 'Đăng nhập thành công! Vui lòng kiểm tra email để xác thực tài khoản.';
+                    } else {
+                        showAccountInfo(user);
+                    }
+                }
+            } catch (error) {
+                document.getElementById('loginError').textContent = getErrorMessage(error.code);
+            }
+        });
+
+        // Handle signup
+        document.getElementById('signupSubmitForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            document.getElementById('signupError').textContent = '';
+            document.getElementById('signupSuccess').textContent = '';
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                const actionCodeSettings = {
+                    url: 'https://thewebsite2023.github.io/verify-email', // SỬA LỖI: Đảm bảo URL này được cho phép
+                    handleCodeInApp: false
+                };
+                await sendEmailVerification(user, actionCodeSettings);
+                document.getElementById('signupSuccess').textContent = 'Đăng ký thành công! Vui lòng kiểm tra email để xác thực tài khoản.';
+                setTimeout(() => {
+                    hideAllForms();
+                    loginFormContainer.style.display = 'block';
+                }, 3000);
+            } catch (error) {
+                document.getElementById('signupError').textContent = getErrorMessage(error.code);
+            } finally {
+                document.getElementById('signupEmail').value = '';
+                document.getElementById('signupPassword').value = '';
+            }
+        });
+
+        // Handle forgot password
+        document.getElementById('resetSubmitForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('resetEmail').value;
+            document.getElementById('resetError').textContent = '';
+            document.getElementById('resetSuccess').textContent = '';
+            try {
+                const actionCodeSettings = {
+                    url: 'https://thewebsite2023.github.io/reset-password', // SỬA LỖI: Đảm bảo URL này được cho phép
+                    handleCodeInApp: false
+                };
+                await sendPasswordResetEmail(auth, email, actionCodeSettings);
+                document.getElementById('resetSuccess').textContent = 'Email khôi phục mật khẩu đã được gửi. Vui lòng kiểm tra hộp thư đến.';
+            } catch (error) {
+                document.getElementById('resetError').textContent = getErrorMessage(error.code);
+            } finally {
+                document.getElementById('resetEmail').value = '';
+            }
+        });
+
+        // Initially hide all forms and show login
+        hideAllForms();
+        loginFormContainer.style.display = 'block';
+
+        // Listen for auth state changes
+        auth.onAuthStateChanged(user => {
+            if (user && user.emailVerified) {
+                showAccountInfo(user);
+            } else if (user && !user.emailVerified) {
+                hideAllForms();
+                loginFormContainer.style.display = 'block';
+                document.getElementById('loginSuccess').textContent = 'Vui lòng xác thực email để tiếp tục.';
+            } else {
+                hideAllForms();
+                loginFormContainer.style.display = 'block';
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
