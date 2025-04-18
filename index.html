@@ -407,6 +407,9 @@ strong {
               <li class="nav-item">
                 <a class="nav-link" href="#lien_he">Thông tin</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#dang_nhap">Đăng nhập</a>
+              </li>
             </ul>
         <form class="d-flex" role="search">
          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#searchModal">
@@ -706,6 +709,134 @@ function removeDiacritics(str) {
         <hr>
         <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
     </div>
+
+     <div id="dang_nhap" class="page d'none">
+          <div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+        <div class="container">
+            <div id="login-form" class="form-wrapper">
+                <h2 class="text-center mb-3">Đăng nhập</h2>
+                <form id="loginSubmitForm">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="loginEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Mật khẩu:</label>
+                        <input type="password" class="form-control" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
+                    <div id="loginError" class="mt-2 text-danger text-center"></div>
+                    <div id="loginSuccess" class="mt-2 text-success text-center"></div>
+                    <div class="text-center mt-3">
+                        <a href="#" data-target="forgot-password-form" class="link-primary me-2 show-form">Quên mật khẩu?</a>
+                        <span>|</span>
+                        <a href="#" data-target="signup-form" class="link-primary ms-2 show-form">Đăng ký</a>
+                    </div>
+                </form>
+            </div>
+
+            <div id="signup-form" style="display: none;" class="form-wrapper">
+                <h2 class="text-center mb-3">Đăng ký</h2>
+                <form id="signupSubmitForm">
+                    <div class="mb-3">
+                        <label for="signupEmail" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="signupEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signupPassword" class="form-label">Mật khẩu:</label>
+                        <input type="password" class="form-control" id="signupPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Đăng ký</button>
+                    <div id="signupError" class="mt-2 text-danger text-center"></div>
+                    <div id="signupSuccess" class="mt-2 text-success text-center"></div>
+                    <div class="text-center mt-3">
+                        <a href="#" data-target="login-form" class="link-info show-form">Quay lại đăng nhập</a>
+                    </div>
+                </form>
+            </div>
+
+            <div id="forgot-password-form" style="display: none;" class="form-wrapper">
+                <h2 class="text-center mb-3">Khôi phục mật khẩu</h2>
+                <form id="resetSubmitForm">
+                    <div class="mb-3">
+                        <label for="resetEmail" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="resetEmail" required>
+                    </div>
+                    <button type="submit" class="btn btn-warning w-100">Gửi email khôi phục</button>
+                    <div id="resetError" class="mt-2 text-danger text-center"></div>
+                    <div id="resetSuccess" class="mt-2 text-success text-center"></div>
+                    <div class="text-center mt-3">
+                        <a href="#" data-target="login-form" class="link-info show-form">Quay lại đăng nhập</a>
+                    </div>
+                </form>
+            </div>
+
+            <div id="accountInfo" style="display: none;" class="form-wrapper">
+                <h2 class="text-center mb-3">Thông tin tài khoản</h2>
+                <p class="mb-2">Xin chào, <span id="accountEmail" class="fw-bold"></span></p>
+                <p class="mb-2">Email của bạn: <span id="currentEmail" class="fw-bold"></span></p>
+                <form id="accountActionsForm">
+                    <div class="d-grid gap-2">
+                        <button id="logoutButton" type="button" class="btn btn-danger">Đăng xuất</button>
+                        <button id="deleteAccountButton" type="button" class="btn btn-secondary">Xóa tài khoản</button>
+                        <button data-target="changePasswordForm" class="btn btn-primary show-form" type="button" id="changePasswordButton">Đổi mật khẩu</button>
+                        <button data-target="updateEmailForm" class="btn btn-info show-form" type="button" id="updateEmailButton">Cập nhật email</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="updateEmailForm" style="display: none;" class="form-wrapper">
+                <h2 class="text-center mb-3">Cập nhật email</h2>
+                <form id="updateEmailSubmitForm">
+                    <div class="mb-3">
+                        <label for="newEmail" class="form-label">Email mới:</label>
+                        <input type="email" class="form-control" id="newEmail" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Cập nhật email</button>
+                    <div id="updateEmailError" class="mt-2 text-danger text-center"></div>
+                    <div id="updateEmailSuccess" class="mt-2 text-success text-center"></div>
+                    <div class="text-center mt-3">
+                        <button data-target="accountInfo" class="btn btn-secondary show-form" type="button" id="cancelUpdateEmail">Hủy</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="changePasswordForm" style="display: none;" class="form-wrapper">
+                <h2 class="text-center mb-3">Đổi mật khẩu</h2>
+                <form id="changePasswordSubmitForm">
+                    <div class="mb-3">
+                        <label for="currentPassword" class="form-label">Mật khẩu hiện tại:</label>
+                        <input type="password" class="form-control" id="currentPassword" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newPassword" class="form-label">Mật khẩu mới:</label>
+                        <input type="password" class="form-control" id="newPassword" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmNewPassword" class="form-label">Xác nhận mật khẩu mới:</label>
+                        <input type="password" class="form-control" id="confirmNewPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Đổi mật khẩu</button>
+                    <div id="changePasswordError" class="mt-2 text-danger text-center"></div>
+                    <div id="changePasswordSuccess" class="mt-2 text-success text-center"></div>
+                    <div class="text-center mt-3">
+                        <button data-target="accountInfo" class="btn btn-secondary show-form" type="button" id="cancelChangePassword">Hủy</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="accountDeleted" style="display: none;" class="form-wrapper">
+                <h2 class="text-center mb-3 text-danger">Tài khoản đã bị xóa</h2>
+                <p class="mt-2 text-success text-center">Tài khoản của bạn đã bị xóa thành công.</p>
+                <div class="text-center mt-3">
+                    <form id="backToLoginFromDeleteForm">
+                        <button data-target="login-form" class="btn btn-info show-form" type="button" id="backToLoginFromDelete">Quay lại đăng nhập</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+     </div>
 
     <div id="video" class="page d-none">
       <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#video">Video</a></h3></div>
