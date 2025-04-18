@@ -408,7 +408,7 @@ strong {
                 <a class="nav-link" href="#lien_he">Thông tin</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#dang_nhap">Đăng nhập</a>
+                <a class="nav-link" href="#" onclick="openLoginWindow()">Đăng nhập</a>
               </li>
             </ul>
         <form class="d-flex" role="search">
@@ -710,7 +710,7 @@ function removeDiacritics(str) {
         <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
     </div>
 
-     <div id="dang_nhap" class="page d'none">
+<!--      <div id="dang_nhap" class="page d'none">
           <div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
         <div class="container">
             <div id="login-form" class="form-wrapper">
@@ -837,7 +837,7 @@ function removeDiacritics(str) {
         </div>
     </div>
      </div>
-
+ -->
     <div id="video" class="page d-none">
       <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#video">Video</a></h3></div>
       <hr>
@@ -1473,7 +1473,23 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 });
     </script>
-       <script type="module">
+                  <script>
+            function openLoginWindow() {
+                // Mở cửa sổ mới cho trang đăng nhập
+                const loginWindow = window.open('login.html', 'loginWindow', 'width=700,height=700');
+
+                // Lắng nghe sự kiện 'message' từ cửa sổ con
+                window.addEventListener('message', function eventHandler(event) {
+                    if (event.origin === window.location.origin) {
+                        // Kiểm tra nếu đăng nhập thành công
+                        if (event.data === 'success') {
+                            clearInterval(checkClosed); // Dừng kiểm tra nếu đã đăng nhập thành công
+                        }
+                    }
+                });
+            }
+            </script>
+<!--        <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification, signOut, deleteUser, updateEmail, updateProfile, updatePassword, reauthenticateWithCredential, EmailAuthProvider } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
@@ -1759,6 +1775,6 @@ window.addEventListener("DOMContentLoaded", () => {
                 loginFormContainer.style.display = 'block';
             }
         });
-       </script>
+       </script> -->
 </body>
 </html>
