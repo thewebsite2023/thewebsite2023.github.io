@@ -313,7 +313,6 @@
                 document.getElementById('changePasswordError').textContent = 'Vui lòng nhập mật khẩu hiện tại.';
                 return;
             }
-
             const credential = EmailAuthProvider.credential(user.email, currentPassword);
 
             try {
@@ -356,12 +355,18 @@
                 const user = userCredential.user;
                 if (user) {
                     if (!user.emailVerified) {
+                        document.getElementById('loginError').textContent = 'Tài khoản của bạn chưa được xác minh, vui lòng kiểm tra hộp thư để xác minh tài khoản.';
+                        document.getElementById('loginSuccess').textContent = '';
+                        // Bạn có thể tùy chọn gửi lại email xác minh tại đây nếu muốn
                         const actionCodeSettings = {
-                            url: 'https://thewebsite2023.github.io/login.html',
-                            handleCodeInApp: false
-                        };
-                        await sendEmailVerification(auth.currentUser, actionCodeSettings);
-                        document.getElementById('loginSuccess').textContent = 'Đăng nhập thành công! Vui lòng kiểm tra email để xác thực tài khoản.';
+                             url: 'https://thewebsite2023.github.io/login.html', // Hoặc URL bạn muốn sau khi xác minh
+                             handleCodeInApp: true
+                         };
+                         sendEmailVerification(auth.currentUser, actionCodeSettings)
+                             .then(() => {
+                                 document.getElementById('loginSuccess').textContent = 'Đã gửi lại email xác minh.';
+                             });
+                        return; // Ngăn chặn đăng nhập nếu email chưa được xác minh
                     } else {
                         showAccountInfo(user);
                     }
@@ -375,6 +380,7 @@
                     // Xử lý các lỗi khác (ví dụ: kết nối mạng)
                     document.getElementById('loginError').textContent = getErrorMessage(error.code);
                 }
+                document.getElementById('loginSuccess').textContent = '';
             }
         });
 
@@ -389,7 +395,7 @@
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
                 const actionCodeSettings = {
-                   url: 'https://thewebsite2023.github.io/login.html',  // SỬA LỖI: Đảm bảo URL này được cho phép
+                   url:'https://thewebsite2023.github.io/login.html',  // SỬA LỖI: Đảm bảo URL này được cho phép
                     handleCodeInApp: false
                 };
                 await sendEmailVerification(user, actionCodeSettings);
@@ -415,7 +421,7 @@
             document.getElementById('resetSuccess').textContent = '';
             try {
                 const actionCodeSettings = {
-                    url: 'https://thewebsite2023.github.io/login.html',  // SỬA LỖI: Đảm bảo URL này được cho phép
+                    url:'https://thewebsite2023.github.io/login.html',  // SỬA LỖI: Đảm bảo URL này được cho phép
                     handleCodeInApp: false
                 };
                 await sendPasswordResetEmail(auth, email, actionCodeSettings);
@@ -432,14 +438,18 @@
         hideAllForms();
         loginFormContainer.style.display = 'block';
 
-        // Listen for auth state changes
-        auth.onAuthStateChanged(user => {
-            if (user && user.emailVerified) {
-                showAccountInfo(user);
-            } else if (user && !user.emailVerified) {
-                hideAllForms();
-                loginFormContainer.style.display = 'block';
-                document.getElementById('loginSuccess').textContent = 'Vui lòng xác thực email để tiếp tục.';
+        // Listen for auth state changes (để cập nhật trạng thái sau khi xác minh)
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                await user.reload(); // Tải lại thông tin người dùng để cập nhật emailVerified
+                if (user.emailVerified) {
+                    showAccountInfo(user);
+                } else {
+                    hideAllForms();
+                    loginFormContainer.style.display = 'block';
+                    document.getElementById('loginError').textContent = 'Tài khoản của bạn chưa được xác minh, vui lòng kiểm tra hộp thư để xác minh tài khoản.';
+                    document.getElementById('loginSuccess').textContent = '';
+                }
             } else {
                 hideAllForms();
                 loginFormContainer.style.display = 'block';
@@ -448,4 +458,4 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
-</html>
+                        </html>
