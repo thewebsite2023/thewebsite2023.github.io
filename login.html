@@ -19,6 +19,36 @@
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                   
+                </ul>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="accountDropdownNavbar" style="display: none;">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Tài khoản
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                            <li><span class="dropdown-item disabled" id="navbarAccountEmail"></span></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><button id="logoutNavbarButton" class="dropdown-item">Đăng xuất</button></li>
+                            <li><button data-target="accountInfo" class="dropdown-item show-form">Thông tin tài khoản</button></li>
+                            <li><button data-target="changePasswordForm" class="dropdown-item show-form">Đổi mật khẩu</button></li>
+                            <li><button data-target="updateEmailForm" class="dropdown-item show-form">Cập nhật email</button></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><button id="deleteAccountNavbarButton" class="dropdown-item text-danger">Xóa tài khoản</button></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
         <div class="container">
             <div id="login-form" class="form-wrapper">
@@ -83,14 +113,7 @@
                 <h2 class="text-center mb-3">Thông tin tài khoản</h2>
                 <p class="mb-2">Xin chào, <span id="accountEmail" class="fw-bold"></span></p>
                 <p class="mb-2">Email của bạn: <span id="currentEmail" class="fw-bold"></span></p>
-                <form id="accountActionsForm">
-                    <div class="d-grid gap-2">
-                        <button id="logoutButton" type="button" class="btn btn-danger">Đăng xuất</button>
-                        <button id="deleteAccountButton" type="button" class="btn btn-secondary">Xóa tài khoản</button>
-                        <button data-target="changePasswordForm" class="btn btn-primary show-form" type="button" id="changePasswordButton">Đổi mật khẩu</button>
-                        <button data-target="updateEmailForm" class="btn btn-info show-form" type="button" id="updateEmailButton">Cập nhật email</button>
-                    </div>
-                </form>
+                <form id="accountActionsForm"></form>
             </div>
 
             <div id="updateEmailForm" style="display: none;" class="form-wrapper">
@@ -151,13 +174,13 @@
 
         // Firebase configuration
         const firebaseConfig = {
-            apiKey: "AIzaSyD1Jx3BVxVp0oaX5y2EdPLOmgcau6E8P8M",
-            authDomain: "webpage-news.firebaseapp.com",
-            projectId: "webpage-news",
-            storageBucket: "webpage-news.firebasestorage.app",
-            messagingSenderId: "95738658476",
-            appId: "1:95738658476:web:ca38f584a24b71063d6909",
-            measurementId: "G-3KJR1G7EXF"
+  apiKey: "AIzaSyD1Jx3BVxVp0oaX5y2EdPLOmgcau6E8P8M",
+  authDomain: "webpage-news.firebaseapp.com",
+  projectId: "webpage-news",
+  storageBucket: "webpage-news.firebasestorage.app",
+  messagingSenderId: "95738658476",
+  appId: "1:95738658476:web:ca38f584a24b71063d6909",
+  measurementId: "G-3KJR1G7EXF"
         };
 
         // Initialize Firebase
@@ -171,6 +194,13 @@
         const updateEmailFormDiv = document.getElementById('updateEmailForm');
         const changePasswordFormDiv = document.getElementById('changePasswordForm');
         const accountDeletedDiv = document.getElementById('accountDeleted');
+
+        // Các phần tử DOM mới cho navbar
+        const accountDropdownNavbar = document.getElementById('accountDropdownNavbar');
+        const navbarAccountEmail = document.getElementById('navbarAccountEmail');
+        const logoutNavbarButton = document.getElementById('logoutNavbarButton');
+        const deleteAccountNavbarButton = document.getElementById('deleteAccountNavbarButton');
+        const searchForm = document.getElementById('searchForm');
 
         // Get all elements with the class 'show-form'
         const showFormLinks = document.querySelectorAll('.show-form');
@@ -199,12 +229,22 @@
             });
         });
 
-        // Function to show account info
+        // Function to show account info and update navbar
         function showAccountInfo(user) {
             hideAllForms();
             accountInfoDiv.style.display = 'block';
             document.getElementById('accountEmail').textContent = user.email || 'Không có email';
             document.getElementById('currentEmail').textContent = user.email || 'Không có email';
+
+            // Hiển thị dropdown tài khoản trên navbar và ẩn form đăng nhập/đăng ký
+            accountDropdownNavbar.style.display = 'block';
+            navbarAccountEmail.textContent = user.email || 'Không có email';
+            loginFormContainer.style.display = 'none';
+            signupFormContainer.style.display = 'none';
+            forgotPasswordFormContainer.style.display = 'none';
+            if (searchForm) {
+                searchForm.style.display = 'none';
+            }
         }
 
         // Function to get error message
@@ -238,6 +278,23 @@
                 await signOut(auth);
                 hideAllForms();
                 loginFormContainer.style.display = 'block';
+                accountDropdownNavbar.style.display = 'none';
+                if (searchForm) {
+                    searchForm.style.display = 'flex';
+                }
+            });
+        }
+
+        // Handle logout from navbar
+        if (logoutNavbarButton) {
+            logoutNavbarButton.addEventListener('click', async () => {
+                await signOut(auth);
+                hideAllForms();
+                loginFormContainer.style.display = 'block';
+                accountDropdownNavbar.style.display = 'none';
+                if (searchForm) {
+                    searchForm.style.display = 'flex';
+                }
             });
         }
 
@@ -251,7 +308,32 @@
                         await deleteUser(user);
                         hideAllForms();
                         accountDeletedDiv.style.display = 'block';
-                        // Prevent going back
+                        accountDropdownNavbar.style.display = 'none';
+                        if (searchForm) {
+                            searchForm.style.display = 'flex';
+                        }
+                        window.history.replaceState(null, null, window.location.pathname + window.location.search);
+                    } catch (error) {
+                        document.getElementById('accountInfo').innerHTML = `<p class="text-danger text-center mt-2">Lỗi khi xóa tài khoản:</p>` + getErrorMessage(error.code);
+                        console.error("Lỗi khi xóa tài khoản:", error);
+                    }
+                }
+            });
+        }
+
+        // Handle delete account from navbar
+        if (deleteAccountNavbarButton) {
+            deleteAccountNavbarButton.addEventListener('click', async () => {
+                const user = auth.currentUser;
+                if (user && confirm('Bạn có chắc chắn muốn xóa tài khoản này? Thao tác này không thể hoàn tác.')) {
+                    try {
+                        await deleteUser(user);
+                        hideAllForms();
+                        accountDeletedDiv.style.display = 'block';
+                        accountDropdownNavbar.style.display = 'none';
+                        if (searchForm) {
+                            searchForm.style.display = 'flex';
+                        }
                         window.history.replaceState(null, null, window.location.pathname + window.location.search);
                     } catch (error) {
                         document.getElementById('accountInfo').innerHTML = `<p class="text-danger text-center mt-2">Lỗi khi xóa tài khoản:</p>` + getErrorMessage(error.code);
@@ -269,7 +351,7 @@
             if (user) {
                 try {
                     const actionCodeSettings = {
-                        url: 'https://thewebsite2023.github.io/login.html', // SỬA LỖI: Đảm bảo URL này được cho phép
+                        url: 'https://thewebsite2023.github.io/login.html', // SỬA LỖI: Sử dụng URL hiện tại hoặc trang bạn muốn chuyển hướng sau xác minh
                         handleCodeInApp: false // Phải là false nếu bạn muốn chuyển hướng đến URL
                     };
                     await sendEmailVerification(user, actionCodeSettings);
@@ -317,10 +399,6 @@
 
             try {
                 await reauthenticateWithCredential(user, credential);
-                const actionCodeSettings = {
-                    // SỬA LỖI: Đảm bảo URL này được cho phép
-                    handleCodeInApp: false
-                };
                 await updatePassword(user, newPassword);
                 document.getElementById('changePasswordSuccess').textContent = 'Đổi mật khẩu thành công!';
                 document.getElementById('changePasswordError').textContent = '';
@@ -343,7 +421,7 @@
             }
         });
 
-                // Handle login
+        // Handle login
         document.getElementById('loginSubmitForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
@@ -354,18 +432,18 @@
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
                 if (user) {
+                    await user.reload(); // Reload user data to get the latest emailVerified status
                     if (!user.emailVerified) {
                         document.getElementById('loginError').textContent = 'Tài khoản của bạn chưa được xác minh, vui lòng kiểm tra hộp thư để xác minh tài khoản.';
                         document.getElementById('loginSuccess').textContent = '';
-                        // Bạn có thể tùy chọn gửi lại email xác minh tại đây nếu muốn
                         const actionCodeSettings = {
-                             url: 'https://thewebsite2023.github.io/login.html', // Hoặc URL bạn muốn sau khi xác minh
-                             handleCodeInApp: true
-                         };
-                         sendEmailVerification(auth.currentUser, actionCodeSettings)
-                             .then(() => {
-                                 document.getElementById('loginSuccess').textContent = 'Đã gửi lại email xác minh.';
-                             });
+                            url: 'https://thewebsite2023.github.io/login.html', // SỬA LỖI: Sử dụng URL hiện tại hoặc trang bạn muốn chuyển hướng sau xác minh
+                            handleCodeInApp: true
+                        };
+                        sendEmailVerification(auth.currentUser, actionCodeSettings)
+                            .then(() => {
+                                document.getElementById('loginSuccess').textContent = 'Đã gửi lại email xác minh.';
+                            });
                         return; // Ngăn chặn đăng nhập nếu email chưa được xác minh
                     } else {
                         showAccountInfo(user);
@@ -373,11 +451,9 @@
                 }
             } catch (error) {
                 console.error("Lỗi khi đăng nhập:", error);
-                // Xử lý tất cả các lỗi xác thực chung chung
                 if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') {
                     document.getElementById('loginError').textContent = 'Email hoặc mật khẩu không đúng. Vui lòng thử lại sau.';
                 } else {
-                    // Xử lý các lỗi khác (ví dụ: kết nối mạng)
                     document.getElementById('loginError').textContent = getErrorMessage(error.code);
                 }
                 document.getElementById('loginSuccess').textContent = '';
@@ -395,7 +471,7 @@
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
                 const actionCodeSettings = {
-                   url:'https://thewebsite2023.github.io/login.html',  // SỬA LỖI: Đảm bảo URL này được cho phép
+                    url: 'https://thewebsite2023.github.io/login.html', // SỬA LỖI: Sử dụng URL hiện tại hoặc trang bạn muốn chuyển hướng sau xác minh
                     handleCodeInApp: false
                 };
                 await sendEmailVerification(user, actionCodeSettings);
@@ -421,13 +497,13 @@
             document.getElementById('resetSuccess').textContent = '';
             try {
                 const actionCodeSettings = {
-                    url:'https://thewebsite2023.github.io/login.html',  // SỬA LỖI: Đảm bảo URL này được cho phép
+                    url: 'https://thewebsite2023.github.io/login.html', // SỬA LỖI: Sử dụng URL hiện tại hoặc trang bạn muốn chuyển hướng sau xác minh
                     handleCodeInApp: false
                 };
                 await sendPasswordResetEmail(auth, email, actionCodeSettings);
                 document.getElementById('resetSuccess').textContent = 'Email khôi phục mật khẩu đã được gửi. Vui lòng kiểm tra hộp thư đến.';
             } catch (error) {
-               console.error("Lỗi khi gửi email khôi phục:", error);
+                console.error("Lỗi khi gửi email khôi phục:", error);
                 document.getElementById('resetError').textContent = getErrorMessage(error.code);
             } finally {
                 document.getElementById('resetEmail').value = '';
@@ -437,6 +513,10 @@
         // Initially hide all forms and show login
         hideAllForms();
         loginFormContainer.style.display = 'block';
+        accountDropdownNavbar.style.display = 'none';
+        if (searchForm) {
+            searchForm.style.display = 'flex';
+        }
 
         // Listen for auth state changes (để cập nhật trạng thái sau khi xác minh)
         auth.onAuthStateChanged(async (user) => {
@@ -447,15 +527,23 @@
                 } else {
                     hideAllForms();
                     loginFormContainer.style.display = 'block';
+                    accountDropdownNavbar.style.display = 'none';
+                    if (searchForm) {
+                        searchForm.style.display = 'flex';
+                    }
                     document.getElementById('loginError').textContent = 'Tài khoản của bạn chưa được xác minh, vui lòng kiểm tra hộp thư để xác minh tài khoản.';
                     document.getElementById('loginSuccess').textContent = '';
                 }
             } else {
                 hideAllForms();
                 loginFormContainer.style.display = 'block';
+                accountDropdownNavbar.style.display = 'none';
+                if (searchForm) {
+                    searchForm.style.display = 'flex';
+                }
             }
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
-                        </html>
+</html>
