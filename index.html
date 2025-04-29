@@ -112,13 +112,13 @@ document.onclick=reEnable
             font-size: 12px;
             color: gray;
         }
-            .search-news-item {
+        .search-news-item {
             display: flex;
             align-items: center;
             border-bottom: 1px solid #ddd;
             padding: 15px;
         }
-        .search-news img {
+        .search-news-item img {
             width: 80px;
             height: 80px;
             object-fit: cover;
@@ -406,185 +406,18 @@ strong {
                 <a class="nav-link" href="#podcast">Podcast</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="#tim_kiem">Tìm kiếm</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#lien_he">Thông tin</a>
               </li>
 <!--               <li class="nav-item">
                 <a class="nav-link" href="#" onclick="openLoginWindow()">Đăng nhập</a>
               </li> -->
             </ul>
-        <form class="d-flex" role="search">
-         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#searchModal">
-  Tìm kiếm
-</button>
-      </form>
           </div>
         </div>
       </nav>
-
-    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Tìm kiếm bài viết</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm tin tức,video,podcasts,...">
-        <center><div id="noResults" style="display: none; color: red; font-weight: bold; margin-top: 10px;">Không có bài báo nào phù hợp với từ khoá của bạn</div></center>
-        <div class="search-news-item">
-          <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="150px" class="me-3">
-          <div class="search-news-content">
-              <a href="#vu_tiktoker_pham_thoai" class="search-news-title">Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</a>
-              <div class="search-news-time">Nguồn: YouTube</div>
-          </div>
-        </div>
-          
-        <div class="search-news-item">
-          <img src="https://i1-vnexpress.vnecdn.net/2025/04/11/7896440bb438473eac78f84da52391-4178-7945-1744339281.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=iTEJlS66WjdsnE-4lohoxA" alt="" width="120px" height="100px" class="me-3">
-          <div class="search-news-content">
-              <a href="#pha_an_tu_bo_xuong_kho" class="search-news-title">Phá án từ bộ xương khô</a>
-              <div class="search-news-time">Nguồn: VnExpress</div>
-        </div>
-      </div>
-
-      <div class="search-news-item">
-          <img src="https://i.ytimg.com/vi/ERrf7IFvRBY/hqdefault.jpg?sqp=-oaymwFBCPYBEIoBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AG-BIACgAqKAgwIABABGDkgUSh_MA8=&rs=AOn4CLC7IxFC-1z18ejxG16c_x5IAeBkXw" alt="" width="150px" class="me-3">
-          <div class="search-news-content">
-              <a href="#live_pham_thoai_va_me_be_bap_full" class="search-news-title">live phạm thoại và mẹ bé bắp full</a>
-              <div class="search-news-time">Nguồn: YouTube</div>
-          </div>
-        </div>
-
-        <div class="search-news-item">
-          <img src="https://i1-vnexpress.vnecdn.net/2025/03/14/233a0379-1741945566-1741945710-9467-1741945723.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=u8nPU1p0AmyPzEede89Q7Q" alt="" width="150px" class="me-3">
-          <div class="search-news-content">
-              <a href="#dot_ngot_dung_day_them_anh_huong_tam_ly_hoc_sinh" class="search-news-title">Bộ Giáo dục: Đột ngột dừng dạy thêm ảnh hưởng tâm lý học sinh</a>
-              <div class="search-news-time">Nguồn: VnExpress</div>
-          </div>
-        </div>
-
-        <div class="search-news-item">
-          <img src="https://i1-kinhdoanh.vnecdn.net/2025/04/11/20250320T220348Z1815739118RC29-3326-7905-1744359510.jpg?w=680&h=408&q=100&dpr=1&fit=crop&s=R_N9W_wly08CSlmJ5Stt3Q" alt="" width="150px" class="me-3">
-          <div class="search-news-content">
-              <a href="#trung_quoc_ap_thue_tra_dua_125_len_hang_my" class="search-news-title">Trung Quốc áp thuế trả đũa 125% lên hàng Mỹ</a>
-              <div class="search-news-time">Nguồn: VnExpress</div>
-          </div>
-        </div>
-
-        <div class="search-news-item">
-          <img src="https://image.tienphong.vn/Uploaded/2025/aohuooh/2025_04_03/chaybotoq-ezgifcom-video-to-gif-converter-1-6948-6460.gif" alt="" width="150px" class="me-3">
-          <div class="search-news-content">
-              <a href="#quan_bo_to_boc_chay_ngun_ngut" class="search-news-title">Hà Nội: Lửa ngùn ngụt tại một quán 'Bò tơ quán mộc'</a>
-              <div class="search-news-time">Nguồn: VnExpress</div>
-          </div>
-        </div>
-
-        <div class="search-news-item">
-          <img src="https://i1-vnexpress.vnecdn.net/2025/03/13/ThumbFrame192-1741838094-5421-1741838663.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=rJh3Qjw2aAGT4qvGKqzCaw" alt="" width="120px" height="100px" class="me-3">
-          <div class="search-news-content">
-              <a href="#mau_may_tinh_tung_bi_apple_chon_vui" class="search-news-title">Mẫu máy tính từng bị Apple chôn vùi</a>
-              <div class="search-news-time">Nguồn: VnExpress</div>
-          </div>
-        </div>
-
-        <div class="search-news-item">
-          <img src="https://i1-vnexpress.vnecdn.net/2025/03/11/Frame1952-1741662384-2040-1741664397.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=bQWDH0aEocnaUShiz9EyJQ" alt="" width="120px" height="100px" class="me-3">
-          <div class="search-news-content">
-              <a href="#vu_an_be_tac_19_nam" class="search-news-title">Vụ án bế tắc 19 năm được phá nhờ AI</a>
-              <div class="search-news-time">Nguồn: VnExpress</div>
-          </div>
-        </div>
-
-        <div class="search-news-item">
-          <img src="https://i1-vnexpress.vnecdn.net/2025/03/20/Frame1958-1742441187-3409-1742441672.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=JhEaawoZmEiwfcfyhtO59Q" alt="" width="120px" height="100px" class="me-3">
-          <div class="search-news-content">
-              <a href="#vu_no_tau_con_thoi_nasa" class="search-news-title">Vụ nổ tàu con thoi nhiều bí ẩn của NASA </a>
-              <div class="search-news-time">Nguồn: VnExpress</div>
-          </div>
-        </div>
-        
-
-        <div class="search-news-item">
-          <img src="https://i1-vnexpress.vnecdn.net/2025/04/05/luadap-1743849262-4317-1743849512.png?w=320&h=320&q=100&dpr=2&fit=crop&s=aqOZDX6uc61_k3QOT4P7bA" alt="" width="120px" height="100px" class="me-3">
-          <div class="search-news-content">
-              <a href="#sup_do_khi_mat_5_ty" class="search-news-title">Sụp đổ khi mất 5 tỷ vay bạn bè vì bị lừa đảo</a>
-              <div class="search-news-time">Nguồn: VnExpress</div>
-          </div>
-        </div>
-
-        <div class="search-news-item">
-          <img src="https://i1-vnexpress.vnecdn.net/2025/04/06/hinh-anh-2-1743933546-17439335-3947-8736-1743933987.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=MO-TDq4IuyXELhSE6bi2wQ" alt="" width="120px" height="100px" class="me-3">
-          <div class="search-news-content">
-              <a href="#chua_the_day_bat_buoc_2_buoi_moi_ngay" class="search-news-title">Thứ trưởng Giáo dục: Chưa thể bắt buộc dạy hai buổi mỗi ngày ở THCS, THPT</a>
-              <div class="search-news-time">Nguồn: VnExpress</div>
-          </div>
-        </div>
-
-        <div class="search-news-item">
-            <img src="https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2025/4/5/z64775845039825f1be7aa9172a7a70884aabd077f20a9-17438705239541996196351.jpg" alt="" width="120px" height="100px" class="me-3">
-            <div class="search-news-content">
-                <a href="#chan_dong_me_giet_con_de_truc_loi_bao_hiem" class="search-news-title">Chấn động mẹ giết con để trục lợi bảo hiểm: Nhận hàng tỉ đồng, "nướng" vào cờ bạc?</a>
-                <div class="search-news-time">Nguồn: Người Lao Động</div>
-          </div>
-        </div>
-
-          <div class="search-news-item">
-            <img src="https://i.ytimg.com/vi/z3LpBUru0R4/sddefault.jpg" alt="" width="120px" height="100px" class="me-3">
-            <div class="search-news-content">
-                <a href="#dung_lai_hien_truong_lanh_leo_vu_an" class="search-news-title">Dựng Lại Hiện Trường Lạnh Lẽo Vụ Án Người Mẹ Sát Hại Con Vì 4 Tỷ Tiền Bảo Hiểm, Ngàn Người Theo Dõi</a>
-                <div class="search-news-time">Nguồn: YouTube</div>
-          </div>
-        </div>
-
-        <div class="search-news-item">
-          <img src="https://i.ytimg.com/vi_webp/Cw9I6H1DopU/sddefault.webp" alt="" width="120px" height="100px" class="me-3">
-          <div class="search-news-content">
-              <a href="#tu_1_tinh_tiet_rung_ron_ma_khong_ai_ngo_toi" class="search-news-title">TỪ 1 TÌNH TIẾT RÙNG RỢN MÀ KHÔNG AI NGỜ TỚI - CÔNG AN ĐÃ VẠCH TRẦN TỘI ÁC CỦA KẺ SÁT HẠI CON RUỘT</a>
-              <div class="search-news-time">Nguồn: YouTube</div>
-        </div>
-      </div>
-
-        <div class="search-news-item">
-          <img src="https://i1-vnexpress.vnecdn.net/2025/02/27/Thumbgiaima19-1740623034-4624-1740623824.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=nC5gO0Egyt2-dwrJBpi_NA" alt="" width="120px" height="100px" class="me-3">
-          <div class="search-news-content">
-              <a href="#hoi_chung_bi_an_tung_tan_cong_1-500_vien_chuc_ngoai_giao_my" class="search-news-title">Hội chứng bí ẩn từng tấn công 1.500 viên chức ngoại giao Mỹ</a>
-              <div class="search-news-time">Nguồn: VnExpress</div>
-          </div>
-        </div>
-          <script>
-           document.getElementById("searchInput").addEventListener("keyup", function () {
-  let filter = removeDiacritics(this.value.toLowerCase());
-  let items = document.querySelectorAll(".search-news-item");
-  let noResults = document.getElementById("noResults");
-  let found = false;
-
-  items.forEach(item => {
-    let title = item.querySelector(".search-news-title").textContent.toLowerCase();
-    let normalizedTitle = removeDiacritics(title);
-
-    if (normalizedTitle.includes(filter)) {
-      item.style.display = "flex";
-      found = true;
-    } else {
-      item.style.display = "none";
-    }
-  });
-
-  noResults.style.display = found ? "none" : "block";
-});
-
-// Hàm loại bỏ dấu tiếng Việt
-function removeDiacritics(str) {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
-            </script>
-      </div>
-      <div class="modal-footer">
-        <div>Tìm kiếm bởi WebPage Search</div>
-      </div>
-    </div>
-  </div>
-</div>
     
  <div class="container mt-4">
     <div id="trang_chu" class="page">
@@ -652,6 +485,162 @@ function removeDiacritics(str) {
   </div>
     </div>
 
+    <div class="page d-none" id="tim_kiem">
+        <h3><a href="#trang_chu">Trang chủ</a> > <a href="#tim_kiem">Tìm kiếm</a></h3>
+          <hr>
+            <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm tin tức,video,podcasts,...">
+            <center><div id="noResults" style="display: none; color: red; font-weight: bold; margin-top: 10px;">Không có bài báo nào phù hợp với từ khoá của bạn</div></center>
+            <div class="search-news-item">
+                <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#vu_tiktoker_pham_thoai" class="search-news-title">Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</a>
+                    <div class="search-news-time">Nguồn: YouTube</div>
+                </div>
+              </div>
+                
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/04/11/7896440bb438473eac78f84da52391-4178-7945-1744339281.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=iTEJlS66WjdsnE-4lohoxA" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#pha_an_tu_bo_xuong_kho" class="search-news-title">Phá án từ bộ xương khô</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+              </div>
+            </div>
+      
+            <div class="search-news-item">
+                <img src="https://i.ytimg.com/vi/ERrf7IFvRBY/hqdefault.jpg?sqp=-oaymwFBCPYBEIoBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AG-BIACgAqKAgwIABABGDkgUSh_MA8=&rs=AOn4CLC7IxFC-1z18ejxG16c_x5IAeBkXw" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#live_pham_thoai_va_me_be_bap_full" class="search-news-title">live phạm thoại và mẹ bé bắp full</a>
+                    <div class="search-news-time">Nguồn: YouTube</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/03/14/233a0379-1741945566-1741945710-9467-1741945723.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=u8nPU1p0AmyPzEede89Q7Q" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#dot_ngot_dung_day_them_anh_huong_tam_ly_hoc_sinh" class="search-news-title">Bộ Giáo dục: Đột ngột dừng dạy thêm ảnh hưởng tâm lý học sinh</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://i1-kinhdoanh.vnecdn.net/2025/04/11/20250320T220348Z1815739118RC29-3326-7905-1744359510.jpg?w=680&h=408&q=100&dpr=1&fit=crop&s=R_N9W_wly08CSlmJ5Stt3Q" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#trung_quoc_ap_thue_tra_dua_125_len_hang_my" class="search-news-title">Trung Quốc áp thuế trả đũa 125% lên hàng Mỹ</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://image.tienphong.vn/Uploaded/2025/aohuooh/2025_04_03/chaybotoq-ezgifcom-video-to-gif-converter-1-6948-6460.gif" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#quan_bo_to_boc_chay_ngun_ngut" class="search-news-title">Hà Nội: Lửa ngùn ngụt tại một quán 'Bò tơ quán mộc'</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/03/13/ThumbFrame192-1741838094-5421-1741838663.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=rJh3Qjw2aAGT4qvGKqzCaw" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#mau_may_tinh_tung_bi_apple_chon_vui" class="search-news-title">Mẫu máy tính từng bị Apple chôn vùi</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/03/11/Frame1952-1741662384-2040-1741664397.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=bQWDH0aEocnaUShiz9EyJQ" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#vu_an_be_tac_19_nam" class="search-news-title">Vụ án bế tắc 19 năm được phá nhờ AI</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/03/20/Frame1958-1742441187-3409-1742441672.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=JhEaawoZmEiwfcfyhtO59Q" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#vu_no_tau_con_thoi_nasa" class="search-news-title">Vụ nổ tàu con thoi nhiều bí ẩn của NASA </a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+              
+      
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/04/05/luadap-1743849262-4317-1743849512.png?w=320&h=320&q=100&dpr=2&fit=crop&s=aqOZDX6uc61_k3QOT4P7bA" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#sup_do_khi_mat_5_ty" class="search-news-title">Sụp đổ khi mất 5 tỷ vay bạn bè vì bị lừa đảo</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/04/06/hinh-anh-2-1743933546-17439335-3947-8736-1743933987.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=MO-TDq4IuyXELhSE6bi2wQ" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#chua_the_day_bat_buoc_2_buoi_moi_ngay" class="search-news-title">Thứ trưởng Giáo dục: Chưa thể bắt buộc dạy hai buổi mỗi ngày ở THCS, THPT</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                  <img src="https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2025/4/5/z64775845039825f1be7aa9172a7a70884aabd077f20a9-17438705239541996196351.jpg" alt="" width="150px" class="me-3">
+                  <div class="search-news-content">
+                      <a href="#chan_dong_me_giet_con_de_truc_loi_bao_hiem" class="search-news-title">Chấn động mẹ giết con để trục lợi bảo hiểm: Nhận hàng tỉ đồng, "nướng" vào cờ bạc?</a>
+                      <div class="search-news-time">Nguồn: Người Lao Động</div>
+                </div>
+              </div>
+      
+                <div class="search-news-item">
+                  <img src="https://i.ytimg.com/vi/z3LpBUru0R4/sddefault.jpg" alt="" width="150px" class="me-3">
+                  <div class="search-news-content">
+                      <a href="#dung_lai_hien_truong_lanh_leo_vu_an" class="search-news-title">Dựng Lại Hiện Trường Lạnh Lẽo Vụ Án Người Mẹ Sát Hại Con Vì 4 Tỷ Tiền Bảo Hiểm, Ngàn Người Theo Dõi</a>
+                      <div class="search-news-time">Nguồn: YouTube</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://i.ytimg.com/vi_webp/Cw9I6H1DopU/sddefault.webp" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#tu_1_tinh_tiet_rung_ron_ma_khong_ai_ngo_toi" class="search-news-title">TỪ 1 TÌNH TIẾT RÙNG RỢN MÀ KHÔNG AI NGỜ TỚI - CÔNG AN ĐÃ VẠCH TRẦN TỘI ÁC CỦA KẺ SÁT HẠI CON RUỘT</a>
+                    <div class="search-news-time">Nguồn: YouTube</div>
+              </div>
+            </div>
+      
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/02/27/Thumbgiaima19-1740623034-4624-1740623824.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=nC5gO0Egyt2-dwrJBpi_NA" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#hoi_chung_bi_an_tung_tan_cong_1-500_vien_chuc_ngoai_giao_my" class="search-news-title">Hội chứng bí ẩn từng tấn công 1.500 viên chức ngoại giao Mỹ</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+            <script>
+                document.getElementById("searchInput").addEventListener("keyup", function () {
+       let filter = removeDiacritics(this.value.toLowerCase());
+       let items = document.querySelectorAll(".search-news-item");
+       let noResults = document.getElementById("noResults");
+       let found = false;
+     
+       items.forEach(item => {
+         let title = item.querySelector(".search-news-title").textContent.toLowerCase();
+         let normalizedTitle = removeDiacritics(title);
+     
+         if (normalizedTitle.includes(filter)) {
+           item.style.display = "flex";
+           found = true;
+         } else {
+           item.style.display = "none";
+         }
+       });
+     
+       noResults.style.display = found ? "none" : "block";
+     });
+     
+     // Hàm loại bỏ dấu tiếng Việt
+     function removeDiacritics(str) {
+       return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+     }
+        </script>
+        <hr>
+        <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
+    </div>
+
       <div id="tin_tuc" class="page d-none">
         <h3><a href="#trang_chu">Trang chủ</a> > <a href="#tin_tuc">Tin tức & Sự kiện</a></h3>
           <hr>
@@ -711,134 +700,6 @@ function removeDiacritics(str) {
         <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
     </div>
 
-<!--      <div id="dang_nhap" class="page d'none">
-          <div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
-        <div class="container">
-            <div id="login-form" class="form-wrapper">
-                <h2 class="text-center mb-3">Đăng nhập</h2>
-                <form id="loginSubmitForm">
-                    <div class="mb-3">
-                        <label for="loginEmail" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="loginEmail" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="loginPassword" class="form-label">Mật khẩu:</label>
-                        <input type="password" class="form-control" id="loginPassword" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
-                    <div id="loginError" class="mt-2 text-danger text-center"></div>
-                    <div id="loginSuccess" class="mt-2 text-success text-center"></div>
-                    <div class="text-center mt-3">
-                        <a href="#" data-target="forgot-password-form" class="link-primary me-2 show-form">Quên mật khẩu?</a>
-                        <span>|</span>
-                        <a href="#" data-target="signup-form" class="link-primary ms-2 show-form">Đăng ký</a>
-                    </div>
-                </form>
-            </div>
-
-            <div id="signup-form" style="display: none;" class="form-wrapper">
-                <h2 class="text-center mb-3">Đăng ký</h2>
-                <form id="signupSubmitForm">
-                    <div class="mb-3">
-                        <label for="signupEmail" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="signupEmail" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="signupPassword" class="form-label">Mật khẩu:</label>
-                        <input type="password" class="form-control" id="signupPassword" required>
-                    </div>
-                    <button type="submit" class="btn btn-success w-100">Đăng ký</button>
-                    <div id="signupError" class="mt-2 text-danger text-center"></div>
-                    <div id="signupSuccess" class="mt-2 text-success text-center"></div>
-                    <div class="text-center mt-3">
-                        <a href="#" data-target="login-form" class="link-info show-form">Quay lại đăng nhập</a>
-                    </div>
-                </form>
-            </div>
-
-            <div id="forgot-password-form" style="display: none;" class="form-wrapper">
-                <h2 class="text-center mb-3">Khôi phục mật khẩu</h2>
-                <form id="resetSubmitForm">
-                    <div class="mb-3">
-                        <label for="resetEmail" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="resetEmail" required>
-                    </div>
-                    <button type="submit" class="btn btn-warning w-100">Gửi email khôi phục</button>
-                    <div id="resetError" class="mt-2 text-danger text-center"></div>
-                    <div id="resetSuccess" class="mt-2 text-success text-center"></div>
-                    <div class="text-center mt-3">
-                        <a href="#" data-target="login-form" class="link-info show-form">Quay lại đăng nhập</a>
-                    </div>
-                </form>
-            </div>
-
-            <div id="accountInfo" style="display: none;" class="form-wrapper">
-                <h2 class="text-center mb-3">Thông tin tài khoản</h2>
-                <p class="mb-2">Xin chào, <span id="accountEmail" class="fw-bold"></span></p>
-                <p class="mb-2">Email của bạn: <span id="currentEmail" class="fw-bold"></span></p>
-                <form id="accountActionsForm">
-                    <div class="d-grid gap-2">
-                        <button id="logoutButton" type="button" class="btn btn-danger">Đăng xuất</button>
-                        <button id="deleteAccountButton" type="button" class="btn btn-secondary">Xóa tài khoản</button>
-                        <button data-target="changePasswordForm" class="btn btn-primary show-form" type="button" id="changePasswordButton">Đổi mật khẩu</button>
-                        <button data-target="updateEmailForm" class="btn btn-info show-form" type="button" id="updateEmailButton">Cập nhật email</button>
-                    </div>
-                </form>
-            </div>
-
-            <div id="updateEmailForm" style="display: none;" class="form-wrapper">
-                <h2 class="text-center mb-3">Cập nhật email</h2>
-                <form id="updateEmailSubmitForm">
-                    <div class="mb-3">
-                        <label for="newEmail" class="form-label">Email mới:</label>
-                        <input type="email" class="form-control" id="newEmail" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Cập nhật email</button>
-                    <div id="updateEmailError" class="mt-2 text-danger text-center"></div>
-                    <div id="updateEmailSuccess" class="mt-2 text-success text-center"></div>
-                    <div class="text-center mt-3">
-                        <button data-target="accountInfo" class="btn btn-secondary show-form" type="button" id="cancelUpdateEmail">Hủy</button>
-                    </div>
-                </form>
-            </div>
-
-            <div id="changePasswordForm" style="display: none;" class="form-wrapper">
-                <h2 class="text-center mb-3">Đổi mật khẩu</h2>
-                <form id="changePasswordSubmitForm">
-                    <div class="mb-3">
-                        <label for="currentPassword" class="form-label">Mật khẩu hiện tại:</label>
-                        <input type="password" class="form-control" id="currentPassword" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="newPassword" class="form-label">Mật khẩu mới:</label>
-                        <input type="password" class="form-control" id="newPassword" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="confirmNewPassword" class="form-label">Xác nhận mật khẩu mới:</label>
-                        <input type="password" class="form-control" id="confirmNewPassword" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Đổi mật khẩu</button>
-                    <div id="changePasswordError" class="mt-2 text-danger text-center"></div>
-                    <div id="changePasswordSuccess" class="mt-2 text-success text-center"></div>
-                    <div class="text-center mt-3">
-                        <button data-target="accountInfo" class="btn btn-secondary show-form" type="button" id="cancelChangePassword">Hủy</button>
-                    </div>
-                </form>
-            </div>
-
-            <div id="accountDeleted" style="display: none;" class="form-wrapper">
-                <h2 class="text-center mb-3 text-danger">Tài khoản đã bị xóa</h2>
-                <p class="mt-2 text-success text-center">Tài khoản của bạn đã bị xóa thành công.</p>
-                <div class="text-center mt-3">
-                    <form id="backToLoginFromDeleteForm">
-                        <button data-target="login-form" class="btn btn-info show-form" type="button" id="backToLoginFromDelete">Quay lại đăng nhập</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-     </div>
- -->
     <div id="video" class="page d-none">
       <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#video">Video</a></h3></div>
       <hr>
@@ -1490,292 +1351,5 @@ window.addEventListener("DOMContentLoaded", () => {
                 });
             }
             </script>
-<!--        <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification, signOut, deleteUser, updateEmail, updateProfile, updatePassword, reauthenticateWithCredential, EmailAuthProvider } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
-
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyD1Jx3BVxVp0oaX5y2EdPLOmgcau6E8P8M",
-            authDomain: "webpage-news.firebaseapp.com",
-            projectId: "webpage-news",
-            storageBucket: "webpage-news.firebasestorage.app",
-            messagingSenderId: "95738658476",
-            appId: "1:95738658476:web:ca38f584a24b71063d6909",
-            measurementId: "G-3KJR1G7EXF"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        const loginFormContainer = document.getElementById('login-form');
-        const signupFormContainer = document.getElementById('signup-form');
-        const forgotPasswordFormContainer = document.getElementById('forgot-password-form');
-        const accountInfoDiv = document.getElementById('accountInfo');
-        const updateEmailFormDiv = document.getElementById('updateEmailForm');
-        const changePasswordFormDiv = document.getElementById('changePasswordForm');
-        const accountDeletedDiv = document.getElementById('accountDeleted');
-
-        // Get all elements with the class 'show-form'
-        const showFormLinks = document.querySelectorAll('.show-form');
-
-        // Function to hide all forms
-        function hideAllForms() {
-            loginFormContainer.style.display = 'none';
-            signupFormContainer.style.display = 'none';
-            forgotPasswordFormContainer.style.display = 'none';
-            accountInfoDiv.style.display = 'none';
-            updateEmailFormDiv.style.display = 'none';
-            changePasswordFormDiv.style.display = 'none';
-            accountDeletedDiv.style.display = 'none';
-        }
-
-        // Add event listener to each 'show-form' element
-        showFormLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.dataset.target;
-                hideAllForms();
-                const targetForm = document.getElementById(targetId);
-                if (targetForm) {
-                    targetForm.style.display = 'block';
-                }
-            });
-        });
-
-        // Function to show account info
-        function showAccountInfo(user) {
-            hideAllForms();
-            accountInfoDiv.style.display = 'block';
-            document.getElementById('accountEmail').textContent = user.email || 'Không có email';
-            document.getElementById('currentEmail').textContent = user.email || 'Không có email';
-        }
-
-        // Function to get error message
-        function getErrorMessage(errorCode) {
-            switch (errorCode) {
-                case 'auth/user-disabled':
-                    return 'Tài khoản này hiện đang bị khóa.';
-                case 'auth/invalid-email':
-                    return 'Địa chỉ email không hợp lệ.';
-                case 'auth/user-not-found':
-                    return 'Không tìm thấy người dùng với email này.';
-                case 'auth/wrong-password':
-                    return 'Mật khẩu không đúng.';
-                case 'auth/email-already-in-use':
-                    return 'Địa chỉ email này đã được sử dụng.';
-                case 'auth/weak-password':
-                    return 'Mật khẩu quá yếu. Mật khẩu phải có ít nhất 6 ký tự.';
-                case 'auth/invalid-continue-uri': // Thêm xử lý lỗi này (mặc dù nó nên được fix ở cấu hình)
-                    return 'Đường dẫn chuyển hướng không hợp lệ. Vui lòng kiểm tra cấu hình Firebase.';
-                default:
-                    return 'Đã có lỗi xảy ra. Vui lòng thử lại sau.';
-            }
-        }
-
-        // Handle user logout
-        const logoutButton = document.getElementById('logoutButton');
-        if (logoutButton) {
-            logoutButton.addEventListener('click', async () => {
-                await signOut(auth);
-                hideAllForms();
-                loginFormContainer.style.display = 'block';
-            });
-        }
-
-        // Handle delete account
-        const deleteAccountButton = document.getElementById('deleteAccountButton');
-        if (deleteAccountButton) {
-            deleteAccountButton.addEventListener('click', async () => {
-                const user = auth.currentUser;
-                if (user && confirm('Bạn có chắc chắn muốn xóa tài khoản này? Thao tác này không thể hoàn tác.')) {
-                    try {
-                        await deleteUser(user);
-                        hideAllForms();
-                        accountDeletedDiv.style.display = 'block';
-                        // Prevent going back
-                        window.history.replaceState(null, null, window.location.pathname + window.location.search);
-                    } catch (error) {
-                        document.getElementById('accountInfo').innerHTML = `<p class="text-danger text-center mt-2">Lỗi khi xóa tài khoản: ${error.message}</p>`;
-                    }
-                }
-            });
-        }
-
-        // Handle update email
-        document.getElementById('updateEmailSubmitForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const newEmail = document.getElementById('newEmail').value;
-            const user = auth.currentUser;
-            if (user) {
-                try {
-                    const actionCodeSettings = {
-                        url: 'https://thewebsite2023.github.io', // SỬA LỖI: Đảm bảo URL này được cho phép
-                        handleCodeInApp: false // Phải là false nếu bạn muốn chuyển hướng đến URL
-                    };
-                    await sendEmailVerification(user, actionCodeSettings);
-                    document.getElementById('updateEmailSuccess').textContent = 'Email xác minh đã được gửi đến ' + newEmail + '. Vui lòng kiểm tra hộp thư đến và nhấp vào liên kết để xác minh trước khi email của bạn được cập nhật.';
-                    document.getElementById('updateEmailError').textContent = '';
-                    // Optionally disable the update email button or show a waiting message
-                } catch (error) {
-                    document.getElementById('updateEmailError').textContent = `Lỗi khi gửi email xác minh: ${error.message}`;
-                    document.getElementById('updateEmailSuccess').textContent = '';
-                }
-            } else {
-                document.getElementById('updateEmailError').textContent = 'Không có người dùng nào đăng nhập.';
-            }
-        });
-
-        // Handle change password
-        document.getElementById('changePasswordSubmitForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const currentPassword = document.getElementById('currentPassword').value;
-            const newPassword = document.getElementById('newPassword').value;
-            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
-            const user = auth.currentUser;
-
-            if (!user) {
-                document.getElementById('changePasswordError').textContent = 'Không có người dùng nào đăng nhập.';
-                return;
-            }
-
-            if (newPassword !== confirmNewPassword) {
-                document.getElementById('changePasswordError').textContent = 'Mật khẩu mới và xác nhận không khớp.';
-                return;
-            }
-
-            if (newPassword.length < 6) {
-                document.getElementById('changePasswordError').textContent = 'Mật khẩu mới phải có ít nhất 6 ký tự.';
-                return;
-            }
-
-            if (!currentPassword) {
-                document.getElementById('changePasswordError').textContent = 'Vui lòng nhập mật khẩu hiện tại.';
-                return;
-            }
-
-            const credential = EmailAuthProvider.credential(user.email, currentPassword);
-
-            try {
-                await reauthenticateWithCredential(user, credential);
-                const actionCodeSettings = {
-                    url: 'https://thewebsite2023.github.io/reset-password', // SỬA LỖI: Đảm bảo URL này được cho phép
-                    handleCodeInApp: false
-                };
-                await updatePassword(user, newPassword);
-                                document.getElementById('changePasswordSuccess').textContent = 'Đổi mật khẩu thành công!';
-                document.getElementById('changePasswordError').textContent = '';
-                setTimeout(() => {
-                    hideAllForms();
-                    accountInfoDiv.style.display = 'block';
-                }, 2000);
-            } catch (error) {
-                if (error.code === 'auth/wrong-password') {
-                    document.getElementById('changePasswordError').textContent = 'Mật khẩu hiện tại không đúng.';
-                } else {
-                    document.getElementById('changePasswordError').textContent = getErrorMessage(error.code);
-                }
-                document.getElementById('changePasswordSuccess').textContent = '';
-            } finally {
-                document.getElementById('currentPassword').value = '';
-                document.getElementById('newPassword').value = '';
-                document.getElementById('confirmNewPassword').value = '';
-            }
-        });
-
-                // Handle login
-        document.getElementById('loginSubmitForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            document.getElementById('loginError').textContent = '';
-            document.getElementById('loginSuccess').textContent = '';
-            try {
-                const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                const user = userCredential.user;
-                if (user) {
-                    if (!user.emailVerified) {
-                        const actionCodeSettings = {
-                            url: 'https://thewebsite2023.github.io/verify-email', // SỬA LỖI: Đảm bảo URL này được cho phép
-                            handleCodeInApp: false
-                        };
-                        await sendEmailVerification(auth.currentUser, actionCodeSettings);
-                        document.getElementById('loginSuccess').textContent = 'Đăng nhập thành công! Vui lòng kiểm tra email để xác thực tài khoản.';
-                    } else {
-                        showAccountInfo(user);
-                    }
-                }
-            } catch (error) {
-                document.getElementById('loginError').textContent = getErrorMessage(error.code);
-            }
-        });
-
-        // Handle signup
-        document.getElementById('signupSubmitForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-            document.getElementById('signupError').textContent = '';
-            document.getElementById('signupSuccess').textContent = '';
-            try {
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                const user = userCredential.user;
-                const actionCodeSettings = {
-                    url: 'https://thewebsite2023.github.io/verify-email', // SỬA LỖI: Đảm bảo URL này được cho phép
-                    handleCodeInApp: false
-                };
-                await sendEmailVerification(user, actionCodeSettings);
-                document.getElementById('signupSuccess').textContent = 'Đăng ký thành công! Vui lòng kiểm tra email để xác thực tài khoản.';
-                setTimeout(() => {
-                    hideAllForms();
-                    loginFormContainer.style.display = 'block';
-                }, 3000);
-            } catch (error) {
-                document.getElementById('signupError').textContent = getErrorMessage(error.code);
-            } finally {
-                document.getElementById('signupEmail').value = '';
-                document.getElementById('signupPassword').value = '';
-            }
-        });
-
-        // Handle forgot password
-        document.getElementById('resetSubmitForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('resetEmail').value;
-            document.getElementById('resetError').textContent = '';
-            document.getElementById('resetSuccess').textContent = '';
-            try {
-                const actionCodeSettings = {
-                    url: 'https://thewebsite2023.github.io/reset-password', // SỬA LỖI: Đảm bảo URL này được cho phép
-                    handleCodeInApp: false
-                };
-                await sendPasswordResetEmail(auth, email, actionCodeSettings);
-                document.getElementById('resetSuccess').textContent = 'Email khôi phục mật khẩu đã được gửi. Vui lòng kiểm tra hộp thư đến.';
-            } catch (error) {
-                document.getElementById('resetError').textContent = getErrorMessage(error.code);
-            } finally {
-                document.getElementById('resetEmail').value = '';
-            }
-        });
-
-        // Initially hide all forms and show login
-        hideAllForms();
-        loginFormContainer.style.display = 'block';
-
-        // Listen for auth state changes
-        auth.onAuthStateChanged(user => {
-            if (user && user.emailVerified) {
-                showAccountInfo(user);
-            } else if (user && !user.emailVerified) {
-                hideAllForms();
-                loginFormContainer.style.display = 'block';
-                document.getElementById('loginSuccess').textContent = 'Vui lòng xác thực email để tiếp tục.';
-            } else {
-                hideAllForms();
-                loginFormContainer.style.display = 'block';
-            }
-        });
-       </script> -->
 </body>
 </html>
