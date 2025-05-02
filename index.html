@@ -375,7 +375,20 @@ strong {
   background-color: #007bff;
   border-radius: 3px;
 }
+.navbar-nav-custom {
+  display: flex;
+  justify-content: space-around; /* Căn đều các phần tử bên trong */
+  width: 100%; /* Đảm bảo ul chiếm toàn bộ chiều rộng của navbar-collapse */
+}
 
+.nav-item {
+  flex-grow: 1; /* Các item sẽ chia đều không gian có sẵn */
+  text-align: center; /* Căn chữ bên trong mỗi item ra giữa */
+}
+
+.nav-link {
+  display: block; /* Để toàn bộ diện tích của li có thể click được */
+}
 </style>
 </head>
 <body>
@@ -391,7 +404,7 @@ strong {
         <hr>
         <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
 </div-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar fixed-top bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#trang_chu">WebPage News</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
