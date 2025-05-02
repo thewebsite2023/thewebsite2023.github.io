@@ -375,20 +375,6 @@ strong {
   background-color: #007bff;
   border-radius: 3px;
 }
-.navbar-nav-custom {
-  display: flex;
-  justify-content: space-around; /* Căn đều các phần tử bên trong */
-  width: 100%; /* Đảm bảo ul chiếm toàn bộ chiều rộng của navbar-collapse */
-}
-
-.nav-item {
-  flex-grow: 1; /* Các item sẽ chia đều không gian có sẵn */
-  text-align: center; /* Căn chữ bên trong mỗi item ra giữa */
-}
-
-.nav-link {
-  display: block; /* Để toàn bộ diện tích của li có thể click được */
-}
 </style>
 </head>
 <body>
@@ -411,7 +397,7 @@ strong {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav nav-tabs-custom me-auto mb-2 mb-lg-0 navbar-nav-custom" id="customNavTabs">
+            <ul class="navbar-nav nav-tabs-custom me-auto mb-2 mb-lg-0" id="customNavTabs">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#trang_chu">Trang chủ</a>
               </li>
