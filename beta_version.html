@@ -447,8 +447,13 @@ strong {
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  $(window).on("load", function () {
-    $('#loader').css({ 'opacity': 0, 'visibility': 'hidden', 'pointer-events': 'none' });
+  var loader = function() {
+    setTimeout(function() {
+      $('#loader').css({ 'opacity': 0, 'visibility': 'hidden' });
+    }, 10000);
+  };
+  $(function () {
+    loader();
   });
 </script>
 <div id="fb-root"></div>
