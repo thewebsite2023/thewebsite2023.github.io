@@ -375,9 +375,87 @@ strong {
   background-color: #007bff;
   border-radius: 3px;
 }
+        #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(255, 255, 255, 0.3); /* Có thể nhìn thấy nội dung */
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.3s ease;
+      pointer-events: auto; /* chặn tương tác */
+    }
+
+    .loading-box {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px 30px;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .linear-loader {
+      position: relative;
+      height: 4px;
+      width: 80px;
+      background-color: #e0e0e0;
+      overflow: hidden;
+      border-radius: 2px;
+      margin-bottom: 10px;
+    }
+
+    .linear-loader::before,
+    .linear-loader::after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      background-color: #1a73e8;
+      will-change: left, right;
+      animation: indeterminate 2s infinite;
+    }
+
+    .linear-loader::after {
+      animation: indeterminate-short 2s infinite;
+    }
+
+    @keyframes indeterminate {
+      0% { left: -35%; right: 100%; }
+      60% { left: 100%; right: -90%; }
+      100% { left: 100%; right: -90%; }
+    }
+
+    @keyframes indeterminate-short {
+      0% { left: -200%; right: 100%; }
+      60% { left: 107%; right: -8%; }
+      100% { left: 107%; right: -8%; }
+    }
 </style>
 </head>
 <body>
+    <div id="loader">
+  <div class="loading-box">
+    <div class="linear-loader"></div>
+    <div>Đang tải...</div>
+  </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  var loader = function() {
+    setTimeout(function() {
+      $('#loader').css({ 'opacity': 0, 'visibility': 'hidden' });
+    }, 10000);
+  };
+  $(function () {
+    loader();
+  });
+</script>
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v22.0&appId=1926059728200552"></script>
 <!--div class="container mt-4">
@@ -390,7 +468,7 @@ strong {
         <hr>
         <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
 </div-->
-    <nav class="navbar fixed-bottom bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#trang_chu">WebPage News</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -1359,4 +1437,4 @@ window.addEventListener("DOMContentLoaded", () => {
             }
             </script>
 </body>
-</html>
+      </html>
