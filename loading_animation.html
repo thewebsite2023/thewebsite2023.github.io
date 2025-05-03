@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Google Linear Loading</title>
+</head>
+<body>
+<div class="login-overlay">
+  <div class="linear-loader"></div>
+</div>
+    <style>
+    .login-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.6); /* Màu xám mờ */
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.linear-loader {
+  position: relative;
+  height: 4px;
+  width: 80px;
+  background-color: #e0e0e0;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.linear-loader::before,
+.linear-loader::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  background-color: #1a73e8;
+  will-change: left, right;
+  animation: indeterminate 2s infinite;
+}
+
+.linear-loader::after {
+  animation: indeterminate-short 2s infinite;
+}
+
+@keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+
+@keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}
+    </style>
+    <script>
+    // Hiện loading overlay
+document.querySelector('.login-overlay').style.display = 'flex';
+
+// Ẩn overlay sau khi xử lý xong
+setTimeout(() => {
+  document.querySelector('.login-overlay').style.display = 'none';
+}, 2000); // ví dụ: ẩn sau 2 giây
+    </script>
+</body>
+</html>
