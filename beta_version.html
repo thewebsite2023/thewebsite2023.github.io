@@ -72,7 +72,17 @@ document.onclick=reEnable
     };
 </script>
 <style>
-            .news-item {
+     .form-wrapper {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #f9f9f9;
+            width: 60%;
+     }
+         .news-item {
             display: flex;
             align-items: center;
             border-bottom: 1px solid #ddd;
@@ -102,13 +112,13 @@ document.onclick=reEnable
             font-size: 12px;
             color: gray;
         }
-            .search-news-item {
+        .search-news-item {
             display: flex;
             align-items: center;
             border-bottom: 1px solid #ddd;
             padding: 15px;
         }
-        .search-news img {
+        .search-news-item img {
             width: 80px;
             height: 80px;
             object-fit: cover;
@@ -132,6 +142,13 @@ document.onclick=reEnable
             font-size: 12px;
             color: gray;
         }
+    .card-body img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 5px;
+    }
     .logo {
             border-radius: 100px;
             width: 50px;
@@ -323,9 +340,119 @@ strong {
     font-size: 0.9em;
     color: #555;
 }
+
+.nav-tabs-custom {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.nav-tabs-custom .nav-link {
+  font-weight: bold;
+  color: #555;
+  position: relative;
+  margin: 0 10px;
+  padding-bottom: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.nav-tabs-custom .nav-link:hover {
+  color: #007bff;
+}
+
+.nav-tabs-custom .nav-link.active {
+  color: #007bff;
+}
+
+.nav-tabs-custom .nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #007bff;
+  border-radius: 3px;
+}
+        #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(255, 255, 255, 0.3); /* Có thể nhìn thấy nội dung */
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.3s ease;
+      pointer-events: auto; /* chặn tương tác */
+    }
+
+    .loading-box {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px 30px;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .linear-loader {
+      position: relative;
+      height: 4px;
+      width: 80px;
+      background-color: #e0e0e0;
+      overflow: hidden;
+      border-radius: 2px;
+      margin-bottom: 10px;
+    }
+
+    .linear-loader::before,
+    .linear-loader::after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      background-color: #1a73e8;
+      will-change: left, right;
+      animation: indeterminate 2s infinite;
+    }
+
+    .linear-loader::after {
+      animation: indeterminate-short 2s infinite;
+    }
+
+    @keyframes indeterminate {
+      0% { left: -35%; right: 100%; }
+      60% { left: 100%; right: -90%; }
+      100% { left: 100%; right: -90%; }
+    }
+
+    @keyframes indeterminate-short {
+      0% { left: -200%; right: 100%; }
+      60% { left: 107%; right: -8%; }
+      100% { left: 107%; right: -8%; }
+    }
 </style>
 </head>
 <body>
+    <div id="loader">
+  <div class="loading-box">
+    <div class="linear-loader"></div>
+    <div>Đang tải...</div>
+  </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(window).on("load", function () {
+    $('#loader').css({ 'opacity': 0, 'visibility': 'hidden', 'pointer-events': 'none' });
+  });
+</script>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v22.0&appId=1926059728200552"></script>
 <!--div class="container mt-4">
         <center>
             <img src="https://raw.githubusercontent.com/thewebsite2023/thewebsite2023.github.io/refs/heads/main/favicon.ico" alt="" class="logo">
@@ -336,132 +463,39 @@ strong {
         <hr>
         <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
 </div-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar fixed-bottom bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/trang_chu">WebPage News</a>
+          <a class="navbar-brand" href="#trang_chu">WebPage News</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav nav-tabs-custom me-auto mb-2 mb-lg-0" id="customNavTabs">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/trang_chu">Trang chủ</a>
+                <a class="nav-link active" aria-current="page" href="#trang_chu">Trang chủ</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/tin_tuc">Tin tức & Sự kiện</a>
+                <a class="nav-link" href="#tin_tuc">Tin tức & Sự kiện</a>
               </li>
             <li class="nav-item">
-                <a href="/video" class="nav-link">Video</a>
+                <a href="#video" class="nav-link">Video</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/podcast">Podcast</a>
+                <a class="nav-link" href="#podcast">Podcast</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/lien_he">Thông tin</a>
+                <a class="nav-link" href="#tim_kiem">Tìm kiếm</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#lien_he">Thông tin</a>
+              </li>
+<!--               <li class="nav-item">
+                <a class="nav-link" href="#" onclick="openLoginWindow()">Đăng nhập</a>
+              </li> -->
             </ul>
-        <form class="d-flex" role="search">
-         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#searchModal">
-  Tìm kiếm
-</button>
-      </form>
           </div>
         </div>
       </nav>
-
-    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Tìm kiếm bài viết</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm tin tức,video,podcasts,...">
-        <center><div id="noResults" style="display: none; color: red; font-weight: bold; margin-top: 10px;">Không có bài báo nào phù hợp với từ khoá của bạn</div></center>
-        <div class="search-news-item">
-          <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="150px" class="me-3">
-          <div class="search-news-content">
-              <a href="/vu_tiktoker_pham_thoai" class="search-news-title">Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</a>
-              <div class="search-news-time">Nguồn: YouTube</div>
-          </div>
-        </div>
-          
-      <div class="search-news-item">
-          <img src="https://i.ytimg.com/vi/ERrf7IFvRBY/hqdefault.jpg?sqp=-oaymwFBCPYBEIoBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AG-BIACgAqKAgwIABABGDkgUSh_MA8=&rs=AOn4CLC7IxFC-1z18ejxG16c_x5IAeBkXw" alt="" width="150px" class="me-3">
-          <div class="search-news-content">
-              <a href="live_pham_thoai_va_me_be_bap_full" class="search-news-title">live phạm thoại và mẹ bé bắp full</a>
-              <div class="search-news-time">Nguồn: YouTube</div>
-          </div>
-        </div>
-
-        <div class="search-news-item">
-          <img src="https://i1-vnexpress.vnecdn.net/2025/03/14/233a0379-1741945566-1741945710-9467-1741945723.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=u8nPU1p0AmyPzEede89Q7Q" alt="" width="150px" class="me-3">
-          <div class="search-news-content">
-              <a href="dot_ngot_dung_day_them_anh_huong_tam_ly_hoc_sinh" class="search-news-title">Bộ Giáo dục: Đột ngột dừng dạy thêm ảnh hưởng tâm lý học sinh</a>
-              <div class="search-news-time">Nguồn: VnExpress</div>
-          </div>
-        </div>
-
-        <div class="search-news-item">
-          <img src="https://image.tienphong.vn/Uploaded/2025/aohuooh/2025_04_03/chaybotoq-ezgifcom-video-to-gif-converter-1-6948-6460.gif" alt="" width="150px" class="me-3">
-          <div class="search-news-content">
-              <a href="/quan_bo_to_boc_chay_ngun_ngut" class="search-news-title">Hà Nội: Lửa ngùn ngụt tại một quán 'Bò tơ quán mộc'</a>
-              <div class="search-news-time">Nguồn: VnExpress</div>
-          </div>
-        </div>
-
-        <div class="search-news-item">
-          <img src="https://i1-vnexpress.vnecdn.net/2025/03/13/ThumbFrame192-1741838094-5421-1741838663.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=rJh3Qjw2aAGT4qvGKqzCaw" alt="" width="120px" height="100px" class="me-3">
-          <div class="search-news-content">
-              <a href="/mau_may_tinh_tung_bi_apple_chon_vui" class="search-news-title">Mẫu máy tính từng bị Apple chôn vùi</a>
-              <div class="search-news-time">Nguồn: VnExpress</div>
-          </div>
-        </div>
-
-        <div class="search-news-item">
-          <img src="https://i1-vnexpress.vnecdn.net/2025/03/11/Frame1952-1741662384-2040-1741664397.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=bQWDH0aEocnaUShiz9EyJQ" alt="" width="120px" height="100px" class="me-3">
-          <div class="search-news-content">
-              <a href="/vu_an_be_tac_19_nam" class="search-news-title">Vụ án bế tắc 19 năm được phá nhờ AI</a>
-              <div class="search-news-time">Nguồn: VnExpress</div>
-          </div>
-        </div>
-
-        <div class="search-news-item">
-          <img src="https://i1-vnexpress.vnecdn.net/2025/03/20/Frame1958-1742441187-3409-1742441672.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=JhEaawoZmEiwfcfyhtO59Q" alt="" width="120px" height="100px" class="me-3">
-          <div class="search-news-content">
-              <a href="/vu_no_tau_con_thoi_nasa" class="search-news-title">Vụ nổ tàu con thoi nhiều bí ẩn của NASA </a>
-              <div class="search-news-time">Nguồn: VnExpress</div>
-          </div>
-        </div>
-          <script>
-            document.getElementById("searchInput").addEventListener("keyup", function() {
-              let filter = this.value.toLowerCase();
-              let items = document.querySelectorAll(".search-news-item");
-              let noResults = document.getElementById("noResults");
-              let found = false;
-            
-              items.forEach(item => {
-                  let title = item.querySelector(".search-news-title").textContent.toLowerCase();
-                  if (title.includes(filter)) {
-                      item.style.display = "flex";
-                      found = true;
-                  } else {
-                      item.style.display = "none";
-                  }
-              });
-            
-              // Hiển thị hoặc ẩn thông báo không tìm thấy kết quả
-              noResults.style.display = found ? "none" : "block";
-            });
-            </script>
-      </div>
-      <div class="modal-footer">
-        <div>Tìm kiếm bởi WebPage Search</div>
-      </div>
-    </div>
-  </div>
-</div>
     
  <div class="container mt-4">
     <div id="trang_chu" class="page">
@@ -477,7 +511,7 @@ strong {
                 <div>
                       <h5 class="card-title">Xem ngay: Bộ Giáo dục: Đột ngột dừng dạy thêm ảnh hưởng tâm lý học sinh</h5>
                       <p class="card-text">Bấm vào xem chi tiết để biết thêm thông tin</p>
-                        <a href="/dot_ngot_dung_day_them_anh_huong_tam_ly_hoc_sinh" class="btn btn-primary">Xem chi tiết</a>
+                        <a href="#dot_ngot_dung_day_them_anh_huong_tam_ly_hoc_sinh" class="btn btn-primary">Xem chi tiết</a>
                 </div>
               </div>
           </div>
@@ -491,7 +525,7 @@ strong {
                   <div>
                         <h5 class="card-title">Xem ngay: Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</h5>
                         <p class="card-text">Bấm vào xem chi tiết để biết thêm thông tin</p>
-                          <a href="/vu_tiktoker_pham_thoai" class="btn btn-primary">Xem chi tiết</a>
+                          <a href="#vu_tiktoker_pham_thoai" class="btn btn-primary">Xem chi tiết</a>
                   </div>
                 </div>
             </div>
@@ -506,7 +540,7 @@ strong {
             <div>
                   <h5 class="card-title">Xem ngay: live phạm thoại và mẹ bé bắp full</h5>
                   <p class="card-text">Bấm vào xem chi tiết để biết thêm thông tin</p>
-                    <a href="/live_pham_thoai_va_me_be_bap_full" class="btn btn-primary">Xem chi tiết</a>
+                    <a href="#live_pham_thoai_va_me_be_bap_full" class="btn btn-primary">Xem chi tiết</a>
             </div>
           </div>
       </div>
@@ -519,7 +553,7 @@ strong {
           <div>
                 <h5 class="card-title">Xem ngay: Mẫu máy tính từng bị Apple chôn vùi</h5>
                 <p class="card-text">Bấm vào xem chi tiết để biết thêm thông tin</p>
-                  <a href="/mau_may_tinh_tung_bi_apple_chon_vui" class="btn btn-primary">Xem chi tiết</a>
+                  <a href="#mau_may_tinh_tung_bi_apple_chon_vui" class="btn btn-primary">Xem chi tiết</a>
           </div>
         </div>
     </div>
@@ -529,20 +563,197 @@ strong {
   </div>
     </div>
 
+    <div class="page d-none" id="tim_kiem">
+        <h3><a href="#trang_chu">Trang chủ</a> > <a href="#tim_kiem">Tìm kiếm</a></h3>
+          <hr>
+            <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm tin tức,video,podcasts,...">
+            <center><div id="noResults" style="display: none; color: red; font-weight: bold; margin-top: 10px;">Không có bài báo nào phù hợp với từ khoá của bạn</div></center>
+            <div class="search-news-item">
+                <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#vu_tiktoker_pham_thoai" class="search-news-title">Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</a>
+                    <div class="search-news-time">Nguồn: YouTube</div>
+                </div>
+              </div>
+                
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/04/11/7896440bb438473eac78f84da52391-4178-7945-1744339281.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=iTEJlS66WjdsnE-4lohoxA" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#pha_an_tu_bo_xuong_kho" class="search-news-title">Phá án từ bộ xương khô</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+              </div>
+            </div>
+      
+            <div class="search-news-item">
+                <img src="https://i.ytimg.com/vi/ERrf7IFvRBY/hqdefault.jpg?sqp=-oaymwFBCPYBEIoBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AG-BIACgAqKAgwIABABGDkgUSh_MA8=&rs=AOn4CLC7IxFC-1z18ejxG16c_x5IAeBkXw" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#live_pham_thoai_va_me_be_bap_full" class="search-news-title">live phạm thoại và mẹ bé bắp full</a>
+                    <div class="search-news-time">Nguồn: YouTube</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/03/14/233a0379-1741945566-1741945710-9467-1741945723.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=u8nPU1p0AmyPzEede89Q7Q" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#dot_ngot_dung_day_them_anh_huong_tam_ly_hoc_sinh" class="search-news-title">Bộ Giáo dục: Đột ngột dừng dạy thêm ảnh hưởng tâm lý học sinh</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://i1-kinhdoanh.vnecdn.net/2025/04/11/20250320T220348Z1815739118RC29-3326-7905-1744359510.jpg?w=680&h=408&q=100&dpr=1&fit=crop&s=R_N9W_wly08CSlmJ5Stt3Q" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#trung_quoc_ap_thue_tra_dua_125_len_hang_my" class="search-news-title">Trung Quốc áp thuế trả đũa 125% lên hàng Mỹ</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://image.tienphong.vn/Uploaded/2025/aohuooh/2025_04_03/chaybotoq-ezgifcom-video-to-gif-converter-1-6948-6460.gif" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#quan_bo_to_boc_chay_ngun_ngut" class="search-news-title">Hà Nội: Lửa ngùn ngụt tại một quán 'Bò tơ quán mộc'</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/03/13/ThumbFrame192-1741838094-5421-1741838663.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=rJh3Qjw2aAGT4qvGKqzCaw" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#mau_may_tinh_tung_bi_apple_chon_vui" class="search-news-title">Mẫu máy tính từng bị Apple chôn vùi</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/03/11/Frame1952-1741662384-2040-1741664397.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=bQWDH0aEocnaUShiz9EyJQ" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#vu_an_be_tac_19_nam" class="search-news-title">Vụ án bế tắc 19 năm được phá nhờ AI</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/03/20/Frame1958-1742441187-3409-1742441672.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=JhEaawoZmEiwfcfyhtO59Q" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#vu_no_tau_con_thoi_nasa" class="search-news-title">Vụ nổ tàu con thoi nhiều bí ẩn của NASA </a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+              
+      
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/04/05/luadap-1743849262-4317-1743849512.png?w=320&h=320&q=100&dpr=2&fit=crop&s=aqOZDX6uc61_k3QOT4P7bA" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#sup_do_khi_mat_5_ty" class="search-news-title">Sụp đổ khi mất 5 tỷ vay bạn bè vì bị lừa đảo</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/04/06/hinh-anh-2-1743933546-17439335-3947-8736-1743933987.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=MO-TDq4IuyXELhSE6bi2wQ" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#chua_the_day_bat_buoc_2_buoi_moi_ngay" class="search-news-title">Thứ trưởng Giáo dục: Chưa thể bắt buộc dạy hai buổi mỗi ngày ở THCS, THPT</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                  <img src="https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2025/4/5/z64775845039825f1be7aa9172a7a70884aabd077f20a9-17438705239541996196351.jpg" alt="" width="150px" class="me-3">
+                  <div class="search-news-content">
+                      <a href="#chan_dong_me_giet_con_de_truc_loi_bao_hiem" class="search-news-title">Chấn động mẹ giết con để trục lợi bảo hiểm: Nhận hàng tỉ đồng, "nướng" vào cờ bạc?</a>
+                      <div class="search-news-time">Nguồn: Người Lao Động</div>
+                </div>
+              </div>
+      
+                <div class="search-news-item">
+                  <img src="https://i.ytimg.com/vi/z3LpBUru0R4/sddefault.jpg" alt="" width="150px" class="me-3">
+                  <div class="search-news-content">
+                      <a href="#dung_lai_hien_truong_lanh_leo_vu_an" class="search-news-title">Dựng Lại Hiện Trường Lạnh Lẽo Vụ Án Người Mẹ Sát Hại Con Vì 4 Tỷ Tiền Bảo Hiểm, Ngàn Người Theo Dõi</a>
+                      <div class="search-news-time">Nguồn: YouTube</div>
+                </div>
+              </div>
+      
+              <div class="search-news-item">
+                <img src="https://i.ytimg.com/vi_webp/Cw9I6H1DopU/sddefault.webp" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#tu_1_tinh_tiet_rung_ron_ma_khong_ai_ngo_toi" class="search-news-title">TỪ 1 TÌNH TIẾT RÙNG RỢN MÀ KHÔNG AI NGỜ TỚI - CÔNG AN ĐÃ VẠCH TRẦN TỘI ÁC CỦA KẺ SÁT HẠI CON RUỘT</a>
+                    <div class="search-news-time">Nguồn: YouTube</div>
+              </div>
+            </div>
+      
+              <div class="search-news-item">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/02/27/Thumbgiaima19-1740623034-4624-1740623824.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=nC5gO0Egyt2-dwrJBpi_NA" alt="" width="150px" class="me-3">
+                <div class="search-news-content">
+                    <a href="#hoi_chung_bi_an_tung_tan_cong_1-500_vien_chuc_ngoai_giao_my" class="search-news-title">Hội chứng bí ẩn từng tấn công 1.500 viên chức ngoại giao Mỹ</a>
+                    <div class="search-news-time">Nguồn: VnExpress</div>
+                </div>
+              </div>
+            <script>
+                document.getElementById("searchInput").addEventListener("keyup", function () {
+       let filter = removeDiacritics(this.value.toLowerCase());
+       let items = document.querySelectorAll(".search-news-item");
+       let noResults = document.getElementById("noResults");
+       let found = false;
+     
+       items.forEach(item => {
+         let title = item.querySelector(".search-news-title").textContent.toLowerCase();
+         let normalizedTitle = removeDiacritics(title);
+     
+         if (normalizedTitle.includes(filter)) {
+           item.style.display = "flex";
+           found = true;
+         } else {
+           item.style.display = "none";
+         }
+       });
+     
+       noResults.style.display = found ? "none" : "block";
+     });
+     
+     // Hàm loại bỏ dấu tiếng Việt
+     function removeDiacritics(str) {
+       return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+     }
+        </script>
+        <hr>
+        <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
+    </div>
+
       <div id="tin_tuc" class="page d-none">
         <h3><a href="#trang_chu">Trang chủ</a> > <a href="#tin_tuc">Tin tức & Sự kiện</a></h3>
           <hr>
+          <div class="news-item">
+            <img src="https://i1-kinhdoanh.vnecdn.net/2025/04/11/20250320T220348Z1815739118RC29-3326-7905-1744359510.jpg?w=680&h=408&q=100&dpr=1&fit=crop&s=R_N9W_wly08CSlmJ5Stt3Q" alt="" width="150px" class="me-3">
+            <div class="news-content">
+                <a href="#trung_quoc_ap_thue_tra_dua_125_len_hang_my" class="news-title">Trung Quốc áp thuế trả đũa 125% lên hàng Mỹ</a>
+                <div class="news-time">Nguồn: VnExpress</div>
+            </div>
+          </div>
+          <div class="news-item">
+            <img src="https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2025/4/5/z64775845039825f1be7aa9172a7a70884aabd077f20a9-17438705239541996196351.jpg" alt="" width="150px" class="me-3">
+            <div class="news-content">
+                <a href="#chan_dong_me_giet_con_de_truc_loi_bao_hiem" class="news-title">Chấn động mẹ giết con để trục lợi bảo hiểm: Nhận hàng tỉ đồng, "nướng" vào cờ bạc?</a>
+                <div class="news-time">Nguồn: Người Lao Động</div>
+            </div>
+          </div>
+          <div class="news-item">
+            <img src="https://i1-vnexpress.vnecdn.net/2025/04/06/hinh-anh-2-1743933546-17439335-3947-8736-1743933987.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=MO-TDq4IuyXELhSE6bi2wQ" alt="" width="150px" class="me-3">
+            <div class="news-content">
+                <a href="#chua_the_day_bat_buoc_2_buoi_moi_ngay" class="news-title">Thứ trưởng Giáo dục: Chưa thể bắt buộc dạy hai buổi mỗi ngày ở THCS, THPT</a>
+                <div class="news-time">Nguồn: VnExpress</div>
+            </div>
+          </div>
+          <div class="news-item">
+            <img src="https://image.tienphong.vn/Uploaded/2025/aohuooh/2025_04_03/chaybotoq-ezgifcom-video-to-gif-converter-1-6948-6460.gif" alt="" width="150px" class="me-3">
+            <div class="news-content">
+                <a href="#quan_bo_to_boc_chay_ngun_ngut" class="news-title">Quán bò tơ bốc cháy ngùn ngụt</a>
+                <div class="news-time">Nguồn: VnExpress</div>
+            </div>
+          </div>
         <div class="news-item">
           <img src="https://i1-vnexpress.vnecdn.net/2025/03/14/233a0379-1741945566-1741945710-9467-1741945723.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=u8nPU1p0AmyPzEede89Q7Q" alt="" width="150px" class="me-3">
           <div class="news-content">
-              <a href="/dot_ngot_dung_day_them_anh_huong_tam_ly_hoc_sinh" class="news-title">Bộ Giáo dục: Đột ngột dừng dạy thêm ảnh hưởng tâm lý học sinh</a>
-              <div class="news-time">Nguồn: VnExpress</div>
-          </div>
-        </div>
-        <div class="news-item">
-          <img src="https://image.tienphong.vn/Uploaded/2025/aohuooh/2025_04_03/chaybotoq-ezgifcom-video-to-gif-converter-1-6948-6460.gif" alt="" width="150px" class="me-3">
-          <div class="news-content">
-              <a href="/quan_bo_to_boc_chay_ngun_ngut" class="news-title">Quán bò tơ bốc cháy ngùn ngụt</a>
+              <a href="#dot_ngot_dung_day_them_anh_huong_tam_ly_hoc_sinh" class="news-title">Bộ Giáo dục: Đột ngột dừng dạy thêm ảnh hưởng tâm lý học sinh</a>
               <div class="news-time">Nguồn: VnExpress</div>
           </div>
         </div>
@@ -551,7 +762,7 @@ strong {
       </div>
      
     <div id="lien_he" class="page d-none">
-      <div><h3><a href="/trang_chu">Trang chủ</a> > <a href="/lien_he">Thông tin</a></h3></div>
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#lien_he">Thông tin</a></h3></div>
       <hr>
         <h2>Thông tin</h2>
         Dữ liệu được thu thập từ các nguồn khác nhau
@@ -560,28 +771,43 @@ strong {
         <br>
         Số điện thoại hỗ trợ: <a href="tel:+84988065911">0988065911</a>
         <br>
+        Nhắn tin trực tiếp: <a href="https://messenger.svc.chative.io/site/s9743e692-9631-47b8-81fc-b90e2d49d2c1?mode=fullpage" target="_blank">Bấm vào đây</a>
+        <br>
         Nếu bạn muốn đăng bài lên trang, vui lòng liên hệ với email trên (Vui lòng ghi đầy đủ tiêu đề, nội dung bài đăng, tên tác giả,...)
         <br>
         <div style="color: red;"> Lưu ý: Khi bạn sử dụng WebPage News, đồng nghĩa với việc bạn đã đồng ý với <a href="https://thewebsite2023.github.io/terms_of_use" target="_blank">Điều khoản sử dụng</a> và <a href="https://thewebsite2023.github.io/privacy_policy" target="_blank">Chính sách bảo mật</a> của WebPage News</div>
         <hr>
         <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
     </div>
-     
+
     <div id="video" class="page d-none">
-      <div><h3><a href="#home">Trang chủ</a> > <a href="#video">Video</a></h3></div>
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#video">Video</a></h3></div>
       <hr>
-     <div class="news-item">
-        <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="150px" class="me-3">
+      <div class="news-item">
+        <img src="https://i.ytimg.com/vi_webp/Cw9I6H1DopU/sddefault.webp" alt="" width="150px" class="me-3">
         <div class="news-content">
-            <a href="/vu_tiktoker_pham_thoai" class="news-title">Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</a>
+            <a href="#tu_1_tinh_tiet_rung_ron_ma_khong_ai_ngo_toi" class="news-title">TỪ 1 TÌNH TIẾT RÙNG RỢN MÀ KHÔNG AI NGỜ TỚI - CÔNG AN ĐÃ VẠCH TRẦN TỘI ÁC CỦA KẺ SÁT HẠI CON RUỘT</a>
             <div class="news-time">Nguồn: YouTube</div>
         </div>
       </div>
-        
-    <div class="news-item">
+      <div class="news-item">
+        <img src="https://i.ytimg.com/vi/z3LpBUru0R4/sddefault.jpg" alt="" width="150px" class="me-3">
+        <div class="news-content">
+            <a href="#dung_lai_hien_truong_lanh_leo_vu_an" class="news-title">Dựng Lại Hiện Trường Lạnh Lẽo Vụ Án Người Mẹ Sát Hại Con Vì 4 Tỷ Tiền Bảo Hiểm, Ngàn Người Theo Dõi</a>
+            <div class="news-time">Nguồn: YouTube</div>
+        </div>
+      </div>
+      <div class="news-item">
         <img src="https://i.ytimg.com/vi/ERrf7IFvRBY/hqdefault.jpg?sqp=-oaymwFBCPYBEIoBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AG-BIACgAqKAgwIABABGDkgUSh_MA8=&rs=AOn4CLC7IxFC-1z18ejxG16c_x5IAeBkXw" alt="" width="150px" class="me-3">
         <div class="news-content">
-            <a href="/live_pham_thoai_va_me_be_bap_full" class="news-title">live phạm thoại và mẹ bé bắp full</a>
+            <a href="#live_pham_thoai_va_me_be_bap_full" class="news-title">live phạm thoại và mẹ bé bắp full</a>
+            <div class="news-time">Nguồn: YouTube</div>
+        </div>
+      </div>
+     <div class="news-item">
+        <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="150px" class="me-3">
+        <div class="news-content">
+            <a href="#vu_tiktoker_pham_thoai" class="news-title">Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</a>
             <div class="news-time">Nguồn: YouTube</div>
         </div>
       </div>
@@ -590,26 +816,47 @@ strong {
     </div>
      
     <div id="podcast" class="page d-none">
-      <div><h3><a href="/trang_chu">Trang chủ</a> > <a href="/podcast">Podcast</a></h3></div>
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#podcast">Podcast</a></h3></div>
       <hr>
+      <div class="news-item">
+        <img src="https://i1-vnexpress.vnecdn.net/2025/02/27/Thumbgiaima19-1740623034-4624-1740623824.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=nC5gO0Egyt2-dwrJBpi_NA" alt="" width="150px" class="me-3">
+        <div class="news-content">
+            <a href="#hoi_chung_bi_an_tung_tan_cong_1-500_vien_chuc_ngoai_giao_my" class="news-title">Hội chứng bí ẩn từng tấn công 1.500 viên chức ngoại giao Mỹ</a>
+            <div class="news-time">Nguồn: VnExpress</div>
+        </div>
+    </div>
+      <div class="news-item">
+        <img src="https://i1-vnexpress.vnecdn.net/2025/04/11/7896440bb438473eac78f84da52391-4178-7945-1744339281.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=iTEJlS66WjdsnE-4lohoxA" alt="" width="150px" class="me-3">
+        <div class="news-content">
+            <a href="#pha_an_tu_bo_xuong_kho" class="news-title">Phá án từ bộ xương khô</a>
+            <div class="news-time">Nguồn: VnExpress</div>
+        </div>
+    </div>
+      <div class="news-item">
+        <img src="https://i1-vnexpress.vnecdn.net/2025/04/05/luadap-1743849262-4317-1743849512.png?w=320&h=320&q=100&dpr=2&fit=crop&s=aqOZDX6uc61_k3QOT4P7bA" alt="" width="150px" class="me-3">
+        <div class="news-content">
+            <a href="#sup_do_khi_mat_5_ty" class="news-title">Sụp đổ khi mất 5 tỷ vay bạn bè vì bị lừa đảo</a>
+            <div class="news-time">Nguồn: VnExpress</div>
+        </div>
+    </div>
+    <div class="news-item">
+      <img src="https://i1-vnexpress.vnecdn.net/2025/03/20/Frame1958-1742441187-3409-1742441672.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=JhEaawoZmEiwfcfyhtO59Q" alt="" width="150px" class="me-3">
+      <div class="news-content">
+          <a href="#vu_no_tau_con_thoi_nasa" class="news-title">Vụ nổ tàu con thoi nhiều bí ẩn của NASA</a>
+          <div class="news-time">Nguồn: VnExpress</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <img src="https://i1-vnexpress.vnecdn.net/2025/03/11/Frame1952-1741662384-2040-1741664397.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=bQWDH0aEocnaUShiz9EyJQ" alt="" width="150px" class="me-3">
+      <div class="news-content">
+          <a href="#vu_an_be_tac_19_nam" class="news-title">Vụ án bế tắc 19 năm được phá nhờ AI</a>
+          <div class="news-time">Nguồn: VnExpress</div>
+      </div>
+    </div> 
       <div class="news-item">
         <img src="https://i1-vnexpress.vnecdn.net/2025/03/13/ThumbFrame192-1741838094-5421-1741838663.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=rJh3Qjw2aAGT4qvGKqzCaw" alt="" width="150px" class="me-3">
         <div class="news-content">
-            <a href="/mau_may_tinh_tung_bi_apple_chon_vui" class="news-title">Mẫu máy tính từng bị Apple chôn vùi</a>
-            <div class="news-time">Nguồn: VnExpress</div>
-        </div>
-      </div>
-      <div class="news-item">
-        <img src="https://i1-vnexpress.vnecdn.net/2025/03/11/Frame1952-1741662384-2040-1741664397.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=bQWDH0aEocnaUShiz9EyJQ" alt="" width="150px" class="me-3">
-        <div class="news-content">
-            <a href="/vu_an_be_tac_19_nam" class="news-title">Vụ án bế tắc 19 năm được phá nhờ AI</a>
-            <div class="news-time">Nguồn: VnExpress</div>
-        </div>
-      </div>
-      <div class="news-item">
-        <img src="https://i1-vnexpress.vnecdn.net/2025/03/20/Frame1958-1742441187-3409-1742441672.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=JhEaawoZmEiwfcfyhtO59Q" alt="" width="150px" class="me-3">
-        <div class="news-content">
-            <a href="/vu_no_tau_con_thoi_nasa" class="news-title">Vụ nổ tàu con thoi nhiều bí ẩn của NASA</a>
+            <a href="#mau_may_tinh_tung_bi_apple_chon_vui" class="news-title">Mẫu máy tính từng bị Apple chôn vùi</a>
             <div class="news-time">Nguồn: VnExpress</div>
         </div>
       </div>
@@ -618,25 +865,23 @@ strong {
     </div>
 
     <div id="vu_tiktoker_pham_thoai" class="page d-none">
-      <div><h3><a href="/trang_chu">Trang chủ</a> > <a href="/video">Video</a> > <a href="/vu_tiktoker_pham_thoai">Vụ TikToker ...</a></h3></div>
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#video">Video</a> > <a href="#vu_tiktoker_pham_thoai">Vụ TikToker ...</a></h3></div>
     <hr>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/vwVRGmfP6hg?si=Hb4xEudAHy_9nLTQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <br>
     <br>
     <h5>Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</h5>
-Drive sao kê của Phạm Thoại: <a href="https://drive.google.com/drive/mobile/folders/10Y0YuB7REoI00EaEgIH68wRE2iY9TyPu?usp=sharing&fbclid=IwY2xjawIxTxtleHRuA2FlbQIxMQABHXzeEYG2BwNr6tAJaKa6_0hhiTB0bmRBAlWAlKXyPWQNwzpFPRsHQFSU4w_aem_1fPbRhlzasTfZbi1lOJ9kg" target="_blank">https://drive.google.com/drive/mobile/folders/10Y0YuB7REoI00EaEgIH68wRE2iY9TyPu?usp=sharing&fbclid=IwY2xjawIxTxtleHRuA2FlbQIxMQABHXzeEYG2BwNr6tAJaKa6_0hhiTB0bmRBAlWAlKXyPWQNwzpFPRsHQFSU4w_aem_1fPbRhlzasTfZbi1lOJ9kg</a>
+    Drive sao kê của Phạm Thoại: <a href="https://drive.google.com/drive/mobile/folders/10Y0YuB7REoI00EaEgIH68wRE2iY9TyPu?usp=sharing&fbclid=IwY2xjawIxTxtleHRuA2FlbQIxMQABHXzeEYG2BwNr6tAJaKa6_0hhiTB0bmRBAlWAlKXyPWQNwzpFPRsHQFSU4w_aem_1fPbRhlzasTfZbi1lOJ9kg" target="_blank">Bấm vào đây để xem chi tiết</a>
     <br>
     <br>
 <h3>Bình luận về bài viết</h3>
-        <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v22.0&appId=498196206101417"></script>
-<div class="fb-comments" data-href="https://thewebsite2023.github.io/vu_tiktoker_pham_thoai" data-width="" data-numposts="5"></div>
+<div class="fb-comments" data-href="https://thewebsite2023.github.io/#vu_tiktoker_pham_thoai" data-width="" data-numposts="5"></div>
       <hr>
-      <a href="/trang_chu" class="btn btn-primary">< Quay lại trang chủ</a>
+      <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
     </div>
 
     <div id="live_pham_thoai_va_me_be_bap_full" class="page d-none">
-      <div><h3><a href="/trang_chu">Trang chủ</a> > <a href="/video">Video</a> > <a href="/live_pham_thoai_va_me_be_bap_full">live phạm thoại ...</a></h3></div>
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#video">Video</a> > <a href="#live_pham_thoai_va_me_be_bap_full">live phạm thoại ...</a></h3></div>
     <hr>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/ERrf7IFvRBY?si=WH55GAgJVRw7X2Fn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <!--div class="notification">
@@ -649,15 +894,37 @@ Drive sao kê của Phạm Thoại: <a href="https://drive.google.com/drive/mobi
     <h5>live phạm thoại và mẹ bé bắp full</h5>
     <br>
      <h3>Bình luận về bài viết</h3>
-        <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v22.0&appId=498196206101417"></script>
-<div class="fb-comments" data-href="https://thewebsite2023.github.io/live_pham_thoai_va_me_be_bap_full" data-width="" data-numposts="5"></div>
+<div class="fb-comments" data-href="https://thewebsite2023.github.io/#live_pham_thoai_va_me_be_bap_full" data-width="" data-numposts="5"></div>
       <hr>
-    <a href="/trang_chu" class="btn btn-primary">< Quay lại trang chủ</a>
+    <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
+    </div>
+
+    <div id="dung_lai_hien_truong_lanh_leo_vu_an" class="page d-none">
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#video">Video</a> > <a href="#dung_lai_hien_truong_lanh_leo_vu_an">Dựng Lại Hiện Trường Lạnh Lẽo...</a></h3></div>
+    <hr>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/z3LpBUru0R4?si=rdwQy-h2u1t6nBoM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h5>Dựng Lại Hiện Trường Lạnh Lẽo Vụ Án Người Mẹ Sát Hại Con Vì 4 Tỷ Tiền Bảo Hiểm, Ngàn Người Theo Dõi</h5>
+    <br>
+    <h3>Bình luận về bài viết</h3>
+<div class="fb-comments" data-href="https://thewebsite2023.github.io/#dung_lai_hien_truong_lanh_leo_vu_an" data-width="" data-numposts="5"></div>
+    <hr>
+    <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
+    </div>
+
+    <div id="tu_1_tinh_tiet_rung_ron_ma_khong_ai_ngo_toi" class="page d-none">
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#video">Video</a> > <a href="#tu_1_tinh_tiet_rung_ron_ma_khong_ai_ngo_toi">Từ 1 tình tiết...</a></h3></div>
+    <hr>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Cw9I6H1DopU?si=GEgzml6-fS0XQtiB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h5>TỪ 1 TÌNH TIẾT RÙNG RỢN MÀ KHÔNG AI NGỜ TỚI - CÔNG AN ĐÃ VẠCH TRẦN TỘI ÁC CỦA KẺ SÁT HẠI CON RUỘT</h5>
+    <br>
+      <h3>Bình luận về bài viết</h3>
+      <div class="fb-comments" data-href="https://thewebsite2023.github.io/#tu_1_tinh_tiet_rung_ron_ma_khong_ai_ngo_toi" data-width="" data-numposts="5"></div>
+          <hr>
+          <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
     </div>
 
         <div id="dot_ngot_dung_day_them_anh_huong_tam_ly_hoc_sinh" class="page d-none">
-      <div><h3><a href="/trang_chu">Trang chủ</a> > <a href="#tin_tuc">Tin tức & Sự kiện</a> > <a href="/dot_ngot_dung_day_them_anh_huong_tam_ly_hoc_sinh">Bộ Giáo dục....</a></h3></div>
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#tin_tuc">Tin tức & Sự kiện</a> > <a href="#dot_ngot_dung_day_them_anh_huong_tam_ly_hoc_sinh">Bộ Giáo dục....</a></h3></div>
       <hr>
       <h3>Bộ Giáo dục: Đột ngột dừng dạy thêm ảnh hưởng tâm lý học sinh</h3>
       <i style="float: right;">Thứ sáu, 14/3/2025, 17:09 (GMT+7)</i>
@@ -679,19 +946,17 @@ Drive sao kê của Phạm Thoại: <a href="https://drive.google.com/drive/mobi
      <br><div>Theo Văn phòng Chính phủ, Thông tư 29 nhận được nhiều sự đồng tình, song còn không ít băn khoăn. Một số ý kiến cho rằng gốc rễ của việc dạy thêm, học thêm là do chương trình học tập nặng, trong khi tâm lý coi trọng bằng cấp của nhiều người còn khá phổ biến. Hiện, chương trình, sách giáo khoa, kỳ thi tốt nghiệp THPT, cách xét tuyển đại học đều mới, tỷ lệ "chọi" vào các trường đại học uy tín ngày càng khốc liệt.</div>
       <br>
      <h3>Bình luận về bài viết</h3>
-        <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v22.0&appId=498196206101417"></script>
-<div class="fb-comments" data-href="https://thewebsite2023.github.io/dot_ngot_dung_day_them_anh_huong_tam_ly_hoc_sinh" data-width="" data-numposts="5"></div>
+<div class="fb-comments" data-href="https://thewebsite2023.github.io/#dot_ngot_dung_day_them_anh_huong_tam_ly_hoc_sinh" data-width="" data-numposts="5"></div>
         <hr>
-      <a href="/trang_chu" class="btn btn-primary">< Quay lại trang chủ</a>
+      <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
     </div>
 
     <div id="quan_bo_to_boc_chay_ngun_ngut" class="page d-none">
-      <div><h3><a href="/trang_chu">Trang chủ</a> > <a href="/tin_tuc">Tin tức & Sự kiện</a> > <a href="/quan_bo_to_boc_chay_ngun_ngut">Quán bò tơ...</a></h3></div>
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#tin_tuc">Tin tức & Sự kiện</a> > <a href="#quan_bo_to_boc_chay_ngun_ngut">Quán bò tơ...</a></h3></div>
       <hr>
       <h3>Quán bò tơ bốc cháy ngùn ngụt</h3>
       <i style="float: right;">Thứ năm, 3/4/2025, 19:43 (GMT+7)</i>
-      <div>Hà Nội - Hàng ăn "bò tơ quán mộc" nằm trong khu đô thị Mỹ Đình 2 bốc cháy ngùn ngụt khiến nhiều nhân viên phải tháo chạy, chiều 3/4.</div>
+      <br><div>Hà Nội - Hàng ăn "bò tơ quán mộc" nằm trong khu đô thị Mỹ Đình 2 bốc cháy ngùn ngụt khiến nhiều nhân viên phải tháo chạy, chiều 3/4.</div>
       <br><div>Khoảng 16h40, lửa bắt đầu bùng lên từ khu vực nấu ăn thuộc tầng 1 của quán cao 4 tầng, rộng hơn 100 m2 trên phố Lưu Hữu Phước, phường Mỹ Đình 1, quận Nam Từ Liêm.</div>
       <br><div><video width="550" height="500" controls>
         <source src="https://streaming-cms-tpo-te-vnno-zn-2.epicdn.me/4dfc866a2ee9d5c2349a86c82da3fec2/67ef6750/2025_04_03/chay_bo_to_q_5720.mp4" type="video/mp4">
@@ -704,17 +969,116 @@ Drive sao kê của Phạm Thoại: <a href="https://drive.google.com/drive/mobi
       <br><div>Bò tơ quán mộc là chuỗi nhà hàng bò tơ lớn với khoảng 20 cơ sở, trong đó chủ yếu tại Hà Nội. Địa điểm bị cháy là cơ sở số 10 của chuỗi nhà hàng này.</div>
       <br>
       <h3>Bình luận về bài viết</h3>
-              <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v22.0&appId=498196206101417"></script>
-<div class="fb-comments" data-href="https://thewebsite2023.github.io/quan_bo_to_boc_chay_ngun_ngut" data-width="" data-numposts="5"></div>
+<div class="fb-comments" data-href="https://thewebsite2023.github.io/#quan_bo_to_boc_chay_ngun_ngut" data-width="" data-numposts="5"></div>
       <hr>
-      <a href="/trang_chu" class="btn btn-primary">< Quay lại trang chủ</a>
+      <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
+    </div>
+
+    <div id="chua_the_day_bat_buoc_2_buoi_moi_ngay" class="page d-none">
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#tin_tuc">Tin tức & Sự kiện</a> > <a href="#chua_the_day_bat_buoc_2_buoi_moi_ngay">Thứ trưởng Bộ...</a></h3></div>
+      <hr>
+      <h3>Thứ trưởng Giáo dục: Chưa thể bắt buộc dạy hai buổi mỗi ngày ở THCS, THPT</h3>
+      <i style="float: right;">Chủ nhật, 6/4/2025, 17:53 (GMT+7)</i>
+      <div>Các trường THCS, THPT hiện chưa đủ cơ sở vật chất, giáo viên và chương trình để dạy hai buổi mỗi ngày, trong khi học sinh cấp này có nhu cầu khác nhau, theo ông Phạm Ngọc Thưởng.</div>
+      <br><div>Ông Thưởng, Thứ trưởng Giáo dục và Đào tạo, nói như trên tại họp báo Chính phủ, chiều 6/4.</div>
+      <br><div>Theo ông Thưởng, dạy học hai buổi mỗi ngày không phải mới trên thế giới. Để hoạt động này hiệu quả, ông nhận định cần ba yếu tố.</div>
+      <br><div>Thứ nhất là cơ sở vật chất phải đầy đủ, học sinh buổi trưa được ăn, nghỉ tại trường; đủ sân chơi, bãi tập cho hoạt động thể chất và kỹ năng khác. Thứ hai, các trường phải đảm bảo đủ số lượng giáo viên. Thứ ba, chương trình dạy và tổ chức các hoạt động cần phù hợp với tâm sinh lý lứa tuổi học sinh.</div>
+      <br><div>Ông Thưởng cho hay theo khảo sát, yêu cầu cấp THCS, THPT bắt buộc học 2 buổi mỗi ngày chưa phù hợp vì chưa đủ ba điều kiện như trên. Ngoài ra, nhu cầu của học sinh cấp này đa dạng, phân hóa cao, các nhà trường chưa đáp ứng được. Nhà nước trước tiên phải bảo đảm học tốt chính khóa, còn buổi học 2 theo nhu cầu và năng lực quản lý.</div>
+      <br><div><img src="https://i1-vnexpress.vnecdn.net/2025/04/06/hinh-anh-2-1743933546-17439335-3947-8736-1743933987.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=MO-TDq4IuyXELhSE6bi2wQ" alt="Thí sinh thi tốt nghiệp THPT 2024 ở TP HCM. Ảnh: Quỳnh Trần" width="600px" height="400px"></div>
+      <div>Thứ trưởng Giáo dục và Đào tạo Phạm Ngọc Thưởng. Ảnh: <i>Quang Phúc</i></div>
+      <br><div>Hiện, dạy hai buổi mỗi ngày là bắt buộc ở cấp tiểu học, theo chương trình giáo dục phổ thông 2018. Ông Thưởng thấy việc này thuận lợi do việc tổ chức bán trú phù hợp học sinh ở lứa tuổi này.</div>
+      <br><div>Với cấp THCS, THPT, Bộ đã hướng dẫn dạy hai buổi mỗi ngày từ năm 2010, khuyến khích với các trường đủ điều kiện. Theo ông Thưởng, số trường tổ chức hoạt động này đã "tăng lên rất nhiều" so với 10 năm trước.</div>
+      <br><div>"Qua khảo sát, chúng tôi thấy rằng nơi nào tổ chức tốt việc dạy học hai buổi mỗi ngày thì chất lượng giáo dục toàn diện của trường, lớp đó cũng khá và tốt hơn", ông nói.</div>
+      <br><div>Dù vậy, dạy hai buổi mỗi ngày có một số bất cập, như có nơi dạy kiến thức văn hóa là chính, gây áp lực cho học sinh. Thời gian tới, Bộ Giáo dục và Đào tạo sẽ rà soát, đánh giá lại để ra hướng dẫn chung toàn quốc.</div>
+      <br><div>Ông Thưởng nói quan điểm của Bộ là nâng cao chất lượng chính khóa, giảm áp lực học tập cho học sinh; bảo đảm mục tiêu giáo dục các cấp học đề ra. Ngoài ra, học sinh được phát triển phẩm chất năng lực toàn diện, không chỉ kiến thức phổ thông mà còn phát triển thể chất, tâm hồn, thể thao, AI, ngoại ngữ,... phù hợp với tâm lý, lứa tuổi.</div>
+      <br><div>Đặc biệt, buổi học 2 phải trên tinh thần tự nguyện, vì học sinh THCS, THPT có nhu cầu khác nhau, khi định hướng nghề nghiệp đã hình thành.</div>
+      <br><div>Hai ngày trước, tại buổi làm việc của Bộ với TP HCM, ông Thái Văn Tài, Vụ trưởng Giáo dục Phổ thông, nói chương trình mới không chỉ dạy kiến thức đơn thuần mà hướng đến phát triển phẩm chất, năng lực học sinh, nên các trường phải dạy 2 buổi mỗi ngày.</div>
+      <br><div>"Dạy học 2 buổi mỗi ngày để phát triển phẩm chất, năng lực học sinh là nhiệm vụ không thể chậm trễ hơn", ông nói.</div>
+      <br><div>Khảo sát của <i>VnExpress</i> với hơn 52.600 độc giả, tính đến chiều nay cho thấy 63% không đồng tình với ý kiến trên.</div>
+        <br>
+      <h3>Bình luận về bài viết</h3>
+      <div class="fb-comments" data-href="https://thewebsite2023.github.io/#chua_the_day_bat_buoc_2_buoi_moi_ngay" data-width="" data-numposts="5"></div>
+      <hr>
+      <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
+    </div>
+
+    <div id="chan_dong_me_giet_con_de_truc_loi_bao_hiem" class="page d-none">
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#tin_tuc">Tin tức & Sự kiện</a> > <a href="#chan_dong_me_giet_con_de_truc_loi_bao_hiem">Chấn động mẹ giết con...</a></h3></div>
+      <hr>
+      <h3>Chấn động mẹ giết con để trục lợi bảo hiểm: Nhận hàng tỉ đồng, "nướng" vào cờ bạc?</h3>
+      <i style="float: right;">06/04/2025 06:52</i>
+      <br><b>(NLĐO) – Sau khi 2 con trai chết cùng một nguyên nhân ngã vào xô nước, người phụ nữ ở tỉnh Quảng Nam đã nhận tiền bảo hiểm hơn 4 tỉ đồng.</b>
+      <br><div>Những ngày qua, dư luận tại tỉnh Quảng Nam và cả nước xôn xao trước thông tin lan truyền trên mạng xã hội về một người mẹ ở tỉnh Quảng Nam ra tay sát hại con để trục lợi bảo hiểm.</div>
+      <br><div>Mặc dù có nhiều tình tiết đáng nghi ngờ trong cái chết của 2 người con trai người phụ nữ này nhưng không ai nghĩ đó là sự thật, cho đến khi Cơ quan CSĐT Công an tỉnh Quảng Nam tống đạt các quyết định khởi tố bị can và bắt tạm giam Tô Thị Ty Na (SN 1981; khu phố 3, thị trấn Hà Lam, huyện Thăng Bình, tỉnh Quảng Nam) về hành vi giết người vào tối 5-4.</div>
+     <br><b>Giết con để trục lợi bảo hiểm</b>
+     <br><div>Theo Công an tỉnh Quảng Nam, thực hiện ý kiến chỉ đạo của lãnh đạo Bộ Công an về nâng cao chất lượng, hiệu quả công tác quản lý, giải quyết các vụ án, vụ việc tạm đình chỉ…, thiếu tướng Nguyễn Hữu Hợp, Giám đốc Công an tỉnh Quảng Nam, đã chỉ đạo Cơ quan CSĐT Công an tỉnh kiểm tra, rà soát các vụ việc liên quan.</div>
+     <br><img src="https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2025/4/5/z64775845039825f1be7aa9172a7a70884aabd077f20a9-17438705239541996196351.jpg" alt="" width="600px" height="400px">
+     <br><img src="https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2025/4/5/z64776094622223448ccf7378b2f126b90687759f592fc-1743870523959672860164.jpg" alt="" width="500px" height="600px">
+     <div>Tô Thị Ty Na tại cơ quan điều tra</div>
+     <br><div>Từ công tác kiểm tra rà soát, Cơ quan CSĐT đã tiến hành xác minh, giải quyết vụ việc chết người xảy ra ngày 2-1-2023.</div>
+     <br><div>Kết quả điều tra xác định khoảng 22 giờ 5 phút ngày 2-1-2023, tại nhà Tô Thị Ty Na, cháu Nguyễn Văn Hoàng (SN 2017) là con ruột Na chết ở nhà vệ sinh. Căn cứ vào tài liệu, chứng cứ thu thập được, cơ quan công an xác định đối tượng Na đã có hành vi giết cháu Hoàng, mục đích để trục lợi bảo hiểm.</div>
+     <br><b>Sự trùng hợp về cái chết của 2 anh em ruột</b>
+     <br><div>Trước đó, bà Nguyễn Thị Bích Tâm (SN 1989; trú thị trấn Hà Lam, huyện Thăng Bình) - cô ruột của cháu Hoàng – người đi trình báo công an thời điểm cháu Hoàng mất năm 2023 nói với phóng viên Báo Người Lao Động rằng cái chết của cháu bà có nhiều điều bất thường.</div>
+     <br><div>Bà Tâm kể, năm 2021, khi đứa con út của bà Ty Na là cháu Nguyễn Văn Hiếu (lúc đó 3 tuổi) mất, gia đình không hề nghĩ ngợi gì, cho rằng đó chỉ là điều rủi ro. Tuy nhiên, khi cháu Hoàng mất, bà Tâm thấy có quá nhiều điều bất thường nên đã trình báo công an điều tra.</div>
+     <br><div>Theo bà Tâm, từ trước khi anh trai bà Tâm (tức chồng bà Ty Na) mất thì bà Ty Na vốn đã có tính ham chơi, nhác làm. Năm 2019, anh trai bà Tâm mất để lại cho bà Ty Na chiếc xe du lịch 7 chỗ và căn nhà nhưng sau một thời gian thì bà Ty Na bán cả xe lẫn nhà tiêu sạch tiền.</div>
+     <br><img src="https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2025/4/5/base64-17438811174791902633082.jpeg" alt="" width="600px" height="400px">
+     <div>Bà Nguyễn Thị Bích Tâm - cô ruột của cháu bé bị mẹ sát hại để trục lợi bảo hiểm</div>
+     <br><div>Gia đình phía bên nội cho 2 con của bà Ty Na (vợ chồng bà Ty Na có 4 người con, 2 cháu đã mất) một mảnh đất trị giá trên thị trường hơn 700 triệu nhưng cuối năm 2024, bà Ty Na cũng dụ dỗ, đem bán rẻ được hơn 400 triệu đồng ăn tiêu hết.</div>
+     <br><div>Năm 2021, sau khi cháu Hiếu mất, bà Ty Na nhận tiền bảo hiểm hơn 2 tỉ đồng. Có tiền trong tay, bà Ty Na ăn chơi, cờ bạc, thường xuyên vắng nhà, ít quan tâm đến con cái. Bà Tâm là người trực tiếp chăm sóc 3 người  con của bà Ty Na. Trong đó, cháu Hoàng được bà Tâm đưa về nhà bên phía nội nuôi dưỡng, đưa đón đi học.</div>
+     <br><div>Lâu lâu, bà Ty Na về nhà thì mới kêu cháu Hoàng về nhà ngủ một đêm rồi bà Ty Na lại đi vắng. Cuối năm 2022, bà Ty Na đến đón con về, nói "về ở với mẹ để cô út đi lấy chồng" (thời điểm đó bà Tâm chuẩn bị cưới chồng).</div>
+     <br><div>Sau khoảng 1 tuần kể từ khi bà Ty Na đón cháu Hoàng về nhà (đó cũng là thời gian dài nhất mà bà Ty Na ở nhà với con), vào khoảng 22 giờ 5 phút ngày 2-1-2023 thì cháu Hoàng mất.</div>
+     <br><div>Khi nghe bà Ty Na gọi điện báo tin, bà Tâm chạy sang thì thi thể cháu Hoàng đã được bồng vào nhà. Bà Ty Na nói rằng cháu Hoàng bị ngã vào xô nước trong nhà vệ sinh. Theo bà Tâm, xô nước này là loại 120 lít, nó thấp hơn cháu Hoàng thời điểm đó.</div>
+     <br><div>Người con trai đầu của bà Ty Na kể lại với bà Tâm rằng, trước đó bão vào nên mất điện, cúp nước, gia đình đi mua xô nước này về múc nước giếng nhà hàng xóm chứa để sử dụng. Xô nước này để ở trong nhà nhưng không rõ ai đưa xuống để trong nhà vệ sinh.</div>
+     <br><div>Nhận thấy cái chết của cháu Hoàng quá bất thường và trùng hợp với cái chết của cháu Hiếu trước đó, vào sáng hôm sau ngày cháu Hoàng mất, bà Tâm đã đến công an huyện Thăng Bình trình báo. Công an huyện Thăng Bình vào cuộc điều tra nhưng sau đó thông báo cháu Hoàng chết do ngạt nước. Từ đó đến nay, vì lo toan cuộc sống nên gia đình không có yêu cầu công an điều tra lại sự việc.</div>
+     <br><b>Nhận tiền bảo hiểm của 2 con hơn 4 tỉ đồng</b>
+     <br><div>Nói thêm về cái chết của cháu Hoàng, bà Tâm cho rằng có một sự bất thường là bà Ty Na ham mê cờ bạc nhưng lại bỏ ra số tiền 50 triệu đồng/năm để đóng bảo hiểm cho con. "Tôi suy nghĩ đặt dấu hỏi vì mua bảo hiểm phải trong một thời gian dài, mỗi năm bỏ ra 50 triệu đồng, năm này có thể mua nhưng những năm sau có tiền để mua hay không? Đó cũng là điều tôi cảm thấy mâu thuẫn nên đã quyết định đi trình báo công an khi cháu mất" – bà Tâm nói.</div>
+     <br><img src="https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2025/4/5/base64-1743880957359999592952.jpeg" alt="" width="600px" height="400px">
+     <div>Căn nhà nơi xảy ra sự việc mẹ giết con để trục lợi bảo hiểm chấn động dư luận</div>
+     <br><div>Bà Tâm kể thêm, thời điểm cháu Hiếu mất, gia đình không ai nghi ngờ gì, nhưng khi cháu Hoàng mất thì mọi người nghĩ lại thấy cái chết của cháu Hiếu cũng có thể có uẩn khúc. Theo bà Tâm, buổi tối cháu Hiếu mất, bà Ty Na chở con gái đi ăn, cháu Hiếu lúc này mới 3 tuổi để ở nhà. Khi về nhà thì bà Ty Na nói con gái vào tìm em, sau đó bà Ty Na chạy ra đường hô hoán mọi người.</div>
+     <br><div>Ông V. – hàng xóm của bà Ty Na, cho biết khoảng 20 giờ tối hôm cháu Hiếu mất, ông cùng nhóm bạn đang nhậu ở nhà thì nghe bà Ty Na chạy ra hô hoán, ông và mọi người chạy sang thì thấy cháu Hiếu ngã vào xô nước, mọi người đưa lên thì cháu đã tử vong.</div>
+     <br><div>Ông Tô Đình Tùng, anh ruột của bà Tô Thị Ty Na, xác nhận thông tin bà Ty Na đã nhận tiền bảo hiểm sau khi 2 đứa con qua đời, với số tiền hơn 4 tỉ đồng.</div>
+     <br><div>Ông Nguyễn Đình Hải, trưởng khối phố nơi bà Ty Na sinh sống, cho hay thời điểm 2 cháu bé mất, gia đình có thông tin về việc các cháu bị ngã vào xô nước. Khi đơn vị bảo hiểm đến tìm hiểu, ông cũng nói rằng gia đình trình báo như vậy chứ thực hư ra sao thì ông không rõ.</div>
+     <br><div>Lãnh đạo UBND thị trấn Hà Lam cho biết bà Ty Na không có công việc ổn định, hộ khẩu ở địa phương nhưng thường xuyên vắng nhà.</div>
+     <br>
+     <h3>Bình luận về bài viết</h3>
+     <div class="fb-comments" data-href="https://thewebsite2023.github.io/#chan_dong_me_giet_con_de_truc_loi_bao_hiem" data-width="" data-numposts="5"></div>
+      <hr>
+      <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
+    </div>
+
+    <div id="trung_quoc_ap_thue_tra_dua_125_len_hang_my" class="page d-none">
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#tin_tuc">Tin tức & Sự kiện</a> > <a href="#trung_quoc_ap_thue_tra_dua_125_len_hang_my">Trung Quốc áp thuế...</a></h3></div>
+      <hr>
+      <h3>Trung Quốc áp thuế trả đũa 125% lên hàng Mỹ</h3>
+      <i style="float: right;">Thứ sáu, 11/4/2025, 15:20 (GMT+7)</i>
+      <br><div>Căng thẳng thương mại Mỹ - Trung Quốc tiếp tục leo thang khi Bắc Kinh thông báo nâng thuế nhập khẩu với hàng của Mỹ.</div>
+      <br><div>Giới chức Hải quan Trung Quốc cho biết mức thuế nhập khẩu 125% với hàng Mỹ vào nước này sẽ có hiệu lực từ 12/4. Động thái này nhằm trả đũa việc Tổng thống Mỹ Donald Trump tăng thuế đối ứng với Trung Quốc từ 84% lên 125%.</div>
+      <br><div>"Kể cả nếu Mỹ tiếp tục áp thuế nhập khẩu ở mức cao hơn, việc này cũng không còn ý nghĩa về mặt kinh tế. Với mức thuế hiện tại, hàng Mỹ không còn cơ hội ở thị trường Trung Quốc", thông báo của Hải quan Trung Quốc cho biết.</div>
+      <br><div>Thông báo áp thuế trả đũa được giới chức Trung Quốc đưa ra vài giờ sau khi Chủ tịch Tập Cận Bình lần đầu lên tiếng về căng thẳng thương mại với Mỹ. Trong cuộc gặp với Thủ tướng Tây Ban Nha Pedro Sanchez tại Bắc Kinh ngày 11/4, ông Tập tiếp tục khẳng định Trung Quốc "không sợ hãi" về cuộc chiến thuế quan với Washington và không ai thắng trong thương chiến. Ông nói thêm nước này "vẫn tự tin, tập trung quản lý tốt các vấn đề của mình" bất kể môi trường bên ngoài thay đổi thế nào</div>
+      <br><div>Người phát ngôn Bộ Thương mại Trung Quốc cho biết nước này phản đối mạnh mẽ "các biện pháp áp thuế nhập khẩu đơn phương của Mỹ". Họ khẳng định sẽ đưa ra các chính sách đáp trả để bảo vệ quyền, lợi ích quốc gia và thúc giục Washington tiến tới hủy bỏ "thuế nhập khẩu đối ứng", khắc phục các hành động sai lầm.</div>
+      <br><div>Chỉ số S&P 500 tương lai trên thị trường chứng khoán Mỹ giảm mạnh hơn sau thông báo nâng thuế của Trung Quốc. Hiện chỉ số này mất 0,74%. Dollar Index - đo sức mạnh của USD với rổ tiền tệ lớn - giảm 1,6% về 99,3 điểm.</div>
+      <br><div>Chứng khoán châu Âu cũng quay đầu giảm sau thông tin Trung Quốc đáp trả thêm thuế với Mỹ. Chỉ số Stoxx 600 theo dõi chung các doanh nghiệp trong khu vực giảm 1,3%. FTSE 100 (Anh), CAC 40 (Pháp) và DAX (Đức) hiện mất 0,4-1,7%.</div>
+      <br><div><iframe title="Datawrapper Test" aria-label="Table" id="datawrapper-chart-xCtdl" src="https://datawrapper.dwcdn.net/xCtdl/2/" scrolling="no" frameborder="0" style="width: 0px; border: none; min-width: 100% !important; height: 771px;" height="935"></iframe></div>
+      <div>Cách đây hai ngày, Tổng thống Mỹ Donald Trump thông báo hoãn thuế đối ứng với hàng chục đối tác thương mại lớn trong 90 ngày, tạm thời đưa mức thuế về 10%. Tuy nhiên, thuế đối ứng với Trung Quốc lại được nâng từ 84% lên 125%. Như vậy, tổng thuế mà hàng Trung Quốc phải chịu trong nhiệm kỳ 2 của ông Trump hiện là 145%.</div>
+      <br><div>Dan Wang, Giám đốc Trung Quốc tại Eurasia Group chỉ ra rằng biên lợi nhuận cho ngành xuất khẩu của Trung Quốc là 30-40%. "Nếu Mỹ áp thuế vượt 35%, họ sẽ xóa sổ hầu hết lợi nhuận của hàng Trung Quốc. Cho dù mức thuế là 70% hay thậm chí 1.000% cũng không tạo ra nhiều khác biệt, vì về cơ bản đã ngăn Trung Quốc giao dịch trực tiếp với Mỹ", bà phân tích.</div>
+      <br><div>Giới phân tích cảnh báo việc áp thuế nhập khẩu sẽ chỉ thổi bùng lạm phát, kéo tụt niềm tin tiêu dùng, đầu tư và làm giảm tăng trưởng kinh tế. Ngân hàng đầu tư Goldman Sachs đã hạ dự báo tăng trưởng của Trung Quốc năm nay từ 4,5% về 4%, do tác động của thuế nhập khẩu. Trước đó, họ cũng nâng dự báo khả năng Mỹ suy thoái trong 12 tháng tới là 45%.</div>
+      <br><div>Căng thẳng thương mại Mỹ - Trung Quốc liên tục leo thang kể từ đầu nhiệm kỳ của ông Trump. Một tuần qua thị trường tài chính toàn cầu chao đảo vì chính sách thuế quan của Mỹ.</div>
+      <br><div>Đến nay, Washington đã 3 lần công bố áp thuế nhập khẩu bổ sung với hàng Trung Quốc. Trong đó, riêng thuế đối ứng được nâng lên 2 lần trong vài ngày qua. Trung Quốc cũng đáp trả bằng chính sách áp thuế tương tự, đồng thời siết xuất khẩu nhiều kim loại quan trọng và đưa thêm hàng chục doanh nghiệp Mỹ vào danh sách hạn chế xuất khẩu.</div>
+      <br><div>Hôm 10/4, Bộ Ngoại giao Trung Quốc khẳng định nước này không muốn đối đầu, nhưng sẽ không sợ hãi nếu Mỹ tiếp tục đe dọa áp thuế. Bộ Thương mại Trung Quốc cũng tuyên bố nước này cởi mở trong đàm phán với Mỹ, nhưng phải trên cơ sở bình đẳng và tôn trọng lẫn nhau, nhấn mạnh "việc gây sức ép, đe dọa, bắt nạt" không phải là cách hành xử đúng với Trung Quốc.</div>
+      <br><div>Tổng thống Mỹ Donald Trump cũng cho biết muốn đạt thỏa thuận với Trung Quốc để chấm dứt căng thẳng đang leo thang. Tuy nhiên, với diễn biến mới nhất này, khả năng hai nước đàm phán với nhau ngày càng mong manh. Đặc biệt khi trước đó, Mỹ còn tuyên bố ưu tiên đàm phán với các đồng minh và các đối tác thương mại khác.</div>
+      <br><div>Năm ngoái, kim ngạch thương mại Mỹ - Trung Quốc đạt 4.898 tỷ nhân dân tệ (668 tỷ USD), theo số liệu Hải quan Trung Quốc công bố tháng 1. Tuy nhiên, thâm hụt thương mại của Washington với Bắc Kinh rất lớn, 361 tỷ USD năm ngoái, cao hơn so với 336 tỷ USD năm 2023.</div>
+      <br><div>5 mặt hàng Trung Quốc xuất khẩu nhiều nhất sang Mỹ trong năm ngoái là máy móc và thiết bị điện, đồ điện tử gia dụng, đồ nội thất, đồ chơi và đồ nhựa, chiếm 52% tổng kim ngạch xuất khẩu sang Mỹ. Ngược lại, các mặt hàng Trung Quốc nhập khẩu nhiều nhất từ Mỹ là đậu nành, bông, than đá, thiết bị y tế, khí hóa lỏng (LNG) và xe hơi.</div>
+      <br>
+      <h3>Bình luận về bài viết</h3>
+      <div class="fb-comments" data-href="https://thewebsite2023.github.io/#trung_quoc_ap_thue_tra_dua_125_len_hang_my" data-width="" data-numposts="5"></div>
+      <hr>
+      <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
     </div>
 
     <div id="mau_may_tinh_tung_bi_apple_chon_vui" class="page d-none">
-      <div><h3><a href="/trang_chu">Trang chủ</a> > <a href="/podcast">Podcast</a> > <a href="/mau_may_tinh_tung_bi_apple_chon_vui">Mẫu máy tính....</a></h3></div>
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#podcast">Podcast</a> > <a href="#mau_may_tinh_tung_bi_apple_chon_vui">Mẫu máy tính....</a></h3></div>
       <hr>
-               <div class="audio-player-container"> 
+      <div class="audio-player-container"> 
     <div class="audio-player" data-src="https://v.vnecdn.net/vnexpress/video/audio/2025/03/13/2700-chiec-may-tinh-tung-bi-apple-chon-xuong-bai-rac-1741838665.mp3">
         <div class="audio-info">
             <img src="https://i1-vnexpress.vnecdn.net/2025/03/13/ThumbFrame192-1741838094-5421-1741838663.jpg?w=320&h=320&q=100&dpr=2&fit=crop&s=caTfFw7E7aaoYHi55fOmiQ" alt="Ảnh bìa âm thanh" class="audio-image">
@@ -739,16 +1103,15 @@ Drive sao kê của Phạm Thoại: <a href="https://drive.google.com/drive/mobi
         </div>
     </div>
 </div>
+<br>
         <h3>Bình luận về bài viết</h3>
-                <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v22.0&appId=498196206101417"></script>
-<div class="fb-comments" data-href="https://thewebsite2023.github.io/mau_may_tinh_tung_bi_apple_chon_vui" data-width="" data-numposts="5"></div>
+      <div class="fb-comments" data-href="https://thewebsite2023.github.io/#mau_may_tinh_tung_bi_apple_chon_vui" data-width="" data-numposts="5"></div>
       <hr>
-      <a href="/trang_chu" class="btn btn-primary">< Quay lại trang chủ</a>
-    </div>
-
+      <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
+      </div>
+          
     <div id="vu_an_be_tac_19_nam" class="page d-none">
-      <div><h3><a href="/trang_chu">Trang chủ</a> > <a href="/podcast">Podcast</a> > <a href="/vu_an_be_tac_19_nam">Vụ án bế tắc...</a></h3></div>
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#podcast">Podcast</a> > <a href="#vu_an_be_tac_19_nam">Vụ án bế tắc...</a></h3></div>
       <hr>
       <div class="audio-player-container"> 
         <div class="audio-player" data-src="https://v.vnecdn.net/vnexpress/video/audio/2025/03/11/vu-an-be-tac-19-nam-duoc-pha-nho-ai-1741669687.mp3">
@@ -775,16 +1138,15 @@ Drive sao kê của Phạm Thoại: <a href="https://drive.google.com/drive/mobi
             </div>
         </div>
     </div>
+    <br>
         <h3>Bình luận về bài viết</h3>
-                <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v22.0&appId=498196206101417"></script>
-<div class="fb-comments" data-href="https://thewebsite2023.github.io/vu_an_be_tac_19_nam" data-width="" data-numposts="5"></div>
+<div class="fb-comments" data-href="https://thewebsite2023.github.io/#vu_an_be_tac_19_nam" data-width="" data-numposts="5"></div>
       <hr>
-      <a href="/trang_chu" class="btn btn-primary">< Quay lại trang chủ</a>
+      <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
     </div>
-
+    
     <div id="vu_no_tau_con_thoi_nasa" class="page d-none">
-      <div><h3><a href="/trang_chu">Trang chủ</a> > <a href="/podcast">Podcast</a> > <a href="/vu_no_tau_con_thoi_nasa">Vụ nổ tàu...</a></h3></div>
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#podcast">Podcast</a> > <a href="#vu_no_tau_con_thoi_nasa">Vụ nổ tàu...</a></h3></div>
       <hr>
       <div class="audio-player-container"> 
         <div class="audio-player" data-src="https://v.vnecdn.net/vnexpress/video/audio/2025/03/20/vu-no-tau-con-thoi-nhieu-uan-khuc-cua-nasa-1742441673.mp3">
@@ -811,12 +1173,115 @@ Drive sao kê của Phạm Thoại: <a href="https://drive.google.com/drive/mobi
             </div>
         </div>
     </div>
+    <br>
     <h3>Bình luận về bài viết</h3>
-        <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v22.0&appId=498196206101417"></script>
-<div class="fb-comments" data-href="https://thewebsite2023.github.io/vu_no_tau_con_thoi_nasa" data-width="" data-numposts="5"></div>
+<div class="fb-comments" data-href="https://thewebsite2023.github.io/#vu_no_tau_con_thoi_nasa" data-width="" data-numposts="5"></div>
     <hr>
-    <a href="/trang_chu" class="btn btn-primary">< Quay lại trang chủ</a>
+    <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
+    </div>
+
+    <div id="sup_do_khi_mat_5_ty" class="page d-none">
+        <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#podcast">Podcast</a> > <a href="#sup_do_khi_mat_5_ty">Sụp dổ khi mất...</a></h3></div>
+      <hr>
+      <div class="audio-player-container"> 
+        <div class="audio-player" data-src="https://v.vnecdn.net/vnexpress/video/audio/2025/04/05/bi-lua-5-ty-trong-chop-mat-tat-ca-la-tien-vay-1743849514.mp3">
+            <div class="audio-info">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/04/05/luadap-1743849262-4317-1743849512.png?w=320&h=320&q=100&dpr=2&fit=crop&s=aqOZDX6uc61_k3QOT4P7bA" alt="Ảnh bìa âm thanh" class="audio-image">
+                <div class="audio-details">
+                    <h2 class="audio-title">Sụp đổ khi mất 5 tỷ vay bạn bè vì bị lừa đảo</h2>
+                    <p class="audio-meta">Thứ bảy, 5/4/2025, 20:41 (GMT+7)</p>
+                    <p class="audio-description">Trong 20 ngày bị lừa mất 5 tỷ, tôi hổ thẹn và nghĩ quẩn vì huy động bạn bè cho vay để rồi mất trắng.</p>
+                </div>
+            </div>
+            <div class="audio-controls">
+                <div class="time-controls">
+                    <span class="current-time">00:00</span>
+                    <input type="range" min="0" max="100" value="0" class="progress-bar">
+                    <span class="total-time">00:00</span>
+                </div>
+                <div class="playback-controls">
+                    <button class="skip-backward">◀ 10</button>
+                    <button class="play-pause">▶</button>
+                    <button class="skip-forward">10 ▶</button>
+                    <span class="playback-speed">Tốc độ phát 1x</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h3>Bình luận về bài viết</h3>
+    <div class="fb-comments" data-href="https://thewebsite2023.github.io/#sup_do_khi_mat_5_ty" data-width="" data-numposts="5"></div>
+    <hr>
+    <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
+    </div>
+
+        <div id="pha_an_tu_bo_xuong_kho" class="page d-none">
+        <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#podcast">Podcast</a> > <a href="#pha_an_tu_bo_xuong_kho">Phá án từ...</a></h3></div>
+      <hr>
+      <div class="audio-player-container"> 
+        <div class="audio-player" data-src="https://v.vnecdn.net/vnexpress/video/audio/2025/04/11/phat-hien-hung-thu-tu-bo-xuong-kho-1744339282.mp3">
+            <div class="audio-info">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/04/11/7896440bb438473eac78f84da52391-4178-7945-1744339281.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=iTEJlS66WjdsnE-4lohoxA" alt="Ảnh bìa âm thanh" class="audio-image">
+                <div class="audio-details">
+                    <h2 class="audio-title">Phá án từ bộ xương khô</h2>
+                    <p class="audio-meta">Thứ sáu, 11/4/2025, 11:17 (GMT+7)</p>
+                    <p class="audio-description">Sau 14 năm, nỗi oan của một thiếu nữ mất tích bí ẩn đã được giải nhờ vết nứt trên hộp sọ, mà kẻ thủ ác chính là người yêu cô.</p>
+                </div>
+            </div>
+            <div class="audio-controls">
+                <div class="time-controls">
+                    <span class="current-time">00:00</span>
+                    <input type="range" min="0" max="100" value="0" class="progress-bar">
+                    <span class="total-time">00:00</span>
+                </div>
+                <div class="playback-controls">
+                    <button class="skip-backward">◀ 10</button>
+                    <button class="play-pause">▶</button>
+                    <button class="skip-forward">10 ▶</button>
+                    <span class="playback-speed">Tốc độ phát 1x</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h3>Bình luận về bài viết</h3>
+    <div class="fb-comments" data-href="https://thewebsite2023.github.io/#pha_an_tu_bo_xuong_kho" data-width="" data-numposts="5"></div>
+    <hr>
+    <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
+    </div>
+    <div id="hoi_chung_bi_an_tung_tan_cong_1-500_vien_chuc_ngoai_giao_my" class="page d-none">
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#podcast">Podcast</a> > <a href="#hoi_chung_bi_an_tung_tan_cong_1-500_vien_chuc_ngoai_giao_my">Hội chứng bí ẩn....</a></h3></div>
+      <hr>
+      <div class="audio-player-container"> 
+        <div class="audio-player" data-src="https://v.vnecdn.net/vnexpress/video/audio/2025/02/27/hoi-chung-bi-an-tan-cong-1-500-vien-chuc-ngoai-giao-my-1740623825.mp3">
+            <div class="audio-info">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/02/27/Thumbgiaima19-1740623034-4624-1740623824.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=nC5gO0Egyt2-dwrJBpi_NA" alt="Ảnh bìa âm thanh" class="audio-image">
+                <div class="audio-details">
+                    <h2 class="audio-title">Hội chứng bí ẩn từng tấn công 1.500 viên chức ngoại giao Mỹ</h2>
+                    <p class="audio-meta">Thứ năm, 27/2/2025, 11:00 (GMT+7)</p>
+                    <p class="audio-description">Các nghiên cứu chỉ ra nguyên nhân khiến các nhân viên ngoại giao Mỹ đau đầu dữ dội và nghe thấy các âm thanh lạ vào ban đêm đến từ vi sóng hoặc chứng phân ly tập thể vào cuối năm 2016.</p>
+                </div>
+            </div>
+            <div class="audio-controls">
+                <div class="time-controls">
+                    <span class="current-time">00:00</span>
+                    <input type="range" min="0" max="100" value="0" class="progress-bar">
+                    <span class="total-time">00:00</span>
+                </div>
+                <div class="playback-controls">
+                    <button class="skip-backward">◀ 10</button>
+                    <button class="play-pause">▶</button>
+                    <button class="skip-forward">10 ▶</button>
+                    <span class="playback-speed">Tốc độ phát 1x</span>
+                </div>
+            </div>
+        </div>
+    </div>
+      <br>
+      <h3>Bình luận về bài viết</h3>
+      <div class="fb-comments" data-href="https://thewebsite2023.github.io/#hoi_chung_bi_an_tung_tan_cong_1-500_vien_chuc_ngoai_giao_my" data-width="" data-numposts="5"></div>
+      <hr>
+      <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
     </div>
       </div>
 <script>
@@ -875,42 +1340,64 @@ Drive sao kê của Phạm Thoại: <a href="https://drive.google.com/drive/mobi
 </script>
 <script>
 function showPage(pageId) {
-    document.querySelectorAll('.page').forEach(page => {
-        page.classList.remove('active');
-    });
+    // Ẩn tất cả các trang
+    document.querySelectorAll('.page').forEach(page => page.classList.add('d-none'));
 
+    // Hiện trang tương ứng
     const pageElement = document.getElementById(pageId);
     if (pageElement) {
-        pageElement.classList.add('active');
+        pageElement.classList.remove('d-none');
     }
 }
 
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', event => {
-        event.preventDefault();
-
-        // Lấy phần cuối của href (vd: /about → about)
-        const href = new URL(link.href);
-        const pageId = href.pathname.replace(/^\/+/, '') || 'trang_chu';
-
-        showPage(pageId);
-        history.pushState(null, "", "/" + pageId);
-    });
+// Khi người dùng click vào link <a href="#id">
+window.addEventListener("hashchange", () => {
+    const hash = window.location.hash;
+    if (hash) {
+        showPage(hash.substring(1)); // bỏ dấu #
+    }
 });
 
-// Back/Forward
-window.addEventListener("popstate", () => {
-    const path = window.location.pathname.replace(/^\/+/, '') || "trang_chu";
-    showPage(path);
-});
-
-// Load ban đầu
+// Khi load trang lần đầu (truy cập trực tiếp với #id)
 window.addEventListener("DOMContentLoaded", () => {
-    const path = window.location.pathname.replace(/^\/+/, '') || "trang_chu";
-    showPage(path);
+    const hash = window.location.hash;
+    if (hash) {
+        showPage(hash.substring(1));
+    } else {
+        showPage("trang_chu"); // Trang mặc định
+    }
 });
 </script>
 <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll("#customNavTabs .nav-link");
+  
+    function setActiveLinkFromHash() {
+      const currentHash = window.location.hash;
+      navLinks.forEach(link => {
+        if (link.getAttribute("href") === currentHash) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    }
+  
+    navLinks.forEach(link => {
+      link.addEventListener("click", function () {
+        navLinks.forEach(l => l.classList.remove("active"));
+        this.classList.add("active");
+      });
+    });
+  
+    // Tự động active link khi tải lại trang theo URL hash
+    setActiveLinkFromHash();
+  
+    // Nếu người dùng thay đổi hash bằng tay
+    window.addEventListener("hashchange", setActiveLinkFromHash);
+  });
+  </script>  
+<!--script>
     document.addEventListener("DOMContentLoaded", function () {
     if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
         document.body.innerHTML = `
@@ -927,28 +1414,22 @@ window.addEventListener("DOMContentLoaded", () => {
         `;
     }
 });
-    </script>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Thông báo</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        WebPgae News đã có sẵn chương trình Beta cho phép mọi người khám phá trước phiên bản mới. Tham gia ngay!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không, cảm ơn</button>
-        <a href="https://thewebsite2023.github.io/beta_version.html#" class="btn btn-primary">Tham gia</a>
-      </div>
-    </div>
-  </div>
-</div>
-        <script>  
-        $(document).ready(function(){  
-            $("#exampleModal").modal('show'); 
-        });  
-        </script>
+</script-->
+                  <script>
+            function openLoginWindow() {
+                // Mở cửa sổ mới cho trang đăng nhập
+                const loginWindow = window.open('login.html', 'loginWindow', 'width=700,height=700');
+
+                // Lắng nghe sự kiện 'message' từ cửa sổ con
+                window.addEventListener('message', function eventHandler(event) {
+                    if (event.origin === window.location.origin) {
+                        // Kiểm tra nếu đăng nhập thành công
+                        if (event.data === 'success') {
+                            clearInterval(checkClosed); // Dừng kiểm tra nếu đã đăng nhập thành công
+                        }
+                    }
+                });
+            }
+            </script>
 </body>
-</html>
+    </html>
