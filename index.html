@@ -498,7 +498,7 @@ strong {
     <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
   </div>
     </div> -->
-    <div id="loader">
+    <!-- <div id="loader">
         <div class="loading-box">
           <span class="loader"></span>
           <div>Đang tải...</div>
@@ -514,7 +514,7 @@ strong {
   $(function () {
     loader();
   });
-</script>
+</script> -->
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v22.0&appId=1926059728200552"></script>
 <!--div class="container mt-4">
@@ -633,6 +633,13 @@ strong {
           <hr>
             <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm tin tức,video,podcasts,...">
             <center><div id="noResults" style="display: none; color: red; font-weight: bold; margin-top: 10px;">Không có bài báo nào phù hợp với từ khoá của bạn</div></center>
+            <div class="search-news-item">
+              <img src="https://i1-vnexpress.vnecdn.net/2025/04/15/82257c190820bb7ee231-174468856-5359-7411-1744688656.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=pvz3lSgK87uCsreQff1q4w" alt="" width="150px" class="me-3">
+              <div class="search-news-content">
+                  <a href="#bi_an_thi_the_mat_het_noi_tang" class="news-title">Bí ẩn thi thể mất hết nội tạng</a>
+                  <div class="search-news-time">Nguồn: VnExpress</div>
+              </div>
+          </div>
             <div class="search-news-item">
                 <img src="https://i.ytimg.com/vi/vwVRGmfP6hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAEnZsBiCUKmnpEvLunkjh8LjAyGg" alt="" width="150px" class="me-3">
                 <div class="search-news-content">
@@ -883,6 +890,13 @@ strong {
     <div id="podcast" class="page d-none">
       <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#podcast">Podcast</a></h3></div>
       <hr>
+      <div class="news-item">
+        <img src="https://i1-vnexpress.vnecdn.net/2025/04/15/82257c190820bb7ee231-174468856-5359-7411-1744688656.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=pvz3lSgK87uCsreQff1q4w" alt="" width="150px" class="me-3">
+        <div class="news-content">
+            <a href="#bi_an_thi_the_mat_het_noi_tang" class="news-title">Bí ẩn thi thể mất hết nội tạng</a>
+            <div class="news-time">Nguồn: VnExpress</div>
+        </div>
+    </div>
       <div class="news-item">
         <img src="https://i1-vnexpress.vnecdn.net/2025/02/27/Thumbgiaima19-1740623034-4624-1740623824.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=nC5gO0Egyt2-dwrJBpi_NA" alt="" width="150px" class="me-3">
         <div class="news-content">
@@ -1345,6 +1359,40 @@ strong {
       <br>
       <h3>Bình luận về bài viết</h3>
       <div class="fb-comments" data-href="https://thewebsite2023.github.io/#hoi_chung_bi_an_tung_tan_cong_1-500_vien_chuc_ngoai_giao_my" data-width="" data-numposts="5"></div>
+      <hr>
+      <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
+    </div>
+    <div class="page d-none" id="bi_an_thi_the_mat_het_noi_tang">
+      <div><h3><a href="#trang_chu">Trang chủ</a> > <a href="#podcast">Podcast</a> > <a href="#bi_an_thi_the_mat_het_noi_tang">Bí ẩn thi thể...</a></h3></div>
+      <hr>
+      <div class="audio-player-container"> 
+        <div class="audio-player" data-src="https://v.vnecdn.net/vnexpress/video/audio/2025/04/15/mot-minh-di-du-lich-thieu-nien-tu-vong-mat-het-noi-tang-1744688657.mp3">
+            <div class="audio-info">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/04/15/82257c190820bb7ee231-174468856-5359-7411-1744688656.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=pvz3lSgK87uCsreQff1q4w" alt="Ảnh bìa âm thanh" class="audio-image">
+                <div class="audio-details">
+                    <h2 class="audio-title">Bí ẩn thi thể mất hết nội tạng</h2>
+                    <p class="audio-meta">Thứ ba, 15/4/2025, 11:00 (GMT+7)</p>
+                    <p class="audio-description">Mike Mansholt, 17 tuổi, được tìm thấy sau 10 ngày mất tích trong trạng thái rỗng, mất hết nội tạng, nhưng lại không có dấu hiệu bị xâm phạm bằng vết cắt.</p>
+                </div>
+            </div>
+            <div class="audio-controls">
+                <div class="time-controls">
+                    <span class="current-time">00:00</span>
+                    <input type="range" min="0" max="100" value="0" class="progress-bar">
+                    <span class="total-time">00:00</span>
+                </div>
+                <div class="playback-controls">
+                    <button class="skip-backward">◀ 10</button>
+                    <button class="play-pause">▶</button>
+                    <button class="skip-forward">10 ▶</button>
+                    <span class="playback-speed">Tốc độ phát 1x</span>
+                </div>
+            </div>
+        </div>
+    </div>
+      <br>
+      <h3>Bình luận về bài viết</h3>
+      <div class="fb-comments" data-href="https://thewebsite2023.github.io/#bi_an_thi_the_mat_het_noi_tang" data-width="" data-numposts="5"></div>
       <hr>
       <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
     </div>
