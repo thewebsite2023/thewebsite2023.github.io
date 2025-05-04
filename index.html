@@ -448,47 +448,32 @@ strong {
       100% { left: 107%; right: -8%; }
     }
     .loader {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: block;
-  margin:15px auto;
-  position: relative;
-  color: #FFF;
-  left: -100px;
-  box-sizing: border-box;
-  animation: shadowRolling 2s linear infinite;
-}
-
-@keyframes shadowRolling {
-  0% {
-    box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    position: relative;
+    border: 3px solid;
+    border-color:rgb(0, 110, 255) #0000 #fff #0000;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: 1s rotate linear infinite;
+ }
+ .loader:before , .loader:after{
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    border: 10px solid transparent;
+    border-bottom-color:#fff;
+    transform: translate(-10px, 19px) rotate(-35deg);
   }
-  12% {
-    box-shadow: 100px 0 white, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+ .loader:after {
+    border-color: rgb(0, 110, 255) #0000 #0000 #0000 ;
+    transform: translate(32px, 3px) rotate(-35deg);
   }
-  25% {
-    box-shadow: 110px 0 white, 100px 0 white, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+   @keyframes rotate {
+    100%{    transform: rotate(360deg)}
   }
-  36% {
-    box-shadow: 120px 0 white, 110px 0 white, 100px 0 white, 0px 0 rgba(255, 255, 255, 0);
-  }
-  50% {
-    box-shadow: 130px 0 white, 120px 0 white, 110px 0 white, 100px 0 white;
-  }
-  62% {
-    box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 white, 120px 0 white, 110px 0 white;
-  }
-  75% {
-    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 white, 120px 0 white;
-  }
-  87% {
-    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 white;
-  }
-  100% {
-    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
-  }
-}
 </style>
 </head>
 <body>
@@ -536,7 +521,7 @@ strong {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-tabs-custom me-auto mb-2 mb-lg-0" id="customNavTabs">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="trang-chu">Trang chủ</a>
+                <a class="nav-link active" aria-current="page" href="#trang-chu">Trang chủ</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#tin-tuc">Tin tức & Sự kiện</a>
