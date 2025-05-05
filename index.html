@@ -442,12 +442,6 @@ strong {
 </style>
 </head>
 <body>
-    <!-- <div id="loader">
-  <div class="loading-box">
-    Chúng tôi hiện đang gặp sự cố. Vui lòng quay lại sau
-    <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
-  </div>
-    </div> -->
     <div id="loader">
       <div class="loading-box">
         <span class="loader"></span>
@@ -592,6 +586,13 @@ $(function () {
             <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm tin tức,video,podcasts,...">
             <center><div id="noResults" style="display: none; color: red; font-weight: bold; margin-top: 10px;">Không có bài báo nào phù hợp với từ khoá của bạn</div></center>
             <div class="search-news-item">
+              <img src="https://i1-vnexpress.vnecdn.net/2025/04/25/a0eef8b1fc9348cda87be868f73402-5131-6314-1745546539.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=2izsrKV1kivgpXvx9-cFZw" alt="" width="150px" class="me-3">
+              <div class="search-news-content">
+                  <a href="#vu-an-giet-chong-de-ngoai-tinh-voi-em-chong" class="news-title">Vụ án giết chồng để ngoại tình với em chồng</a>
+                  <div class="search-news-time">Nguồn: VnExpress</div>
+              </div>
+          </div>
+            <div class="search-news-item">
               <img src="https://i1-vnexpress.vnecdn.net/2025/04/15/82257c190820bb7ee231-174468856-5359-7411-1744688656.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=pvz3lSgK87uCsreQff1q4w" alt="" width="150px" class="me-3">
               <div class="search-news-content">
                   <a href="#bi-an-thi-the-mat-het-noi-tang" class="news-title">Bí ẩn thi thể mất hết nội tạng</a>
@@ -728,7 +729,6 @@ $(function () {
        items.forEach(item => {
          let title = item.querySelector(".search-news-title").textContent.toLowerCase();
          let normalizedTitle = removeDiacritics(title);
-     
          if (normalizedTitle.includes(filter)) {
            item.style.display = "flex";
            found = true;
@@ -848,6 +848,13 @@ $(function () {
     <div id="podcast" class="page d-none">
       <div><h3><a href="#trang-chu">Trang chủ</a> > <a href="#podcast">Podcast</a></h3></div>
       <hr>
+      <div class="news-item">
+        <img src="https://i1-vnexpress.vnecdn.net/2025/04/25/a0eef8b1fc9348cda87be868f73402-5131-6314-1745546539.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=2izsrKV1kivgpXvx9-cFZw" alt="" width="150px" class="me-3">
+        <div class="news-content">
+            <a href="#vu-an-giet-chong-de-ngoai-tinh-voi-em-chong" class="news-title">Vụ án giết chồng để ngoại tình với em chồng</a>
+            <div class="news-time">Nguồn: VnExpress</div>
+        </div>
+    </div>
       <div class="news-item">
         <img src="https://i1-vnexpress.vnecdn.net/2025/04/15/82257c190820bb7ee231-174468856-5359-7411-1744688656.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=pvz3lSgK87uCsreQff1q4w" alt="" width="150px" class="me-3">
         <div class="news-content">
@@ -1351,6 +1358,40 @@ $(function () {
       <br>
       <h3>Bình luận về bài viết</h3>
       <div class="fb-comments" data-href="https://thewebsite2023.github.io/#bi-an-thi-the-mat-het-noi-tang" data-width="" data-numposts="5"></div>
+      <hr>
+      <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
+    </div>
+    <div class="page d-none" id="vu-an-giet-chong-de-ngoai-tinh-voi-em-chong">
+      <div><h3><a href="#trang-chu">Trang chủ</a> > <a href="#podcast">Podcast</a> > <a href="#vu-an-giet-chong-de-ngoai-tinh-voi-em-chong">Vụ án giết...</a></h3></div>
+      <hr>
+      <div class="audio-player-container"> 
+        <div class="audio-player" data-src="https://v.vnecdn.net/vnexpress/video/audio/2025/04/25/vu-an-giet-chong-de-ngoai-tinh-voi-em-chong-1745546540.mp3">
+            <div class="audio-info">
+                <img src="https://i1-vnexpress.vnecdn.net/2025/04/25/a0eef8b1fc9348cda87be868f73402-5131-6314-1745546539.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=2izsrKV1kivgpXvx9-cFZw" alt="Ảnh bìa âm thanh" class="audio-image">
+                <div class="audio-details">
+                    <h2 class="audio-title">Vụ án giết chồng để ngoại tình với em chồng</h2>
+                    <p class="audio-meta">Thứ sáu, 25/4/2025, 11:00 (GMT+7)</p>
+                    <p class="audio-description">Tối 8/1/2013, sau khi giết chồng, phi tang xuống sông, Văn Thị Thủy cùng người tình trở về nhà nấu mì ăn và ân ái trên chính chiếc giường vừa gây</p>
+                </div>
+            </div>
+            <div class="audio-controls">
+                <div class="time-controls">
+                    <span class="current-time">00:00</span>
+                    <input type="range" min="0" max="100" value="0" class="progress-bar">
+                    <span class="total-time">00:00</span>
+                </div>
+                <div class="playback-controls">
+                    <button class="skip-backward">◀ 10</button>
+                    <button class="play-pause">▶</button>
+                    <button class="skip-forward">10 ▶</button>
+                    <span class="playback-speed">Tốc độ phát 1x</span>
+                </div>
+            </div>
+        </div>
+    </div>
+      <br>
+      <h3>Bình luận về bài viết</h3>
+      <div class="fb-comments" data-href="https://thewebsite2023.github.io/#vu-an-giet-chong-de-ngoai-tinh-voi-em-chong" data-width="" data-numposts="5"></div>
       <hr>
       <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
     </div>
