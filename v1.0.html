@@ -9,6 +9,12 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+  const myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+  myModal.show();
+});
+    </script>
     <script src="https://www.google.com/recaptcha/api.js?render=6LduGS0rAAAAAMSbHeh5CvKuHmMswcmewZblpxks"></script>
        <script>
       function onClick(e) {
@@ -477,6 +483,24 @@ strong {
 </style>
 </head>
 <body>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Thông báo</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h3>Bắt đầu từ ngày 5/5/2025, WebPage News phiên bản v1.0 sẽ không nhận được bất kì một bài báo nào nữa. Để cập nhật các bài báo mới nhất, vui lòng truy cập <a href="https://thewebsite2023.github.io/">WebPage News phiên bản v2.0</a></h3>\
+          <br>
+          <h3>Xin trân trọng cảm ơn!</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Tôi hiểu rồi</button>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- <div id="loader">
   <div class="loading-box">
     Chúng tôi hiện đang gặp sự cố. Vui lòng quay lại sau
