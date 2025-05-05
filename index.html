@@ -351,41 +351,6 @@ strong {
     font-size: 0.9em;
     color: #555;
 }
-
-.nav-tabs-custom {
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.nav-tabs-custom .nav-link {
-  font-weight: bold;
-  color: #555;
-  position: relative;
-  margin: 0 10px;
-  padding-bottom: 8px;
-  transition: all 0.3s ease;
-  text-decoration: none;
-}
-
-.nav-tabs-custom .nav-link:hover {
-  color: #007bff;
-}
-
-.nav-tabs-custom .nav-link.active {
-  color: #007bff;
-}
-
-.nav-tabs-custom .nav-link.active::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: #007bff;
-  border-radius: 3px;
-}
         #loader {
       position: fixed;
       top: 0;
@@ -484,21 +449,21 @@ strong {
   </div>
     </div> -->
     <div id="loader">
-        <div class="loading-box">
-          <span class="loader"></span>
-          <div>Đang tải...</div>
+      <div class="loading-box">
+        <span class="loader"></span>
+        <div>Đang tải...</div>
+      </div>
         </div>
-          </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  var loader = function() {
-    setTimeout(function() {
-      $('#loader').css({ 'opacity': 0, 'visibility': 'hidden' });
-    }, 10000);
-  };
-  $(function () {
-    loader();
-  });
+var loader = function() {
+  setTimeout(function() {
+    $('#loader').css({ 'opacity': 0, 'visibility': 'hidden' });
+  }, 10000);
+};
+$(function () {
+  loader();
+});
 </script>
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v22.0&appId=1926059728200552"></script>
@@ -519,28 +484,36 @@ strong {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav nav-tabs-custom me-auto mb-2 mb-lg-0" id="customNavTabs">
+            <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#trang-chu">Trang chủ</a>
+                <a class="nav-link active rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="true" href="#trang-chu">Trang chủ</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#tin-tuc">Tin tức & Sự kiện</a>
+                <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#tin-tuc">Tin tức & Sự kiện</a>
               </li>
             <li class="nav-item">
-                <a href="#video" class="nav-link">Video</a>
+                <a href="#video" class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Video</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#podcast">Podcast</a>
+                <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#podcast">Podcast</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#tim-kiem">Tìm kiếm</a>
+                <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#tim-kiem">Tìm kiếm</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#lien-he">Thông tin</a>
+                <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#lien-he">Thông tin</a>
               </li>
-<!--               <li class="nav-item">
-                <a class="nav-link" href="#" onclick="openLoginWindow()">Đăng nhập</a>
-              </li> -->
+                              <form class="d-flex" role="search">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Phiên bản
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://thewebsite2023.github.io/">v2.0 (Mới nhất)</a></li>
+                    <li><a class="dropdown-item" href="https://thewebsite2023.github.io/v1.0">v1.0</a></li>
+                  </ul>
+                </li>
+              </form>
             </ul>
           </div>
         </div>
@@ -574,7 +547,7 @@ strong {
                   <div>
                         <h5 class="card-title">Xem ngay: Vụ TikToker Phạm Thoại: Có thể tố giác để công an xác minh số tiền từ thiện</h5>
                         <p class="card-text">Bấm vào xem chi tiết để biết thêm thông tin</p>
-                          <a href="#vu-tiktoker-pham-thoai-co-the-to-giac-de-cong-an-xac-minh-so-tien-tu-thien" class="btn btn-primary">Xem chi tiết</a>
+                          <a href="#vu-tiktoker-pham-thoai" class="btn btn-primary">Xem chi tiết</a>
                   </div>
                 </div>
             </div>
@@ -1465,36 +1438,41 @@ window.addEventListener("DOMContentLoaded", () => {
         showPage("trang-chu"); // Trang mặc định
     }
 });
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const navLinks = document.querySelectorAll("#customNavTabs .nav-link");
-  
+
+document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll(".nav-pills .nav-link"); // Selector đã sửa
+
     function setActiveLinkFromHash() {
-      const currentHash = window.location.hash;
-      navLinks.forEach(link => {
-        if (link.getAttribute("href") === currentHash) {
-          link.classList.add("active");
-        } else {
-          link.classList.remove("active");
-        }
-      });
+        const currentHash = window.location.hash;
+        navLinks.forEach(link => {
+            if (link.getAttribute("href") === currentHash) {
+                link.classList.add("active");
+            } else {
+                link.classList.remove("active");
+            }
+        });
     }
-  
+
     navLinks.forEach(link => {
-      link.addEventListener("click", function () {
-        navLinks.forEach(l => l.classList.remove("active"));
-        this.classList.add("active");
-      });
+        link.addEventListener("click", function (event) {
+            // Ngăn chặn hành vi mặc định của thẻ a (chuyển trang)
+            event.preventDefault();
+
+            // Cập nhật hash trên URL
+            window.location.hash = this.getAttribute("href");
+
+            // Gọi hàm setActiveLinkFromHash để cập nhật trạng thái active
+            setActiveLinkFromHash();
+        });
     });
-  
+
     // Tự động active link khi tải lại trang theo URL hash
     setActiveLinkFromHash();
-  
+
     // Nếu người dùng thay đổi hash bằng tay
     window.addEventListener("hashchange", setActiveLinkFromHash);
-  });
-  </script>  
+});
+</script>
 <!--script>
     document.addEventListener("DOMContentLoaded", function () {
     if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
