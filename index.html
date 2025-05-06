@@ -471,47 +471,75 @@ $(function () {
         <hr>
         <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
 </div-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#trang-chu">WebPage News</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
-              <li class="nav-item">
-                <a class="nav-link active rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="true" href="#trang-chu">Trang chủ</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#tin-tuc">Tin tức & Sự kiện</a>
-              </li>
-            <li class="nav-item">
-                <a href="#video" class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Video</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#podcast">Podcast</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#tim-kiem">Tìm kiếm</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#lien-he">Thông tin</a>
-              </li>
-                              <form class="d-flex" role="search">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Phiên bản
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="https://thewebsite2023.github.io/">v2.0 (Mới nhất)</a></li>
-                    <li><a class="dropdown-item" href="https://thewebsite2023.github.io/v1.0">v1.0</a></li>
-                  </ul>
-                </li>
-              </form>
-            </ul>
-          </div>
-        </div>
-      </nav>
+<nav class="navbar navbar-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">WebPage News</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <h4>Tất cả các chuyên mục</h4>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab" type="button" role="tab" aria-selected="true" href="#trang-chu">Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#tin-tuc">Tin tức & Sự kiện</a>
+          </li>
+        <li class="nav-item">
+            <a href="#video" class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Video</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#podcast">Podcast</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#tim-kiem">Tìm kiếm</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#lien-he">Thông tin</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+  <li class="nav-item">
+    <a class="nav-link active rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="true" href="#trang-chu">Trang chủ</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#tin-tuc">Tin tức & Sự kiện</a>
+  </li>
+<li class="nav-item">
+    <a href="#video" class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Video</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#podcast">Podcast</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#tim-kiem">Tìm kiếm</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#lien-he">Thông tin</a>
+  </li>
+                  <form class="d-flex" role="search">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Phiên bản
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="https://thewebsite2023.github.io/">v2.0 (Mới nhất)</a></li>
+        <li><a class="dropdown-item" href="https://thewebsite2023.github.io/v1.0">v1.0</a></li>
+      </ul>
+    </li>
+  </form>
+</ul>
     
  <div class="container mt-4">
     <div id="trang-chu" class="page">
@@ -1451,6 +1479,70 @@ $(function () {
 
 </script>
 <script>
+  function showPage(pageId) {
+      // Ẩn tất cả các trang
+      document.querySelectorAll('.page').forEach(page => page.classList.add('d-none'));
+  
+      // Hiện trang tương ứng
+      const pageElement = document.getElementById(pageId);
+      if (pageElement) {
+          pageElement.classList.remove('d-none');
+      }
+  }
+  
+  // Khi người dùng click vào link <a href="#id">
+  window.addEventListener("hashchange", () => {
+      const hash = window.location.hash;
+      if (hash) {
+          showPage(hash.substring(1)); // bỏ dấu #
+      }
+  });
+  
+  // Khi load trang lần đầu (truy cập trực tiếp với #id)
+  window.addEventListener("DOMContentLoaded", () => {
+      const hash = window.location.hash;
+      if (hash) {
+          showPage(hash.substring(1));
+      } else {
+          showPage("trang-chu"); // Trang mặc định
+      }
+  });
+  
+  document.addEventListener("DOMContentLoaded", function () {
+      const navLinks = document.querySelectorAll(".nav-pills .nav-link"); // Selector đã sửa
+  
+      function setActiveLinkFromHash() {
+          const currentHash = window.location.hash;
+          navLinks.forEach(link => {
+              if (link.getAttribute("href") === currentHash) {
+                  link.classList.add("active");
+              } else {
+                  link.classList.remove("active");
+              }
+          });
+      }
+  
+      navLinks.forEach(link => {
+          link.addEventListener("click", function (event) {
+              // Ngăn chặn hành vi mặc định của thẻ a (chuyển trang)
+              event.preventDefault();
+  
+              // Cập nhật hash trên URL
+              window.location.hash = this.getAttribute("href");
+  
+              // Gọi hàm setActiveLinkFromHash để cập nhật trạng thái active
+              setActiveLinkFromHash();
+          });
+      });
+  
+      // Tự động active link khi tải lại trang theo URL hash
+      setActiveLinkFromHash();
+  
+      // Nếu người dùng thay đổi hash bằng tay
+      window.addEventListener("hashchange", setActiveLinkFromHash);
+  });
+  </script>
+<script>
 function showPage(pageId) {
     // Ẩn tất cả các trang
     document.querySelectorAll('.page').forEach(page => page.classList.add('d-none'));
@@ -1481,7 +1573,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const navLinks = document.querySelectorAll(".nav-pills .nav-link"); // Selector đã sửa
+    const navLinks = document.querySelectorAll(".navbar .nav-link"); // Selector đã sửa
 
     function setActiveLinkFromHash() {
         const currentHash = window.location.hash;
