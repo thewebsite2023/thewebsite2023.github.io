@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DV5FGDGSEG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DV5FGDGSEG');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="zalo-platform-site-verification" content="FE-L0jpyBbihtA9IzFaj2H7ac5Rzaau8E3Op" />
@@ -18,13 +9,7 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        <script>
-        document.addEventListener('DOMContentLoaded', function () {
-  const myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
-  myModal.show();
-});
-    </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LduGS0rAAAAAMSbHeh5CvKuHmMswcmewZblpxks"></script>
        <script>
       function onClick(e) {
         e.preventDefault();
@@ -457,7 +442,13 @@ strong {
 </style>
 </head>
 <body>
-    <div id="loader">
+    <!-- <div id="loader">
+  <div class="loading-box">
+    Chúng tôi hiện đang gặp sự cố. Vui lòng quay lại sau
+    <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
+  </div>
+    </div> -->
+    <!-- <div id="loader">
       <div class="loading-box">
         <span class="loader"></span>
         <div>Đang tải...</div>
@@ -468,12 +459,12 @@ strong {
 var loader = function() {
   setTimeout(function() {
     $('#loader').css({ 'opacity': 0, 'visibility': 'hidden' });
-  }, 2000);
+  }, 10000);
 };
 $(function () {
   loader();
 });
-</script>
+</script> -->
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v22.0&appId=1926059728200552"></script>
 <!--div class="container mt-4">
@@ -486,112 +477,47 @@ $(function () {
         <hr>
         <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
 </div-->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Lưu ý</h1>
-      </div>
-      <div class="modal-body">
-        <div>Vui lòng xác minh bạn không phải là robot để tiếp tục truy cập vào WebPage News</div>
-          <br>
-          <div class="g-recaptcha" data-sitekey="6LcsrC8rAAAAAL8x6uxTYj7WWDUFwtI89nrtoCIZ" data-callback="enableSubmitButton" data-expired-callback="disableSubmitButton"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="submitBtn">Tiếp tục</button>
-      </div>
-    </div>
-  </div>
-</div>
-    <script>
-        function enableSubmitButton() {
-    document.getElementById("submitBtn").disabled = false;
-}
-
-function disableSubmitButton() {
-    document.getElementById("submitBtn").disabled = true;
-}
-
-// Tùy chọn: Vô hiệu hóa nút khi trang tải lần đầu (nếu bạn không muốn thuộc tính 'disabled' trong HTML)
-document.addEventListener('DOMContentLoaded', function() {
-    const submitButton = document.getElementById("submitBtn");
-    if (submitButton) {
-        submitButton.disabled = true;
-    }
-});
-    </script>
-<nav class="navbar navbar-lg bg-body-tertiary">
-  <div class="container-fluid">
-      <a class="navbar-brand" href="#">WebPage News</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-header">
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#trang-chu">WebPage News</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+              <li class="nav-item">
+                <a class="nav-link active rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="true" href="#trang-chu">Trang chủ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#tin-tuc">Tin tức & Sự kiện</a>
+              </li>
+            <li class="nav-item">
+                <a href="#video" class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Video</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#podcast">Podcast</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#tim-kiem">Tìm kiếm</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#lien-he">Thông tin</a>
+              </li>
+                              <form class="d-flex" role="search">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Phiên bản
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://thewebsite2023.github.io/">v2.0 (Mới nhất)</a></li>
+                    <li><a class="dropdown-item" href="https://thewebsite2023.github.io/v1.0">v1.0</a></li>
+                  </ul>
+                </li>
+              </form>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                  <li class="nav-item">
-                      <h4>Tất cả các chuyên mục</h4>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link active close-offcanvas" href="#trang-chu">Trang chủ</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link close-offcanvas" href="#tin-tuc">Tin tức & Sự kiện</a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="#video" class="nav-link close-offcanvas">Video</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link close-offcanvas" href="#podcast">Podcast</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link close-offcanvas" href="#tim-kiem">Tìm kiếm</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link close-offcanvas" href="#lien-he">Thông tin</a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </div>
-</nav>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-      const offcanvasNavbar = document.getElementById('offcanvasNavbar');
-      const offcanvasLinks = offcanvasNavbar.querySelectorAll('.close-offcanvas');
-      const bsOffcanvas = new bootstrap.Offcanvas(offcanvasNavbar);
-
-      offcanvasLinks.forEach(link => {
-          link.addEventListener('click', function() {
-              bsOffcanvas.hide();
-          });
-      });
-  });
-</script>
-<ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
-  <li class="nav-item">
-    <a class="nav-link active rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="true" href="#trang-chu">Trang chủ</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#tin-tuc">Tin tức & Sự kiện</a>
-  </li>
-<li class="nav-item">
-    <a href="#video" class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Video</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#podcast">Podcast</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#tim-kiem">Tìm kiếm</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#lien-he">Thông tin</a>
-  </li>
-</ul>
+        </div>
+      </nav>
     
  <div class="container mt-4">
     <div id="trang-chu" class="page">
@@ -665,6 +591,13 @@ document.addEventListener('DOMContentLoaded', function() {
           <hr>
             <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm tin tức,video,podcasts,...">
             <center><div id="noResults" style="display: none; color: red; font-weight: bold; margin-top: 10px;">Không có bài báo nào phù hợp với từ khoá của bạn</div></center>
+            <div class="search-news-item">
+              <img src="https://i1-vnexpress.vnecdn.net/2025/05/05/the-1746461610-1746461654-2285-1746462117.jpg?w=220&h=132&q=100&dpr=1&fit=crop&s=rM8ca_sXS_n9kIjL5Uwpjw" alt="" width="150px" class="me-3">
+              <div class="search-news-content">
+                  <a href="#dung-the-bao-hiem-y-te-cua-nguoi-khac-co-the-bi-phat-it-nhat-40-trieu-dong" class="search-news-title">Dùng thẻ bảo hiểm y tế của người khác có thể bị phạt ít nhất 40 triệu đồng</a>
+                  <div class="search-news-time">Nguồn: VnExpress</div>
+              </div>
+            </div>
             <div class="search-news-item">
               <img src="https://i1-vnexpress.vnecdn.net/2025/04/25/a0eef8b1fc9348cda87be868f73402-5131-6314-1745546539.jpg?w=320&h=320&q=100&dpr=1&fit=crop&s=2izsrKV1kivgpXvx9-cFZw" alt="" width="150px" class="me-3">
               <div class="search-news-content">
@@ -832,6 +765,13 @@ document.addEventListener('DOMContentLoaded', function() {
       <div id="tin-tuc" class="page d-none">
         <h3><a href="#trang-chu">Trang chủ</a> > <a href="#tin-tuc">Tin tức & Sự kiện</a></h3>
           <hr>
+          <div class="news-item">
+            <img src="https://i1-vnexpress.vnecdn.net/2025/05/05/the-1746461610-1746461654-2285-1746462117.jpg?w=220&h=132&q=100&dpr=1&fit=crop&s=rM8ca_sXS_n9kIjL5Uwpjw" alt="" width="150px" class="me-3">
+            <div class="news-content">
+                <a href="#dung-the-bao-hiem-y-te-cua-nguoi-khac-co-the-bi-phat-it-nhat-40-trieu-dong" class="news-title">Dùng thẻ bảo hiểm y tế của người khác có thể bị phạt ít nhất 40 triệu đồng</a>
+                <div class="news-time">Nguồn: VnExpress</div>
+            </div>
+          </div>
           <div class="news-item">
             <img src="https://i1-kinhdoanh.vnecdn.net/2025/04/11/20250320T220348Z1815739118RC29-3326-7905-1744359510.jpg?w=680&h=408&q=100&dpr=1&fit=crop&s=R_N9W_wly08CSlmJ5Stt3Q" alt="" width="150px" class="me-3">
             <div class="news-content">
@@ -1199,6 +1139,41 @@ document.addEventListener('DOMContentLoaded', function() {
       <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
     </div>
 
+    <div class="page d-none" id="dung-the-bao-hiem-y-te-cua-nguoi-khac-co-the-bi-phat-it-nhat-40-trieu-dong">
+      <div><h3><a href="#trang-chu">Trang chủ</a> > <a href="#tin-tuc">Tin tức & Sự kiện</a> > <a href="#dung-the-bao-hiem-y-te-cua-nguoi-khac-co-the-bi-phat-it-nhat-40-trieu-dong">Dùng thẻ bảo hiểm...</a></h3></div>
+      <hr>
+      <h3>Dùng thẻ bảo hiểm y tế của người khác có thể bị phạt ít nhất 40 triệu đồng</h3>
+      <i style="float: right;">Thứ ba, 6/5/2025, 10:20 (GMT+7)</i>
+      <br><div>Người dùng thẻ bảo hiểm y tế (BHYT) giả, thẻ của người khác đi khám chữa để hưởng chế độ trái quy định có thể bị phạt ít nhất 40 triệu đồng, tăng gấp đôi so với hiện hành.</div>
+      <br><div>Bộ Tư pháp vừa công bố hồ sơ thẩm định dự thảo Bộ luật Hình sự sửa đổi, dự kiến trình Quốc hội xem xét, cho ý kiến, thông qua theo trình tự, thủ tục rút gọn tại kỳ họp tháng 10.</div>
+      <br><div>Trong điều 214, 215, 216 quy định về các tội liên quan gian lận, trốn đóng bảo hiểm xã hội (BHXH), bảo hiểm thất nghiệp (BHTN), bảo hiểm y tế (BHYT), cơ quan soạn thảo không thay đổi mức phạt tù so với quy định hiện hành, song đề xuất nâng gấp đôi mức phạt tiền và nâng mức tiền vi phạm để quy kết trách nhiệm hình sự.</div>
+      <br><div><img src="https://i1-vnexpress.vnecdn.net/2025/04/28/DSC06690-Enhanced-NR-copy-1745-4102-3329-1745809089.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=VwoBzdCe2F3qbQ6WqkkQ7g" alt="Người lao động làm hồ sơ liên quan bảo hiểm thất nghiệp tại Trung tâm Dịch vụ việc làm Hà Nội, tháng 4/2025. Ảnh: Hoàng Giang" width="600px" height="400px"></div>
+      <div>Người lao động làm hồ sơ liên quan bảo hiểm thất nghiệp tại Trung tâm Dịch vụ việc làm Hà Nội, tháng 4/2025. Ảnh: <i>Hoàng Giang</i></div>
+      <br><div>Cụ thể, khoản 1 Điều 214 (tội Gian lận bảo hiểm xã hội, bảo hiểm thất nghiệp) dự thảo đề xuất số tiền vi phạm tối thiểu khi xử lý hình sự là chiếm đoạt 20 triệu đồng (quy định hiện hành 10 triệu đồng) hoặc gây thiệt hại tối thiểu 40 triệu đồng (hiện hành 20 triệu) với các thủ đoạn lập hồ sơ giả hoặc làm sai lệch nội dung hồ sơ để lừa dối cơ quan bảo hiểm xã hội, dùng các loại hồ sơ này để hưởng chế độ.</div>
+      <br><div>Mức phạt tiền với hành vi này cũng được nâng lên ít nhất 40 triệu đồng, gấp đôi so với hiện nay 20 triệu đồng.</div>
+      <br><div>Mức phạt 200-400 triệu đồng hoặc phạt tù từ 1 đến 5 năm được đề xuất áp dụng với người phạm tội có tổ chức; có tính chất chuyên nghiệp; chiếm đoạt tối thiểu từ 200 triệu hoặc gây thiệt hại ít nhất 400 triệu đồng.</div>
+      <br><div>Với quy định đang áp dụng hiện nay, tiền phạt cho các hành vi này là 100-200 triệu đồng.</div>
+      <br><div><img src="https://i1-vnexpress.vnecdn.net/2025/05/05/the-1746461610-7196-1746462117.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=oDOe_uSoTl8k20uvKqFqmw" alt="Mẫu thẻ BHYT giấy hiện vẫn được dùng trong khám chữa bệnh. Ảnh: Văn Đông" width="600px" height="400px"></div>
+      <div>Mẫu thẻ BHYT giấy hiện vẫn được dùng trong khám chữa bệnh. Ảnh: <i>Văn Đông</i></div>
+      <br><div><b>Nâng gấp đôi tiền phạt với tội Gian lận bảo hiểm y tế</b></div>
+      <br><div>Tại khoản 1 Điều 215, dự thảo đề xuất mức tiền tối thiểu khi xử lý hình sự với hành vi chiếm đoạt tiền BHYT là 20 triệu đồng, với gây thiệt hại là 40 triệu đồng. Luật hiện hành quy định mức tối thiểu với các hành vi này lần lượt là 10 và 20 triệu đồng.</div>
+      <br><div>Người vi phạm có thể bị phạt từ 40 triệu đồng (hiện hành là 20 triệu); phạt cải tạo không giam giữ 2 năm hoặc phạt tù từ 3 tháng đến 2 năm.</div>
+      <br><div>Các hành vi chịu mức phạt này bao gồm: lập hồ sơ bệnh án, kê đơn thuốc khống hoặc kê tăng số lượng hoặc thêm loại thuốc, vật tư y tế, dịch vụ kỹ thuật, chi phí giường bệnh và các chi phí khác mà thực tế người bệnh không sử dụng; giả mạo hồ sơ, thẻ BHYT hoặc sử dụng thẻ được cấp khống, thẻ giả, thẻ đã bị thu hồi, thẻ bị sửa chữa, thẻ của người khác để hưởng BHYT trái quy định.</div>
+      <br><div><img src="https://i1-vnexpress.vnecdn.net/2025/04/23/Congnhanmay-BHXH-Q1-TTung12-2-7700-9076-1745342072.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=87h_xZU57aCI5VRAih3G6Q" alt="Công nhân nghỉ việc tập trung trước Công ty cổ phần dệt may Gia định, TP HCM để đòi quyền lợi liên quan bảo hiểm xã hội, tháng 4/2023. Ảnh: Thanh Tùng" width="600px" height="400px"></div>
+      <div>Công nhân nghỉ việc tập trung trước Công ty cổ phần dệt may Gia định, TP HCM để đòi quyền lợi liên quan bảo hiểm xã hội, tháng 4/2023. Ảnh: <i>Thanh Tùng</i></div>
+      <br><div><b>Tăng gấp đôi tiền phạt lẫn tiền vi phạm tội trốn đóng BHXH</b></div>
+      <br><div>Tại Điều 216, cơ quan soạn thảo cơ bản giữ nguyên khái niệm về hành vi trốn đóng BHXH, BHYT, BHTN cho lao động. Song tiền vi phạm để quy xử lý hình sự được đề xuất nâng gấp đôi, tối thiểu 100 triệu đồng (mức hiện hành 50 triệu đồng).</div>
+      <br><div>Mức tiền phạt theo đó cũng nâng gấp đôi, lên tối thiểu 400 triệu đồng (hiện hành 200 triệu đồng).</div>
+      <br><div>Cơ quan soạn thảo cũng đề xuất mức phạt tiền thấp nhất 400 triệu đồng, cao nhất 6 tỷ đồng tùy với pháp nhân thương mại phạm trốn đóng BHXH, BHYT, BHTN.</div>
+      <br><div>Luật quy định pháp nhân thương mại là pháp nhân có mục tiêu chính là tìm kiếm lợi nhuận và lợi nhuận được chia cho các thành viên. Pháp nhân thương mại bao gồm doanh nghiệp và các tổ chức kinh tế khác.</div>
+      <br><div>Theo thống kê của Bảo hiểm xã hội Việt Nam, tính đến cuối năm 2022, việc chậm đóng diễn ra ở tất cả loại hình doanh nghiệp với số tiền phải tính lãi hơn 13.150 tỷ đồng. Riêng tiền nợ khó thu hồi tại doanh nghiệp phá sản, giải thể, ngừng hoạt động, chủ bỏ trốn hơn 4.000 tỷ đồng.</div>
+      <br>
+      <h3>Bình luận về bài viết</h3>
+      <div class="fb-comments" data-href="https://thewebsite2023.github.io/#dung-the-bao-hiem-y-te-cua-nguoi-khac-co-the-bi-phat-it-nhat-40-trieu-dong.html" data-width="" data-numposts="5"></div>
+      <hr>
+      <a href="" onclick="history.back(); return false;" class="btn btn-primary">< Quay lại</a>
+    </div>
+
     <div id="mau-may-tinh-tung-bi-apple-chon-vui" class="page d-none">
       <div><h3><a href="#trang-chu">Trang chủ</a> > <a href="#podcast">Podcast</a> > <a href="#mau-may-tinh-tung-bi-apple-chon-vui">Mẫu máy tính....</a></h3></div>
       <hr>
@@ -1531,70 +1506,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </script>
 <script>
-  function showPage(pageId) {
-      // Ẩn tất cả các trang
-      document.querySelectorAll('.page').forEach(page => page.classList.add('d-none'));
-  
-      // Hiện trang tương ứng
-      const pageElement = document.getElementById(pageId);
-      if (pageElement) {
-          pageElement.classList.remove('d-none');
-      }
-  }
-  
-  // Khi người dùng click vào link <a href="#id">
-  window.addEventListener("hashchange", () => {
-      const hash = window.location.hash;
-      if (hash) {
-          showPage(hash.substring(1)); // bỏ dấu #
-      }
-  });
-  
-  // Khi load trang lần đầu (truy cập trực tiếp với #id)
-  window.addEventListener("DOMContentLoaded", () => {
-      const hash = window.location.hash;
-      if (hash) {
-          showPage(hash.substring(1));
-      } else {
-          showPage("trang-chu"); // Trang mặc định
-      }
-  });
-  
-  document.addEventListener("DOMContentLoaded", function () {
-      const navLinks = document.querySelectorAll(".nav-pills .nav-link"); // Selector đã sửa
-  
-      function setActiveLinkFromHash() {
-          const currentHash = window.location.hash;
-          navLinks.forEach(link => {
-              if (link.getAttribute("href") === currentHash) {
-                  link.classList.add("active");
-              } else {
-                  link.classList.remove("active");
-              }
-          });
-      }
-  
-      navLinks.forEach(link => {
-          link.addEventListener("click", function (event) {
-              // Ngăn chặn hành vi mặc định của thẻ a (chuyển trang)
-              event.preventDefault();
-  
-              // Cập nhật hash trên URL
-              window.location.hash = this.getAttribute("href");
-  
-              // Gọi hàm setActiveLinkFromHash để cập nhật trạng thái active
-              setActiveLinkFromHash();
-          });
-      });
-  
-      // Tự động active link khi tải lại trang theo URL hash
-      setActiveLinkFromHash();
-  
-      // Nếu người dùng thay đổi hash bằng tay
-      window.addEventListener("hashchange", setActiveLinkFromHash);
-  });
-  </script>
-<script>
 function showPage(pageId) {
     // Ẩn tất cả các trang
     document.querySelectorAll('.page').forEach(page => page.classList.add('d-none'));
@@ -1625,7 +1536,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const navLinks = document.querySelectorAll(".navbar .nav-link"); // Selector đã sửa
+    const navLinks = document.querySelectorAll(".nav-pills .nav-link"); // Selector đã sửa
 
     function setActiveLinkFromHash() {
         const currentHash = window.location.hash;
@@ -1637,7 +1548,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-    
+
     navLinks.forEach(link => {
         link.addEventListener("click", function (event) {
             // Ngăn chặn hành vi mặc định của thẻ a (chuyển trang)
