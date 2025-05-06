@@ -9,7 +9,13 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LduGS0rAAAAAMSbHeh5CvKuHmMswcmewZblpxks"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+  const myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+  myModal.show();
+});
+    </script>
        <script>
       function onClick(e) {
         e.preventDefault();
@@ -471,6 +477,39 @@ $(function () {
         <hr>
         <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
 </div-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Lưu ý</h1>
+      </div>
+      <div class="modal-body">
+        <div>Vui lòng xác minh bạn không phải là robot để tiếp tục truy cập vào WebPage News</div>
+          <div class="g-recaptcha" data-sitekey="6LcsrC8rAAAAAL8x6uxTYj7WWDUFwtI89nrtoCIZ" data-callback="enableSubmitButton" data-expired-callback="disableSubmitButton"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="submitBtn">Tiếp tục</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <script>
+        function enableSubmitButton() {
+    document.getElementById("submitBtn").disabled = false;
+}
+
+function disableSubmitButton() {
+    document.getElementById("submitBtn").disabled = true;
+}
+
+// Tùy chọn: Vô hiệu hóa nút khi trang tải lần đầu (nếu bạn không muốn thuộc tính 'disabled' trong HTML)
+document.addEventListener('DOMContentLoaded', function() {
+    const submitButton = document.getElementById("submitBtn");
+    if (submitButton) {
+        submitButton.disabled = true;
+    }
+});
+    </script>
 <nav class="navbar navbar-lg bg-body-tertiary">
   <div class="container-fluid">
       <a class="navbar-brand" href="#">WebPage News</a>
