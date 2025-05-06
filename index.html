@@ -473,42 +473,56 @@ $(function () {
 </div-->
 <nav class="navbar navbar-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">WebPage News</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <a class="navbar-brand" href="#">WebPage News</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item">
+                      <h4>Tất cả các chuyên mục</h4>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active close-offcanvas" href="#trang-chu">Trang chủ</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link close-offcanvas" href="#tin-tuc">Tin tức & Sự kiện</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="#video" class="nav-link close-offcanvas">Video</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link close-offcanvas" href="#podcast">Podcast</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link close-offcanvas" href="#tim-kiem">Tìm kiếm</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link close-offcanvas" href="#lien-he">Thông tin</a>
+                  </li>
+              </ul>
+          </div>
       </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <h4>Tất cả các chuyên mục</h4>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" data-bs-toggle="tab" type="button" role="tab" aria-selected="true" href="#trang-chu">Trang chủ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#tin-tuc">Tin tức & Sự kiện</a>
-          </li>
-        <li class="nav-item">
-            <a href="#video" class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Video</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#podcast">Podcast</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#tim-kiem">Tìm kiếm</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#lien-he">Thông tin</a>
-          </li>
-        </ul>
-      </div>
-    </div>
   </div>
 </nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const offcanvasNavbar = document.getElementById('offcanvasNavbar');
+      const offcanvasLinks = offcanvasNavbar.querySelectorAll('.close-offcanvas');
+      const bsOffcanvas = new bootstrap.Offcanvas(offcanvasNavbar);
+
+      offcanvasLinks.forEach(link => {
+          link.addEventListener('click', function() {
+              bsOffcanvas.hide();
+          });
+      });
+  });
+</script>
 <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
   <li class="nav-item">
     <a class="nav-link active rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="true" href="#trang-chu">Trang chủ</a>
@@ -1585,7 +1599,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-
+    
     navLinks.forEach(link => {
         link.addEventListener("click", function (event) {
             // Ngăn chặn hành vi mặc định của thẻ a (chuyển trang)
