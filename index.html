@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DV5FGDGSEG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DV5FGDGSEG');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="zalo-platform-site-verification" content="FE-L0jpyBbihtA9IzFaj2H7ac5Rzaau8E3Op" />
@@ -448,7 +457,7 @@ strong {
     <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
   </div>
     </div> -->
-    <!-- <div id="loader">
+    <div id="loader">
       <div class="loading-box">
         <span class="loader"></span>
         <div>Đang tải...</div>
@@ -459,12 +468,12 @@ strong {
 var loader = function() {
   setTimeout(function() {
     $('#loader').css({ 'opacity': 0, 'visibility': 'hidden' });
-  }, 10000);
+  }, 2000);
 };
 $(function () {
   loader();
 });
-</script> -->
+</script>
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v22.0&appId=1926059728200552"></script>
 <!--div class="container mt-4">
@@ -477,13 +486,58 @@ $(function () {
         <hr>
         <center>© 2025 Bản quyền thuộc về WebPage News .,Inc. Tất cả các quyền được bảo lưu</center>
 </div-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#trang-chu">WebPage News</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<nav class="navbar navbar-lg bg-body-tertiary">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="#">WebPage News</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item">
+                      <h4>Tất cả các chuyên mục</h4>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active close-offcanvas" href="#trang-chu">Trang chủ</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link close-offcanvas" href="#tin-tuc">Tin tức & Sự kiện</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="#video" class="nav-link close-offcanvas">Video</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link close-offcanvas" href="#podcast">Podcast</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link close-offcanvas" href="#tim-kiem">Tìm kiếm</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link close-offcanvas" href="#lien-he">Thông tin</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const offcanvasNavbar = document.getElementById('offcanvasNavbar');
+      const offcanvasLinks = offcanvasNavbar.querySelectorAll('.close-offcanvas');
+      const bsOffcanvas = new bootstrap.Offcanvas(offcanvasNavbar);
+
+      offcanvasLinks.forEach(link => {
+          link.addEventListener('click', function() {
+              bsOffcanvas.hide();
+          });
+      });
+  });
+</script>
             <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
               <li class="nav-item">
                 <a class="nav-link active rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="true" href="#trang-chu">Trang chủ</a>
@@ -503,21 +557,7 @@ $(function () {
               <li class="nav-item">
                 <a class="nav-link rounded-5" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" href="#lien-he">Thông tin</a>
               </li>
-                              <form class="d-flex" role="search">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Phiên bản
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="https://thewebsite2023.github.io/">v2.0 (Mới nhất)</a></li>
-                    <li><a class="dropdown-item" href="https://thewebsite2023.github.io/v1.0">v1.0</a></li>
-                  </ul>
-                </li>
-              </form>
             </ul>
-          </div>
-        </div>
-      </nav>
     
  <div class="container mt-4">
     <div id="trang-chu" class="page">
